@@ -56,6 +56,7 @@ RouteDAO route;
   return json;
  }
 
+ @CrossOrigin(origins = "http://localhost:3000")
  @GetMapping("/getmaps/{start}/{destination}/{date}/{transportMethod}")//url
  @ResponseBody
 public String getRouteFromMaps(@PathVariable("start") String start, @PathVariable("destination") String destination, @PathVariable("date")String date, @PathVariable("transportMethod")char transportMethod){
@@ -63,6 +64,7 @@ public String getRouteFromMaps(@PathVariable("start") String start, @PathVariabl
   route.save( routeMaps );
   return routeMaps.getRouteDetails();
  }
+
 
  @GetMapping("/getcurrency/{id}")
  @ResponseBody

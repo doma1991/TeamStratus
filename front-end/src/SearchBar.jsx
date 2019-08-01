@@ -19,18 +19,28 @@ class SearchBar extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.handleResponse = this.handleResponse.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
   }
 
   async handleSubmit(event) {
-    event.preventDefault();
-    let json = JSON.stringify({
-      to: this.state.to,
-      startDate: this.state.startDate,
-      from: this.state.from,
-      endDate: this.state.endDate
-    });
-    console.log(json);
+    try {
+      event.preventDefault();
+      let response = await fetch(
+        "http://localhost:8080/getmaps/London/Manchester/2019-09-01%20at%2011:00/t/",
+        {
+          method: "GET"
+          // headers: {
+          //   Accept: "application/json",
+          //   "Content-Type": "application/json"
+          // }
+        }
+      );
+      // console.log(json);
+      let data = await response.json();
+      this.handleResponse(data);
+    } catch (e) {
+      console.log("error", e);
+    }
   }
 
   handleChange = valueName => {
@@ -41,6 +51,10 @@ class SearchBar extends React.Component {
 
   handleChangeDate = (field, date) => {
     this.setState({ [field]: date });
+  };
+
+  handleResponse = () => {
+    console.log("it worked!!");
   };
 
   render() {
