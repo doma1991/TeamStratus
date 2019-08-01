@@ -34,7 +34,7 @@ public class RouteDAOSpring implements RouteDAO {
 
     @Override
     public String updateCurrency(int id) {
-        Route routeToUpdate = routeRepository.getOne(id);
+        Route routeToUpdate = findRouteById(id);
         String a =CurrencyAPI.setCurrency(routeToUpdate);
         routeToUpdate.setCurrency(a);
         routeRepository.save(routeToUpdate);
