@@ -11,11 +11,6 @@ public class ConfigFileReader {
 
 
     public ConfigFileReader(){
-
-        File f = new File(".");
-        for(String s : f.list()){
-            System.out.println(s);
-        }
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
