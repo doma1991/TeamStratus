@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/TeamStratusMain.iml" filepath="$PROJECT_DIR$/.idea/TeamStratusMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stratus.files.iml" filepath="$PROJECT_DIR$/stratus.files.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/teamStratus.iml" filepath="$PROJECT_DIR$/.idea/teamStratus.iml" />
     </modules>
   </component>

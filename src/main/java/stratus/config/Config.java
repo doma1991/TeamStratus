@@ -27,16 +27,15 @@ public class Config {
 
     @Bean
     public LocalEntityManagerFactoryBean entityManagerFactory() {
-        LocalEntityManagerFactoryBean em = new LocalEntityManagerFactoryBean();
+        LocalEntityManagerFactoryBean em
+                = new LocalEntityManagerFactoryBean();
         em.setPersistenceUnitName("users");
-
         return em;
     }
 
     @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager manager = new JpaTransactionManager();
-
         return manager;
     }
 }
