@@ -85,10 +85,5 @@ public class WeatherAPI {
     }
 
 
-    public static void main(String[] args) {
-        //scn = new Scanner(System.in);
-        //System.out.println(PrettyJSON.print(getWeatherByLatLon("51.89381100000001","-0.2873046")));
-        //System.out.println(Arrays.toString(outputWeatherNow(getWeatherByLatLon("51.89381100000001","-0.2873046"))));
-
-    }
+   
 }

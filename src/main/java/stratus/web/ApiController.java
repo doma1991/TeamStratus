@@ -53,9 +53,7 @@ RouteDAO route;
      } catch (ParseException e) {
          e.printStackTrace();
      }
-  /*public Route(String routeDetails, String startLocation, String endLocation, String date, boolean favourite,
-     char transportMethod, String startLongitude, String startLatitude, String endLongitude, String endLatitude,
-             String currency, String locationName, List<User> user) {*/
+
   Route routeToSave = new Route(flights.get(0).toString(),flights.get(3).toString(),flights.get(6).toString(),date1,false,'f',flights.get(1).toString(),flights.get(2).toString(),flights.get(4).toString(),flights.get(5).toString(),flights.get(7).toString()," ",null);
      System.out.println(routeToSave.getEndLatitude());
   boolean toSave = route.save(routeToSave);
