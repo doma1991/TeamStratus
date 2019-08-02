@@ -47,6 +47,7 @@ RouteDAO route;
 //  String arrivalWeather = WeatherAPI.getWeatherByAirportCode(arrivalcode);
 //  String createWeatherJson = "{\"destinationWeather\":"+destinationWeather + ",\"arrivalWeather\":"+arrivalWeather+"}";
   String json = flights.get(0).toString();
+     System.out.println(flights.get(0));
      Date date1 = null;
      try {
          destinationdate = destinationdate.replaceAll("-","/");
