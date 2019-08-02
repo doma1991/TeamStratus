@@ -31,8 +31,11 @@ class SearchBar extends React.Component {
     event.preventDefault();
     try{
 
-       let response=await fetch("http://localhost:8080/getmaps/");
-
+         let response=await fetch("http://localhost:8080/getmaps/");
+        let data=await response.json();
+        this.handleResponse(data);}
+        catch(e){
+        }
            fetch('http://example.com',{
                 method: "POST",
                 body: JSON.stringify(userData),
