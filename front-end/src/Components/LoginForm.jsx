@@ -20,16 +20,17 @@ class LoginForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "", isAuthenticated: false };
+    this.state = { login: "", password: "", isAuthenticated: false };
   }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  login = () => {
+  login = event => {
+    event.preventDefault();
     const user = {
-      username: this.state.username,
+      login: this.state.login,
       password: this.state.password
     };
     fetch("http://localhost:8080/login", {
@@ -38,6 +39,7 @@ class LoginForm extends React.Component {
     })
       .then(res => {
         const jwtToken = res.headers.get("Authorization");
+
         if (jwtToken !== null) {
           sessionStorage.setItem("jwt", jwtToken);
           this.setState({ isAuthenticated: true });
@@ -57,6 +59,7 @@ class LoginForm extends React.Component {
 
   render() {
     if (this.state.isAuthenticated === true) {
+      console.log("success");
       return <Main />;
     }
     return (
@@ -68,7 +71,6 @@ class LoginForm extends React.Component {
               type="text"
               name="login"
               id="login"
-              value={this.state.login}
               placeholder="Username"
               onChange={this.handleChange("login")}
             />
@@ -79,7 +81,6 @@ class LoginForm extends React.Component {
               type="password"
               name="password"
               id="password"
-              value={this.state.password}
               onChange={this.handleChange("password")}
             />
           </div>

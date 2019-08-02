@@ -27,7 +27,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
         UserCredentials cred = new ObjectMapper()
                 .readValue(req.getInputStream(), UserCredentials.class);
         return getAuthenticationManager().authenticate(
-                new UsernamePasswordAuthenticationToken(cred.getUsername(), cred.getPassword(), new ArrayList<GrantedAuthority>())
+                new UsernamePasswordAuthenticationToken(cred.getLogin(), cred.getPassword(), new ArrayList<GrantedAuthority>())
         );
 
     }
