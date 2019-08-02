@@ -66,10 +66,10 @@ RouteDAO route;
 
  @GetMapping("/getmaps/{start}/{destination}/{date}/{transportMethod}")//url
  @ResponseBody
-public String getRouteFromMaps(@PathVariable("start") String start, @PathVariable("destination") String destination, @PathVariable("date")String date, @PathVariable("transportMethod")char transportMethod){
+public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable("destination") String destination, @PathVariable("date")String date, @PathVariable("transportMethod")char transportMethod){
   Route routeMaps=Maps.makeRoute(start, destination, date,transportMethod);
   route.save( routeMaps );
-  return routeMaps.getRouteDetails();
+  return routeMaps;
  }
 
  @GetMapping("/getcurrency/{id}")
