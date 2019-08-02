@@ -19,12 +19,12 @@ class LoginForm extends React.Component {
       login: this.state.login,
       password: this.state.password
     });
-
+    
     let response = await fetch("http://localhost:8080/users/restrict", {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: json
     });
@@ -43,12 +43,13 @@ class LoginForm extends React.Component {
     console.log("logged in");
   };
 
+
   render() {
     return (
       <div className="container p-3">
         <form onSubmit={this.handleSubmit}>
-          <div class="form-group">
-            <label hmtlFor="login">Username</label>
+          <div className="form-group">
+            <label htmlFor="login">Username</label>
             <input
               type="text"
               name="login"
@@ -58,7 +59,7 @@ class LoginForm extends React.Component {
               onChange={this.handleChange("login")}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
