@@ -5,19 +5,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class AirportInformation {
 
-    private static Scanner scn;
-
     static String apiKey = "fa7769554emshaab499374a3ea4dp179e68jsne2fbed25ad4d";
-    static String host = "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com";
-
 
     /**
-     * This method uses Scanner and System in to get inputs to perform a location query which will print a JSON Object
-     * containing all the corresponding Airports associated with the string using the getResponse method.
+     * This static method returns a list containing the locations of airports dependant on the string argument
+     * @param resP A HttpResponse object that will do the Get request
+     * @param localInput A String that will be used for the query
+     * @return A List of airport codes and names
      */
     public static List<String> printLocationData(HttpApiResponse resP, String localInput){
         ArrayList<String> listOfAirports = new ArrayList<>();
@@ -33,6 +30,11 @@ public class AirportInformation {
         return listOfAirports;
     }
 
+    /**
+     * A method that resturns the airports longitude and latitude based on the airport code
+     * @param airportCode A String of the airport code that you want to return the information
+     * @return A string containing the longitude and latitude
+     */
     public static String getLongLatofAirport(String airportCode){
         HttpApiResponse apiCaller = new HttpApiResponse(apiKey, "airport-info.p.rapidapi.com");
         JSONObject toGet = new JSONObject(apiCaller.getRapidApiResponse("https://airport-info.p.rapidapi.com/airport?iata="+airportCode));

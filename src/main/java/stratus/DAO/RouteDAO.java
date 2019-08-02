@@ -8,7 +8,7 @@ public interface RouteDAO {
     public List<String> findAll();
     public boolean save(Route direction);
     public Route findRouteById(int id);
-    public String getCurrencyById(int id);
+    public String updateCurrency(int id);
 
     //public Route findRouteById(int id)
 }
