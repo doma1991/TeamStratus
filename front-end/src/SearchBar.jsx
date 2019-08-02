@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
+import MapContainer from "./Map";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 // Also need to install moment byt running: npm install moment
 //
-
+var MapS =<MapContainer/>
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -40,6 +41,7 @@ class SearchBar extends React.Component {
       // );
       let data = await response.json();
       this.handleResponse(data);
+      
     } catch (e) {
       console.log("error", e);
     }
@@ -56,13 +58,15 @@ class SearchBar extends React.Component {
   };
 
   handleResponse = data => {
-    localStorage.setItem("mapRequest", data);
+    localStorage.setItem("mapRequest", JSON.stringify(data));
+    MapS =<MapContainer/>
     // let storage = data.endLatitude;
     // this.setState({ searchResultId: storage });
-    console.log(data);
+    console.log(JSON.stringify(data));
   };
 
   render() {
+    
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -119,6 +123,7 @@ class SearchBar extends React.Component {
             <button className="btn btn-success">Go!</button>
           </div>
         </form>
+        <div>{MapS}</div>
       </div>
     );
   }
