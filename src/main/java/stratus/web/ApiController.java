@@ -49,6 +49,7 @@ RouteDAO route;
   String json = flights.get(0).toString();
      Date date1 = null;
      try {
+         destinationdate = destinationdate.replaceAll("-","/");
          date1 = new SimpleDateFormat("yyyy/MM/dd").parse(destinationdate);
      } catch (ParseException e) {
          e.printStackTrace();
