@@ -8,7 +8,6 @@ import java.util.List;
 
 
 public class UserDAOSpring implements UserDAO {
-
     @Autowired
     private UserRepository userRepository;
 
@@ -24,9 +23,11 @@ public class UserDAOSpring implements UserDAO {
         return true;
     }
 
+
+
     @Override
     public List<User> getAllUsers() {
-        List<User> allUsers = new ArrayList<>();
+        List<User> allUsers = new ArrayList<User>();
         for (User u : userRepository.findAll()) {
             allUsers.add(u);
         }
@@ -59,6 +60,7 @@ public class UserDAOSpring implements UserDAO {
 
     @Override
     public User getUserById(int id) {
+
         return userRepository.findById(id).get();
     }
 

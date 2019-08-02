@@ -2,22 +2,25 @@ package stratus.API;
 import org.json.JSONArray;
 
 import org.json.JSONObject;
+import stratus.DAO.Route;
+import stratus.DAO.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
 public class Maps {
 
-    private static Scanner scn;
+    //private static Scanner scn;
     /*
      * This class takes the URL, and with the API keys will use HTTP client to get a response to form a JSON object.
      * @param url Provide the URL to to get the api JSON response from
      */
-    public static String getResponse(){//asks for a few basic information for the trip
+    /*public static String getResponse(){//asks for a few basic information for the trip
 
         System.out.println("Please enter the origin of your travel");
         String origin = scn.nextLine();
@@ -63,12 +66,13 @@ public class Maps {
         }
         }
         return PrettyJSON.print(jsonString);
-    }
+    }*/
 
-    //in progress
-    /*public static Route makeRoute(String startLocation, String endLocation, String date, char transportMethod){
+
+    public static Route makeRoute(String startLocation, String endLocation, String date, char transportMethod){
        String  mode=transToMode(transportMethod);
-       String pref=transToPref();
+       String transit_mode=transToTM(transportMethod);
+
         //API keys from Googlemaps API docs
         String apiKey = "AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I";
         String depTime=Maps.stringToTime(date);
@@ -78,24 +82,30 @@ public class Maps {
         HttpApiResponse har =new HttpApiResponse();
         String jsonString;
         if((depTime=="now") && (mode=="driving")){
-            jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&mode=" + mode + "&key=" + apiKey);
+            jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation+ "&destination=" + endLocation + "&mode=" + mode + "&key=" + apiKey);
         }
         else {
-            if((mode=="transit") && (pref==true)){
-                jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&mode=" + mode + "&departure_time" + depTime +"&transit_mode="+transit_mode+ "&key=" + apiKey);
+            if((mode=="transit") && (transit_mode!="")){
+                jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&mode=" + mode + "&departure_time" + depTime +"&transit_mode="+transit_mode+ "&key=" + apiKey);
             }
-            else {jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&mode=" + mode + "&departure_time" + depTime + "&key=" + apiKey);
+            else {jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&mode=" + mode + "&departure_time" + depTime + "&key=" + apiKey);
             }
         }
-        String startLongitude= ;
-        String startLatitude= ;
 
-        String endLongitude= ;
-        String endLatitude= ;
-        String pJ=PrettyJSON.print(jsonString);
-        return(Route(pJ, startLocation, endLocation, date, transportMethod, startLongitude, startLatitude,endLongitude, String endLatitude,
-                String currency, String locationName, List<User> user));
-    }*/
+        String [] coord= getCoordinates(jsonString);
+
+        String startLongitude= coord[1];
+        String startLatitude=coord[0];
+
+        String endLongitude= coord[2];
+        String endLatitude= coord[3];
+        String currency= CurrencyAPI.currencyByCountry(getCountryCode(endLatitude,endLongitude));
+        Date dateAPI= googleDateToDate(date);
+        String details=dataFromAPI(jsonString);
+        return(new Route(details,  startLocation, endLocation,  dateAPI,  false, transportMethod,  startLongitude,  startLatitude,  endLongitude,  endLatitude,  currency, null, null));
+    }
+
+
 
 public static String stringToTime(String string){
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm");
@@ -107,8 +117,58 @@ public static String stringToTime(String string){
 
 }
 
+public static Date googleDateToDate(String date){
+        Date dateF= new Date();
+        if(date!="now"){
+            try {
+                dateF = new Date(Long.parseLong(date) * 1000);
+            }
+            catch(NumberFormatException e){}
+        }
 
-public static void dataFromAPI(String string){//chose to return the duration and distance of the trip as an example
+        return dateF;
+}
+
+public static String transToMode(char method){
+        switch(method) {
+            case'w':
+                return"walking";
+            case'd':
+                return"driving";
+            case'b':
+                return "bicycling";
+            case't':
+            case'u':
+            case's':
+            case'r':
+            case'a':
+            case'i':
+                return"transit";
+        }
+    return "";
+}
+
+    public static String transToTM(char method){
+        String metho=Character.toString(method);
+        switch(metho) {
+            case "u":
+                return"bus";
+            case "s":
+                return "subway";
+            case "r":
+                return"train";
+            case "a":
+                return "tram";
+            case "i":
+                return "rail";
+        }
+        return"";
+
+    }
+
+
+//For front end
+public static String dataFromAPI(String string){ //returns number of routes, distance and duration for each of them
     JSONObject myObjectData = new JSONObject(string);
     JSONArray routes = myObjectData.getJSONArray("routes");
     System.out.println("There are "+routes.length()+" route(s).");
@@ -118,12 +178,14 @@ public static void dataFromAPI(String string){//chose to return the duration and
         JSONObject trip=legs.getJSONObject(0);
         String duration= trip.getJSONObject("duration").getString("text");
         String distance= trip.getJSONObject("distance").getString("text");
-        System.out.println("duration:"+duration+"\tdistance:"+distance);
+        String a=duration+","+distance+","+Integer.toString(routes.length());
+        return a;
     }
+    return("");
 
 }
 
-public static String getCoordinates(String string){ //method that can be added to get the coordinates for the weather
+public static String[] getCoordinates(String string){ //method that can be added to get the coordinates for the weather
     JSONObject myObjectData = new JSONObject(string);
     JSONArray routes = myObjectData.getJSONArray("routes");
     JSONObject routes1 = routes.getJSONObject(0);
@@ -131,15 +193,16 @@ public static String getCoordinates(String string){ //method that can be added t
     JSONObject trip=legs.getJSONObject(0);
     JSONObject endPlace=trip.getJSONObject("end_location");
     JSONObject startPlace=trip.getJSONObject("start_location");
-    StringJoiner latLong= new StringJoiner(" ");
 
-    latLong.add(startPlace.getString("lat")+",");
-    latLong.add(startPlace.getString("lng"));
-    latLong.add("-");
-    latLong.add(endPlace.getString("lat")+",");
-    latLong.add(endPlace.getString("lng"));
+    String a= Double.toString(startPlace.getDouble("lat"));
+    String b= Double.toString(startPlace.getDouble("lng"));
 
-    return latLong.toString();
+    String c= Double.toString(endPlace.getDouble("lat"));
+    String d=Double.toString(endPlace.getDouble("lng"));
+
+    String[] result=new String[]{a,b,c,d};
+
+    return result;
 
 
 //would be great to find something else that doesn't use Google Maps for prices concerns
@@ -162,13 +225,13 @@ public static String getCountryCode(String lat, String lng) {
 
 
     }
-    return "GBP";
+    return "GB";
 }
 
     public static void main(String[] args) {
-        scn = new Scanner(System.in);
+        /*scn = new Scanner(System.in);
         String string= getResponse();
-        dataFromAPI(string);
+        dataFromAPI(string);*/
 
 
     }
