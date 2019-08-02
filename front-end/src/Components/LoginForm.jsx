@@ -1,23 +1,8 @@
 import React from "react";
 import Main from "./Main";
+import { Redirect } from "@reach/router";
 
 class LoginForm extends React.Component {
-  // async handleSubmit(event) {
-  //   const user = {username: this.state.username, password: this.state.password};
-
-  //   let response = await fetch("http://localhost:8080/users/restrict", {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: json
-  //   });
-
-  //   let data = await response.json();
-  //   this.handleResponse(data);
-  // }
-
   constructor(props) {
     super(props);
     this.state = { login: "", password: "", isAuthenticated: false };
@@ -60,7 +45,7 @@ class LoginForm extends React.Component {
   render() {
     if (this.state.isAuthenticated === true) {
       console.log("success");
-      return <Main />;
+      return <Redirect noThrow to="" />;
     }
     return (
       <div className="container p-3">
