@@ -41,10 +41,12 @@ public class Application {
 
 //        routeDao.save(home);
 //
+
 //
 //        Route routeMaps= Maps.makeRoute("London", "Cambridge", "now",'d');
 //        routeDao.save( routeMaps );
 //        System.out.println(routeDao.findAll());
+
     }
 
 }
