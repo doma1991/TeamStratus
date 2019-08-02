@@ -62,131 +62,109 @@ class RegistrationForm extends React.Component {
   };
 
   render() {
+    const tags = [
+      "First name:",
+      "Last name:",
+      "Address:",
+      "City:",
+      "Post Code:",
+      "Telephone:",
+      "Email:",
+      "Username:",
+      "Password:",
+      "Upload photo:"
+    ];
+    const fields = [
+      <input
+        type="text"
+        name="firstName"
+        value={this.state.firstName}
+        onChange={this.handleChange("firstName")}
+        required
+      />,
+      <input
+        type="text"
+        name="lastName"
+        value={this.lastName}
+        onChange={this.handleChange("lastName")}
+        required
+      />,
+      <input
+        type="text"
+        name="address"
+        value={this.address}
+        onChange={this.handleChange("address")}
+        required
+      />,
+      <input
+        type="text"
+        name="city"
+        value={this.city}
+        onChange={this.handleChange("city")}
+        required
+      />,
+      <input
+        type="text"
+        name="postCode"
+        value={this.postCode}
+        onChange={this.handleChange("postCode")}
+        required
+      />,
+      <input
+        type="text"
+        name="telephoneNumber"
+        value={this.telephoneNumber}
+        onChange={this.handleChange("telephoneNumber")}
+        required
+      />,
+      <input
+        type="email"
+        name="email"
+        value={this.email}
+        onChange={this.handleChange("email")}
+        required
+      />,
+      <input
+        type="text"
+        name="login"
+        value={this.login}
+        onChange={this.handleChange("login")}
+        required
+      />,
+      <input
+        type="password"
+        name="password"
+        pattern="(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        value={this.password}
+        onChange={this.handleChange("password")}
+        required
+      />,
+      <input
+        type="text"
+        name="photo"
+        onChange={this.handleChange("photo")}
+        value=""
+      />
+    ];
     return (
       <form onSubmit={this.handleSubmit} method="post">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              First name:
-              <input
-                type="text"
-                name="firstName"
-                value={this.state.firstName}
-                onChange={this.handleChange("firstName")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Last name:
-              <input
-                type="text"
-                name="lastName"
-                value={this.lastName}
-                onChange={this.handleChange("lastName")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Address:
-              <input
-                type="text"
-                name="address"
-                value={this.address}
-                onChange={this.handleChange("address")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              City:
-              <input
-                type="text"
-                name="city"
-                value={this.city}
-                onChange={this.handleChange("city")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Post Code:
-              <input
-                type="text"
-                name="postCode"
-                value={this.postCode}
-                onChange={this.handleChange("postCode")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Telephone:
-              <input
-                type="text"
-                name="telephoneNumber"
-                value={this.telephoneNumber}
-                onChange={this.handleChange("telephoneNumber")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Email:
-              <input
-                type="email"
-                name="email"
-                value={this.email}
-                onChange={this.handleChange("email")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Username:
-              <input
-                type="text"
-                name="login"
-                value={this.login}
-                onChange={this.handleChange("login")}
-                required
-              />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Password:
-              <input
-                type="password"
-                name="password"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or
-                                       more characters"
-                value={this.password}
-                onChange={this.handleChange("password")}
-                required
-              />
-            </div>
-          </div>
+          {fields.map((field, count) => {
+            let linkContent = tags[count];
+            return (
+              <div key={linkContent} className="row justify-content-center">
+                <div className="col-sm-4">{linkContent}</div>
+                <div className="col-sm-4">{field}</div>
+              </div>
+            );
+          })}
+
           <input type="hidden" name="role" value="U" />
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              Upload photo:
-              <input type="text" name="photo" value="" />
-            </div>
-          </div>
           <input type="hidden" name="route" />
           <div className="row justify-content-center">
             <div className="col-sm-4">
-              <input type="submit" value="Submit" />
+              <input className="btn btn-primary" type="submit" value="Submit" />
             </div>
           </div>
         </div>
