@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
       to: "",
       startDate: "",
       endDate: "",
-      data: []
+      searchResultId: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -32,41 +32,15 @@ class SearchBar extends React.Component {
   async handleSubmit(event) {
     try {
       event.preventDefault();
-      fetch(
-        "http://localhost:8080/getmaps/Liverpool/Manchester/2019-09-01%20at%2011:00/d/"
-      )
-        .then(res => res.text()) // convert to plain text
-        .then(text => console.log(text));
-      // .then(function(response) {
-      //   return response.json();
-      // })
-      // .then(function(myJson) {
-      //   console.log(JSON.stringify(myJson));
-      // });
+      let response = await fetch(
+        "http://localhost:8080/getmaps/London/Cambridge/2019-09-01%20at%2011:00/d/"
+      );
+      let data = await response.json();
+      this.handleResponse(data);
     } catch (e) {
       console.log("error", e);
     }
   }
-  // async handleSubmit(event) {
-  //   try {
-  //     event.preventDefault();
-  //     let response = await fetch(
-  //       "http://localhost:8080/getmaps/London/Manchester/2019-09-01%20at%2011:00/t/",
-  //       {
-  //         method: "GET"
-  //         // headers: {
-  //         //   Accept: "application/json",
-  //         //   "Content-Type": "application/json"
-  //         // }
-  //       }
-  //     );
-  //     // console.log(json);
-  //     let data = await response;
-  //     this.handleResponse(data);
-  //   } catch (e) {
-  //     console.log("error", e);
-  //   }
-  // }
 
   handleChange = valueName => {
     return event => {
@@ -79,8 +53,11 @@ class SearchBar extends React.Component {
   };
 
   handleResponse = data => {
-    let storage = JSON.parse(JSON.stringify(data));
-    console.log(storage);
+    // let storage = JSON.parse(JSON.stringify(data));
+
+    let storage = data.endLatitude;
+    this.setState({ searchResultId: storage });
+    console.log(data);
   };
 
   render() {
