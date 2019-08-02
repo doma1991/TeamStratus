@@ -16,20 +16,39 @@ class SearchBar extends React.Component {
       to: "",
       startDate: "",
       endDate: "",
-      searchResultId: ""
+      transportMode: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
   }
+  handleClearForm(e) {
+    e.preventDefault();
+    this.setState({
+      from: "",
+      to: "",
+      Date: "",
+      transportMode: ""
+    });
+  }
+  handleChange = valueName => {
+    return event => {
+      this.setState({ [valueName]: event.target.value });
+    };
+  };
 
-  // componentDidMount() {
-  //   fetch()
-  //     .then(res => res.json())
-  //     .then(json => this.setState({ data: json }));
-  // }
+  transHandleChange(e) {
+    let value = e.target.value;
+    let name = e.target.name;
+    this.setState({ transportMode: value });
+  }
+
+  handleChangeDate = (field, date) => {
+    this.setState({ [field]: date });
+  };
 
   async handleSubmit(event) {
+    this.handleClearForm();
     try {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
@@ -44,16 +63,6 @@ class SearchBar extends React.Component {
       console.log("error", e);
     }
   }
-
-  handleChange = valueName => {
-    return event => {
-      this.setState({ [valueName]: event.target.value });
-    };
-  };
-
-  handleChangeDate = (field, date) => {
-    this.setState({ [field]: date });
-  };
 
   handleResponse = data => {
     localStorage.setItem("mapRequest", data);
@@ -113,6 +122,20 @@ class SearchBar extends React.Component {
                 dateFormat="MMMM d, yyyy h:mm aa"
                 timeCaption="time"
               />
+            </div>
+          </div>
+          <div className="container">
+            <div className="form-group">
+              <label> Select transport mode </label>
+              <select
+                value={this.state.transportMode}
+                name="transportMode"
+                onChange={this.handleChange("transportMode")}
+              >
+                <option value="driving"> driving </option>
+                <option value="bicycling"> cycling </option>
+                <option value="transit"> public transports </option>
+              </select>
             </div>
           </div>
           <div className="form-group">
