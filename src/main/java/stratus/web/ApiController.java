@@ -43,9 +43,9 @@ RouteDAO route;
  @ResponseBody
  public String getFlight(@PathVariable("destinationcode") String destinationcode, @PathVariable("arrivalcode") String arrivalcode, @PathVariable("destinationdate") String destinationdate){
   ArrayList flights = AmadeusFlightsApi.getFlightInfo(arrivalcode,destinationcode,destinationdate);
-  String destinationWeather = WeatherAPI.getWeatherByAirportCode(destinationcode);
-  String arrivalWeather = WeatherAPI.getWeatherByAirportCode(arrivalcode);
-  String createWeatherJson = "{\"destinationWeather\":"+destinationWeather + ",\"arrivalWeather\":"+arrivalWeather+"}";
+//  String destinationWeather = WeatherAPI.getWeatherByAirportCode(destinationcode);
+//  String arrivalWeather = WeatherAPI.getWeatherByAirportCode(arrivalcode);
+//  String createWeatherJson = "{\"destinationWeather\":"+destinationWeather + ",\"arrivalWeather\":"+arrivalWeather+"}";
   String json = flights.get(0).toString();
      Date date1 = null;
      try {
@@ -55,12 +55,12 @@ RouteDAO route;
          e.printStackTrace();
      }
 
-  Route routeToSave = new Route(flights.get(0).toString(),flights.get(3).toString(),flights.get(6).toString(),date1,false,'f',flights.get(1).toString(),flights.get(2).toString(),flights.get(4).toString(),flights.get(5).toString(),flights.get(7).toString()," ",null);
+     Route routeToSave = new Route(flights.get(0).toString(),flights.get(3).toString(),flights.get(6).toString(),date1,false,'f',flights.get(1).toString(),flights.get(2).toString(),flights.get(4).toString(),flights.get(5).toString(),flights.get(7).toString()," ",null);
      System.out.println(routeToSave.getEndLatitude());
-  boolean toSave = route.save(routeToSave);
+     boolean toSave = route.save(routeToSave);
      System.out.println(toSave);
-  json =  json + "," + createWeatherJson ;
-     System.out.println(route.findAll());
+      //json =  json + "," + createWeatherJson ;
+
   return json;
  }
 
