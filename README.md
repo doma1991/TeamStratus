@@ -1,2 +1,2 @@
 # TeamStratus
-check jenkinsn again kjgl,jhv
+check jenkinsn again
