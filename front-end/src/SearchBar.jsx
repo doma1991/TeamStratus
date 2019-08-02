@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 
 import "react-datepicker/dist/react-datepicker.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 // Also need to install moment byt running: npm install moment
 //
 
@@ -32,9 +32,12 @@ class SearchBar extends React.Component {
   async handleSubmit(event) {
     try {
       event.preventDefault();
-      let response = await fetch(
-        "http://localhost:8080/getmaps/London/Cambridge/2019-09-01%20at%2011:00/d/"
-      );
+      let baseURL = "http://localhost:8080/getmaps/";
+      let URL = baseURL + this.state.from + "/" + this.state.to + "/now/d/";
+      let response = await fetch(URL);
+      // let response = await fetch(
+      //   "http://localhost:8080/getmaps/London/Cambridge/2019-09-01%20at%2011:00/d/"
+      // );
       let data = await response.json();
       this.handleResponse(data);
     } catch (e) {
@@ -53,17 +56,15 @@ class SearchBar extends React.Component {
   };
 
   handleResponse = data => {
-    // let storage = JSON.parse(JSON.stringify(data));
-
-    let storage = data.endLatitude;
-    this.setState({ searchResultId: storage });
+    localStorage.setItem("mapRequest", data);
+    // let storage = data.endLatitude;
+    // this.setState({ searchResultId: storage });
     console.log(data);
   };
 
   render() {
     return (
       <div>
-        <h1>{this.state.data}</h1>
         <form onSubmit={this.handleSubmit}>
           <label>From: </label>
           <input
@@ -103,7 +104,7 @@ class SearchBar extends React.Component {
               <label>Select End Date: </label>
               <DatePicker
                 placeholder="Select end date"
-                todayButton={"Vandaag"}
+                todayButton={"Today"}
                 selected={this.state.endDate}
                 onChange={this.handleChangeDate.bind(this, "endDate")}
                 showTimeSelect
