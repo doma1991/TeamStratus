@@ -92,13 +92,13 @@ public class Maps {
             }
         }
 
-        String [] Coord= getCoordinates(jsonString);
+        String [] coord= getCoordinates(jsonString);
 
-        String startLongitude= Coord[1];
-        String startLatitude=Coord[0];
+        String startLongitude= coord[1];
+        String startLatitude=coord[0];
 
-        String endLongitude= Coord[2];
-        String endLatitude= Coord[3];
+        String endLongitude= coord[2];
+        String endLatitude= coord[3];
         String currency= CurrencyAPI.currencyByCountry(getCountryCode(endLatitude,endLongitude));
         Date dateAPI= googleDateToDate(date);
         String details=dataFromAPI(jsonString);
