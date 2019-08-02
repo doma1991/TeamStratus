@@ -1,37 +1,53 @@
 import React from "react";
+import Main from "./Main";
 
 class LoginForm extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      login: "",
-      password: ""
-    };
+  // async handleSubmit(event) {
+  //   const user = {username: this.state.username, password: this.state.password};
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleResponse = this.handleResponse.bind(this);
+  //   let response = await fetch("http://localhost:8080/users/restrict", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: json
+  //   });
+
+  //   let data = await response.json();
+  //   this.handleResponse(data);
+  // }
+
+  constructor(props) {
+    super(props);
+    this.state = { username: "", password: "", isAuthenticated: false };
   }
 
-  async handleSubmit(event) {
-    event.preventDefault();
-    let json = JSON.stringify({
-      login: this.state.login,
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  login = () => {
+    const user = {
+      username: this.state.username,
       password: this.state.password
-    });
-    
-    let response = await fetch("http://localhost:8080/users/restrict", {
+    };
+    fetch("http://localhost:8080/login", {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: json
-    });
-
-    let data = await response.json();
-    this.handleResponse(data);
-  }
+      body: JSON.stringify(user)
+    })
+      .then(res => {
+        const jwtToken = res.headers.get("Authorization");
+        if (jwtToken !== null) {
+          sessionStorage.setItem("jwt", jwtToken);
+          this.setState({ isAuthenticated: true });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ isAuthenticated: false });
+      });
+  };
 
   handleChange = valueName => {
     return event => {
@@ -39,22 +55,20 @@ class LoginForm extends React.Component {
     };
   };
 
-  handleResponse = () => {
-    console.log("logged in");
-  };
-
-
   render() {
+    if (this.state.isAuthenticated === true) {
+      return <Main />;
+    }
     return (
       <div className="container p-3">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.login}>
           <div className="form-group">
             <label htmlFor="login">Username</label>
             <input
               type="text"
               name="login"
               id="login"
-              value={this.login}
+              value={this.state.login}
               placeholder="Username"
               onChange={this.handleChange("login")}
             />
@@ -65,7 +79,7 @@ class LoginForm extends React.Component {
               type="password"
               name="password"
               id="password"
-              value={this.password}
+              value={this.state.password}
               onChange={this.handleChange("password")}
             />
           </div>
