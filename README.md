@@ -1,1 +1,1 @@
-# TeamStratus
+#TeamStratus
