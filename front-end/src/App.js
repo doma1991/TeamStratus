@@ -1,15 +1,20 @@
-import React from "react";
-import "./App.css";
-import Navbar from "./Components/Navbar.jsx";
-// import RegistrationForm from "./Components/RegistrationForm.jsx";
-import LoginForm from "./Components/LoginForm";
+import React from 'react';
+import './App.css';
+import  Navbar  from './Components/Navbar.jsx';
+import  Main  from './Components/Main';
+import  RegistrationForm  from './Components/RegistrationForm.jsx';
+import  LoginForm  from "./Components/LoginForm";
+import { Router } from "@reach/router";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <RegistrationForm /> */}
-      <LoginForm />
+      <Router>
+        <Main path='/' />
+        <RegistrationForm path='RegistrationForm' />
+        <LoginForm path='LoginForm' /> 
+      </Router>
     </div>
   );
 }
