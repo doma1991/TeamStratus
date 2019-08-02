@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import stratus.API.HttpApiResponse;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -44,35 +47,63 @@ RouteDAO route;
   String arrivalWeather = WeatherAPI.getWeatherByAirportCode(arrivalcode);
   String createWeatherJson = "{\"destinationWeather\":"+destinationWeather + ",\"arrivalWeather\":"+arrivalWeather+"}";
   String json = flights.get(0).toString();
-  /*public Route(String routeDetails, String startLocation, String endLocation, String date, boolean favourite,
-     char transportMethod, String startLongitude, String startLatitude, String endLongitude, String endLatitude,
-             String currency, String locationName, List<User> user) {*/
-  //Route routeToSave = new Route("The Flight",flights.get(3).toString(),flights.get(6).toString(),destinationdate,false,'f',flights.get(1).toString(),flights.get(2).toString(),flights.get(4).toString(),flights.get(5).toString(),flights.get(7).toString()," ",null);
-     //System.out.println(routeToSave.getEndLatitude());
-  //boolean toSave = route.save(routeToSave);
-     //System.out.println(toSave);
-  //json =  json + "," + createWeatherJson ;
-     //System.out.println(route.findAll());
+     Date date1 = null;
+     try {
+         destinationdate = destinationdate.replaceAll("-","/");
+         date1 = new SimpleDateFormat("yyyy/MM/dd").parse(destinationdate);
+     } catch (ParseException e) {
+         e.printStackTrace();
+     }
+
+  Route routeToSave = new Route(flights.get(0).toString(),flights.get(3).toString(),flights.get(6).toString(),date1,false,'f',flights.get(1).toString(),flights.get(2).toString(),flights.get(4).toString(),flights.get(5).toString(),flights.get(7).toString()," ",null);
+     System.out.println(routeToSave.getEndLatitude());
+  boolean toSave = route.save(routeToSave);
+     System.out.println(toSave);
+  json =  json + "," + createWeatherJson ;
+     System.out.println(route.findAll());
   return json;
  }
 
  @CrossOrigin(origins = "http://localhost:3000")
  @GetMapping("/getmaps/{start}/{destination}/{date}/{transportMethod}")//url
  @ResponseBody
-public String getRouteFromMaps(@PathVariable("start") String start, @PathVariable("destination") String destination, @PathVariable("date")String date, @PathVariable("transportMethod")char transportMethod){
+public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable("destination") String destination, @PathVariable("date")String date, @PathVariable("transportMethod")char transportMethod){
   Route routeMaps=Maps.makeRoute(start, destination, date,transportMethod);
   route.save( routeMaps );
-  return routeMaps.getRouteDetails();
+  return routeMaps;
  }
 
 
  @GetMapping("/getcurrency/{id}")
  @ResponseBody
- public void setCurrencyAPI(@PathVariable("id") int id){
+ public String setCurrencyAPI(@PathVariable("id") int id){
+  String a= route.updateCurrency(id);
+  return a;
 
-  //CurrencyAPI.setCurrencyy(route.getRouteById(id));
-  //return routeDAO.getCurrencyById(id);
  }
 
+ @GetMapping("/getWeatherNow/{id}")
+ @ResponseBody
+ public String[] getWeatherNow(@PathVariable("id") int id){
+  Route routeO=route.findRouteById(id);
+  return WeatherAPI.outputWeatherNow(routeO);
+
+ }
+
+ @GetMapping("/getWeatherWeek/{id}/{dayDiff}")
+ @ResponseBody
+ public String[] getWeatherWeek(@PathVariable("id") int id,@PathVariable("dayDiff") int dayDiff){
+  Route routeO=route.findRouteById(id);
+  return WeatherAPI.outputWeatherWeek(routeO, dayDiff);
+
+ }
+
+ @GetMapping("/getWeatherFuture/{id}/{time}")
+ @ResponseBody
+ public String getWeatherFuture(@PathVariable("id") int id,@PathVariable("time") String time){
+  Route routeO=route.findRouteById(id);
+  return WeatherAPI.outputWeatherFuture(routeO, time);
+
+ }
 
 }

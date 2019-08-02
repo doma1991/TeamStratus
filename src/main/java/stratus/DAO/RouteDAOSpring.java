@@ -2,6 +2,7 @@ package stratus.DAO;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import stratus.API.CurrencyAPI;
 import stratus.data.RouteRepository;
 
 import java.util.ArrayList;
@@ -30,8 +31,13 @@ public class RouteDAOSpring implements RouteDAO {
         return routeRepository.findById(id).get();
     }
 
-    public String getCurrencyById(int id){
-        Route r=routeRepository.findById(id).get();
-        return r.getCurrency();
+    @Override
+    public String updateCurrency(int id) {
+        Route routeToUpdate = findRouteById(id);
+        String a =CurrencyAPI.setCurrency(routeToUpdate);
+        routeToUpdate.setCurrency(a);
+        routeRepository.save(routeToUpdate);
+        return a;
     }
 }
+
