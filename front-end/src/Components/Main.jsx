@@ -8,7 +8,7 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        <LoginForm />
+       <LoginForm />
       </main>
     );
   }
