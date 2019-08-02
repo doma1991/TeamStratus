@@ -25,6 +25,10 @@ public class WeatherAPI {
 
     }
 
+    public static HttpApiResponse getApiCaller() {
+        return apiCaller;
+    }
+
     public static String[] outputWeatherNow(Route route){
         String string=getWeatherByLatLon(route.getEndLatitude(),route.getEndLongitude());
         JSONObject myObjectData = new JSONObject(string);

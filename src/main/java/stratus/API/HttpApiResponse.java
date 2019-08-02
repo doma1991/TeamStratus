@@ -13,6 +13,12 @@ public class HttpApiResponse {
 
     private String apiKey;
     private String hostAddress;
+    private HttpGet request;
+    private HttpResponse response;
+
+    public HttpResponse getResponse() {
+        return response;
+    }
 
     public HttpApiResponse(String apiKey, String hostAddress) {
         this.apiKey = apiKey;
@@ -23,27 +29,26 @@ public class HttpApiResponse {
 
     }
 
-    public String getRapidApiResponse(String url){
+   public String getRapidApiResponse(String url){
 
         HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpGet request = new HttpGet(url);
+        request = new HttpGet(url);
         request.addHeader("X-RapidAPI-Host",hostAddress);
         request.addHeader("X-RapidAPI-Key", apiKey);
         return getJson(request,httpClient).toString();
     }
 
     public String getApiResponse(String url){
-
         HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpGet request = new HttpGet(url);
+        request = new HttpGet(url);
         return getJson(request,httpClient).toString();
     }
 
     private JSONObject getJson(HttpGet request, HttpClient httpClient){
         JSONObject toReturnJson = new JSONObject();
         try {
-            HttpResponse response = httpClient.execute(request);
-            System.out.println("Response code : "+ response.getStatusLine().getStatusCode());
+            response = httpClient.execute(request);
+            //System.out.println("Response code : "+ response.getStatusLine().getStatusCode());
             String json_string = EntityUtils.toString(response.getEntity());
             toReturnJson = new JSONObject(json_string);
         } catch (IOException e) {
