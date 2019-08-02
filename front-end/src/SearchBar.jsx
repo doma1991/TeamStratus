@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
+import Weather from "./weather";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -62,9 +63,20 @@ class SearchBar extends React.Component {
     console.log(data);
   };
 
+  triggerChildAlert(){
+    this.ref.weather.printId();
+  }
+
   render() {
     return (
+
       <div>
+        <h1>{this.state.data}</h1>
+        <Weather ref="weather" getRouteId={this.state.searchResultId}
+        handleChange={this.handleChange}
+
+        />
+
         <form onSubmit={this.handleSubmit}>
           <label>From: </label>
           <input
@@ -116,7 +128,7 @@ class SearchBar extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <button className="btn btn-success">Go!</button>
+            <button className="btn btn-success" onClick={this.triggerChildAlert}>Go!</button>
           </div>
         </form>
       </div>
