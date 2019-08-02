@@ -6,7 +6,9 @@
 /target*
 .idea/
 /front-end/node_modules*
+*.iml
+/front-end/package-lock.json
 
-stratus.files.iml
+
 
 
