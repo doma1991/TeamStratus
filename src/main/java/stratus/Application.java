@@ -20,8 +20,8 @@ public class Application {
         SpringApplication.run(Application.class, args);
 
         ApplicationContext ctx = new AnnotationConfigApplicationContext("stratus");
-        UserDAO userDao = ctx.getBean(UserDAO.class);
-        RouteDAO routeDao = ctx.getBean(RouteDAO.class);
+        //UserDAO userDao = ctx.getBean(UserDAO.class);
+        //RouteDAO routeDao = ctx.getBean(RouteDAO.class);
 
 //        User dom = new User("Dominika", "Malinowska", "246 Priory Road", "Birmingham",
 //                "B28 0SU", "dom", "password", "do_ma1991@hotmail.com",
@@ -42,9 +42,13 @@ public class Application {
 //        routeDao.save(home);
 //
 
-        Route routeMaps= Maps.makeRoute("London", "Cambridge", "now",'d');
-        routeDao.save( routeMaps );
-        System.out.println(routeDao.findAll());
+
+//
+//        Route routeMaps= Maps.makeRoute("London", "Cambridge", "now",'d');
+//        routeDao.save( routeMaps );
+//        System.out.println(routeDao.findAll());
+
+
     }
 
 }

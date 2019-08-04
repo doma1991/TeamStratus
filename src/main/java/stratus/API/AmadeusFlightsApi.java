@@ -24,8 +24,7 @@ public class AmadeusFlightsApi {
         ArrayList<String> items = new ArrayList<>();
         try {
             ArrayList<String> toPass = new ArrayList<>();
-            FlightOffer[] flightOffers = amadeus.shopping.flightOffers
-                    .get(Params.with("origin", originAirport).and("destination", destinationAirport).and("departureDate", departureDate).and("max", "1"));
+            FlightOffer[] flightOffers = amadeus.shopping.flightOffers.get(Params.with("origin", originAirport).and("destination", destinationAirport).and("departureDate", departureDate).and("max", "1"));
             JsonObject gson = flightOffers[0].getResponse().getResult();
             JsonObject flightName = gson.getAsJsonObject("dictionaries");
             JsonObject carrierName = flightName.getAsJsonObject("carriers");
