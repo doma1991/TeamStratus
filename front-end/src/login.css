@@ -1,0 +1,2058 @@
+@charset "UTF-8";
+@charset "UTF-8";
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+#header,
+hgroup,
+#nav,
+section,
+summary {
+  display: block;
+}
+[hidden] {
+  display: none;
+}
+embed[hidden="true"] {
+  width: 0;
+  height: 0;
+  display: block;
+}
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+a:focus,
+button:focus {
+  outline: thin dotted;
+  outline-color: black;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+h2 {
+  font-size: 1.5em;
+  margin: 0.83em 0;
+}
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0;
+}
+h5 {
+  font-size: 0.83em;
+  margin: 1.67em 0;
+}
+h6 {
+  font-size: 0.75em;
+  margin: 0 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+blockquote {
+  margin: 1em 40px;
+}
+dfn {
+  font-style: italic;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+p,
+pre {
+  margin: 1em 0;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  _font-family: "courier new", monospace;
+  font-size: 1em;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+q {
+  quotes: none;
+}
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+dl,
+menu,
+ol,
+ul {
+  margin: 1em 0;
+}
+dd {
+  margin: 0 0 0 40px;
+}
+menu,
+ol,
+ul {
+  padding: 0 0 0 40px;
+}
+#nav ul,
+#nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 0;
+}
+form {
+  margin: 0;
+}
+fieldset {
+  border: 0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  *margin-left: -7px;
+  display: none;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button,
+input {
+  line-height: normal;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  *overflow: visible;
+}
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  *height: 13px;
+  *width: 13px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.heardOnly {
+  position: absolute;
+  top: -2000px;
+  left: -2000px;
+}
+body {
+  background-color: #fff;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #666666;
+}
+#usernameAlternatives ul li,
+a,
+a:visited,
+a:link,
+a:hover,
+a:active {
+  color: #0061a6;
+  font-size: 12px;
+  text-decoration: none;
+}
+li {
+  color: #666666;
+}
+#linkRow ul li span {
+  color: #666666;
+  font-size: 12px;
+}
+a:hover {
+  text-decoration: underline;
+}
+form strong,
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 7px;
+}
+label a {
+  font-weight: normal;
+}
+.subHeader {
+  font-weight: bold;
+  display: block;
+}
+#header h1 {
+  margin-bottom: 5px;
+}
+#nav {
+  text-align: right;
+  color: #666666;
+  font-size: 11px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+h1 {
+  margin: 0;
+}
+p,
+table {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 1em;
+}
+#nav a {
+  font-size: 11px;
+}
+select {
+  font-size: 12px;
+}
+.fieldHint {
+  font-size: 12px;
+  color: #999999;
+}
+.confirmUsername {
+  font-size: 18px;
+}
+a.skyBtn,
+button.skyBtn,
+a.cta,
+button.cta {
+  font: 14px SkyTextMedium, Arial, sans-serif;
+}
+p.footnote,
+p.footnote a {
+  font-size: 11px;
+}
+.defaultBubble {
+  color: #666666;
+  font: 12px Arial, sans-serif;
+}
+.globalErrors {
+  color: #cc3333;
+}
+.globalErrors li {
+  color: #cc3333;
+  font-size: 11px;
+}
+.globalErrors li a {
+  font-size: 11px;
+}
+#upgradeAccount .formInstructions {
+  font-weight: bold;
+}
+.wordBreak {
+  word-break: break-all;
+}
+.miniPod h4 a {
+  font-size: 20px;
+}
+#globalFooter ul li a,
+#globalFooter #copyright {
+  font-size: 0.625em;
+}
+#signInContent .welcome h1 {
+  font: 4.375em "SkyTextRegular", Arial, sans-serif;
+  color: #ffffff;
+}
+#signInContent .welcome p {
+  line-height: 20px;
+}
+#signInContent p {
+  color: #666666;
+  font: 12px Arial, sans-serif;
+}
+#signInContent p,
+#signInContent ul,
+#signInContent h4 {
+  text-align: left;
+}
+#signInContent.myskySignin .welcome h1,
+#signInContent.myskyauthorisedSignin .welcome h1 {
+  font-size: 5.5em;
+  color: #fff;
+  line-height: 0.5682em;
+  padding-top: 0.78181818182em;
+}
+#signInContent.myskySignin .welcome h3,
+#signInContent.myskyauthorisedSignin .welcome h3 {
+  color: #fff;
+}
+#signInContent.expressSignin .welcome h1 {
+  padding-top: 0.781818em;
+  font-size: 3.4375em;
+}
+#signInContent.expressSignin .welcome p {
+  color: #ffffff;
+  font: 1.125em "SkyTextRegular", Arial, sans-serif;
+}
+#signInContent.expressSignin .miniPod h4 {
+  font-size: 1.75em;
+  color: #053477;
+}
+#signInContent.sportsSignin .welcome h1,
+#signInContent.nowtvsportsSignin .welcome h1,
+#nowtvsportsService #signInContent.wholesaleSignin .welcome h1,
+#sportsService #signInContent.wholesaleSignin .welcome h1 {
+  font: 1.6875em "SkyNewsRegular", Arial, sans-serif;
+  color: #4a4a4a;
+}
+#signInContent.sportsSignin .miniPod h4,
+#signInContent.nowtvsportsSignin .miniPod h4,
+#nowtvsportsService #signInContent.wholesaleSignin .miniPod h4,
+#sportsService #signInContent.wholesaleSignin .miniPod h4 {
+  font-family: "SkyNewsRegular", Arial, sans-serif;
+}
+#skystoreService .welcome h3,
+#skystorelinkedService .welcome h3,
+#skystoreService .welcome h2,
+#skystorelinkedService .welcome h2 {
+  color: #fff;
+}
+#skystoreService .welcome p,
+#skystorelinkedService .welcome p {
+  color: #cccccc;
+}
+#voiceService .welcome h2 {
+  color: #0f387b;
+}
+#voiceService .welcome p {
+  color: #333;
+}
+#signInContent .miniPod h5 a,
+#partnerPod .miniPod h5 a {
+  font: 1.125em "SkyTextRegular", Arial, sans-serif;
+  color: #007c87;
+  font-size: 18px;
+  font-weight: normal;
+  color: #0061a6;
+}
+#signInContent .miniPod p,
+#partnerPod .miniPod p {
+  color: #666666;
+  font: 12px Arial, sans-serif;
+  margin: 0.25em 0;
+}
+#partnerPod.greyedOut h5 {
+  color: #000;
+  font-weight: normal;
+  font-size: 1.125em;
+}
+#partnerPod.greyedOut p {
+  color: #000;
+}
+h4 {
+  margin-bottom: 0;
+}
+.helpPanel ul {
+  font-size: 0.75em;
+}
+.page-header-one {
+  font: 3.4375em "SkyTextRegular", Arial, sans-serif;
+  color: #ffffff;
+  text-align: left;
+}
+.page-header-two {
+  font: 2em "SkyTextRegular", Arial, sans-serif;
+  color: #053477;
+}
+.sub-header-one {
+  font: 1.75em "SkyTextRegular", Arial, sans-serif;
+  color: #053477;
+}
+.sub-header-two {
+  font: 1.3125em "SkyTextRegular", Arial, sans-serif;
+  color: #053477;
+}
+.sub-header-three {
+  font: 1.125em "SkyTextRegular", Arial, sans-serif;
+  color: #007c87;
+}
+.sub-header-three-compressed {
+  font: 1.125em "SkyTextRegular", Arial, sans-serif;
+  color: #007c87;
+}
+.sub-header-three-signin-cfm {
+  font: 1.125em "SkyTextRegular", Arial, sans-serif;
+  color: #4d4d4f;
+}
+.sub-header-lb {
+  font: 1.125em "SkyTextMedium", Arial, sans-serif;
+  color: #053477;
+}
+.confirm-email-address {
+  font-weight: bold;
+  font-size: 1.5em;
+  word-break: break-all;
+}
+.breakall-content {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+}
+.highlighted-value {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333333;
+  margin-bottom: 23px;
+}
+#labelfor_skyStatus_nonCustomer a {
+  text-decoration: underline;
+}
+body {
+  line-height: 1;
+}
+#pageContentWrapper {
+  margin: 0 auto 0.625em auto;
+}
+#header {
+  text-align: right;
+  min-height: 47px;
+  border-bottom: 1px solid #cccccc;
+  margin-top: 1em;
+}
+#header h2 {
+  padding-top: 10px;
+}
+#nav li a {
+  margin: 0 0 0 10px;
+}
+#nav li:first-child a {
+  margin-right: 10px;
+}
+#nav ul {
+  display: inline;
+  padding-left: 0;
+}
+#nav li {
+  display: inline;
+  border-left: 1px solid #cccccc;
+}
+#nav li:first-child {
+  border-left: 0 solid #cccccc;
+}
+#linkRow {
+  margin-bottom: 0.813em;
+}
+#linkRowWithTopMargin {
+  margin-top: 5px;
+  margin-bottom: 0.813em;
+}
+#linkRow li a,
+#linkRow li span {
+  margin: 0 5px 0 5px;
+}
+#linkRow li:first-child a,
+#linkRow li:first-child span {
+  margin-left: 0px;
+}
+#linkRow li:last-child a,
+#linkRow li:last-child span {
+  margin-right: 0px;
+}
+#linkRow ul {
+  display: inline;
+  padding-left: 0;
+}
+#linkRow li {
+  display: inline;
+  border-left: 1px solid #cccccc;
+}
+#linkRow li:first-child {
+  border-left: 0 solid #cccccc;
+}
+#expressService #nav li:first-child {
+  border-right: 0px;
+}
+select {
+  width: auto;
+}
+
+#emailService.signin #logo,
+#emailService.signin #logo img {
+  width: 198px;
+  height: 40px;
+}
+#emailService.signin #signInPanel .panelHeader {
+  margin-top: 0;
+}
+#signInPanel {
+  text-align: left;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 0;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #fff;
+}
+#signInPanel #header {
+  margin-bottom: 0.625em;
+}
+#signInPanel h3 {
+  margin: 5px 0 10px 0;
+}
+#signInPanel fieldset > p,
+#signInPanel .formFieldsWrapper > p,
+#signInPanel .formFieldsWrapper > div {
+  color: #666666;
+  font: 12px Arial, sans-serif;
+}
+#signInPanel fieldset > p a,
+#signInPanel .formFieldsWrapper > p a,
+#signInPanel .formFieldsWrapper > div a {
+  font-size: inherit;
+  color: #0061a6;
+}
+#signInPanel .formFieldsWrapper > div p {
+  margin: 5px 0;
+}
+#signInPanel .buttonRow {
+  text-align: right;
+}
+#signInPanel .buttonRow p a,
+#signInPanel .buttonRow button {
+  float: none;
+}
+#signInPanel .buttonRow p {
+  text-align: right;
+}
+#signInPanel #newToSkyiD {
+  margin-top: 0.9375em;
+  border-top: 1px solid #cccccc;
+  padding-bottom: 1em;
+}
+#signInPanel #newToSkyiD h3 {
+  margin: 0.5em 0 0 0;
+}
+#signInPanel #newToSkyiD p {
+  line-height: 1.2em;
+  margin: 0.833333333333333em 0 0.833333333333333em 0;
+}
+#signInPanel #newToSkyiD a.skyBtn {
+  float: right;
+}
+#signInPanel #newToSkyiD .buttonRow p {
+  margin: 1.166666666666667em 0 0 0;
+  float: left;
+}
+#signInPanel #newToSkyiD .buttonRow {
+  margin: 0;
+  display: inline-block;
+}
+table {
+  width: 100%;
+  margin-bottom: 0;
+}
+caption,
+th,
+td {
+  text-align: left;
+}
+th {
+  color: #a72879;
+  font-weight: normal;
+}
+caption,
+th,
+td {
+  padding: 0.7em 0;
+}
+td {
+  border-top: 1px solid #cccccc;
+}
+tr:last-child {
+  border-bottom: 1px solid #cccccc;
+}
+#usernameReminder th:last-child {
+  width: 65px;
+}
+tbody td {
+  word-break: break-all;
+}
+td {
+  padding-right: 0.5em;
+  vertical-align: top;
+}
+#usernameReminder td {
+  padding-right: 1.3em;
+}
+#usernameReminder td:last-child,
+#emailReminder td:last-child {
+  padding-right: 0;
+}
+td:first-child {
+  width: 35%;
+}
+#emailReminder td:first-child {
+  width: 70%;
+}
+#emailReminder td {
+  padding-right: 2em;
+}
+.appManagement {
+  padding-bottom: 2em;
+}
+.appManagement table {
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 0.417em;
+}
+.appManagement table th,
+.appManagement table td {
+  text-align: center;
+  line-height: 3em;
+  vertical-align: middle;
+  padding-right: 0;
+}
+.appManagement table td:first-child {
+  text-align: right;
+  width: 60%;
+}
+.appManagement table td.appIconCell {
+  width: 3em;
+}
+.appManagement table td.appIconCell label span {
+  padding-right: 0;
+}
+.appManagement table td:last-child {
+  width: 32%;
+}
+.appManagement table input {
+  margin-top: 1em;
+}
+.appManagement table label {
+  padding: 0;
+  vertical-align: middle;
+  margin: 0;
+  width: auto;
+}
+.appManagement table label span {
+  display: block;
+  line-height: 1.2em;
+  padding-right: 1.5em;
+  word-wrap: break-word;
+  word-break: normal;
+}
+.appManagement .buttonRow {
+  width: 92%;
+  margin: 1em auto;
+  margin-bottom: 2em;
+  padding-top: 1.5em;
+}
+
+div.inlineError li {
+  color: red;
+  font-family: arial;
+  font-size: 11px;
+  left: -40px;
+  list-style-type: none;
+  position: relative;
+  width: 220px;
+}
+div.inlineError {
+  display: inline-block;
+}
+div.inlineError ul {
+  margin-bottom: 0px;
+}
+div.inlineError li {
+  width: 223px;
+}
+#choices {
+  display: none;
+}
+#emailContainer,
+#skyaccountContainer,
+#securityqaContainer #smsContainer {
+  border-bottom: 1px solid #cccccc;
+  display: inline-block;
+  padding-bottom: 1.5em;
+  width: 100%;
+}
+
+#usernameAlternatives p {
+  margin-bottom: 0;
+}
+#usernameAlternatives ul {
+  margin-top: 0.5em;
+}
+#usernameAlternatives li {
+  cursor: pointer;
+  cursor: hand;
+}
+#usernameAlternatives li:hover {
+  text-decoration: underline;
+}
+#choices {
+  display: none;
+}
+div#emailContainer,
+div#skyaccountContainer,
+div#securityqaContainer,
+div#smsContainer {
+  border-bottom: 1px solid #cccccc;
+  display: inline-block;
+  padding-bottom: 1.5em;
+  width: 100%;
+}
+p.formIntro {
+  margin-top: 0px;
+}
+span.postLabel {
+  color: #666666;
+  font-size: 11px;
+  font-weight: bold;
+  padding-left: 3px;
+  display: inline-block;
+  width: 23px;
+  position: relative;
+  right: 0;
+}
+#signout h1 {
+  margin-top: 2.6087em;
+  text-align: center;
+}
+.noShow {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.panelHeader {
+  margin: 0.625em 0 1.25em 0;
+}
+.panelHeader h3 {
+  margin: 0;
+}
+#emailContainer h2,
+#skyaccountContainer h2,
+#smsContainer h2,
+#securityqaContainer h2 {
+  margin-top: 0px;
+  margin-bottom: 0.66em;
+}
+#resetPasswordSecurityQuestion {
+  margin-top: 1em;
+}
+#resetPasswordSecurityQuestion p {
+  margin-top: 0;
+}
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid #ccc;
+  margin: 15px 0 10px 0;
+}
+input#serviceTermsAndConditions + label {
+  margin-top: 10px;
+}
+div.subPanel > p span {
+  display: block;
+}
+#expressGreeting {
+  margin-bottom: 0.66em;
+}
+#partnerPod.greyedOut h3 {
+  color: #666666;
+  font-size: 1.5em;
+  font-weight: normal;
+}
+#partnerPod.greyedOut .containerPod {
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+}
+.update-msg {
+  border: 1px solid #ffc231;
+  color: 333;
+  background-color: #ffe6af;
+  padding: 0.5em;
+  font: 12px Arial, sans-serif;
+  width: 420px;
+  margin: 0 auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+#authoriseSecondarySubPanel {
+  margin-top: 0.5em;
+}
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="email"],
+div.info input[type="text"]:disabled,
+div.info input[type="tel"]:disabled,
+div.info input[type="password"]:disabled,
+div.info input[type="email"]:disabled,
+label.marketingtc,
+div.error input[type="text"],
+div.error input[type="password"],
+div.error input[type="email"],
+div.error input[type="tel"] {
+  width: 18.333333333em;
+}
+#signInPanel #longLivedSessionWarning {
+  font-size: 11px;
+  margin-top: 0;
+  position: relative;
+  top: -0.5em;
+}
+#signInPanel .buttonRow #privacyPolicyLink {
+  float: left;
+  margin-top: 11px;
+}
+#idmEmailVerificationContainer .error input[type="text"]:disabled,
+#verifyMobilenumberContainer .error input[type="text"]:disabled {
+  background-color: #cfcfcf;
+  -webkit-text-fill-color: #999999;
+  color: #999999;
+  -webkit-opacity: 1;
+}
+div#verifyMobilenumberContainer div > input {
+  width: 5.5em;
+}
+div#verifyMobilenumberContainer div > div.defaultBubble {
+  right: 11.8em;
+}
+.resetPasswordInfo {
+  font: 12px Arial, sans-serif;
+  color: #666666;
+  margin-bottom: 20px;
+}
+.progressBarContainer .panelHeader {
+  margin-top: 10px;
+}
+.progressBarContainer ul.cookie-crumb {
+  margin-top: 12px;
+  margin-left: 0px;
+  display: block;
+  border: 0;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0px;
+  vertical-align: baseline;
+  font-size: 100%;
+}
+.progressBarContainer ul.cookie-crumb li {
+  font-size: 0.6875em;
+  text-indent: 0;
+  padding: 5px 0px 0px 0px;
+  display: inline-block;
+  width: 137px;
+  border-bottom: 5px solid #eaeaea;
+  color: #999999;
+}
+.progressBarContainer ul.cookie-crumb li span {
+  border-bottom: 5px solid #eaeaea;
+  display: inline-block;
+  margin-bottom: 0;
+  padding-bottom: 2px;
+  width: 137px;
+}
+.progressBarContainer ul.cookie-crumb li.wip-crumb {
+  color: #666;
+  border-bottom: 5px solid #1e498c;
+  font-weight: bold;
+}
+.progressBarContainer ul.cookie-crumb li.wip-crumb span {
+  border-bottom: 5px solid #0060a6;
+}
+.progressBarContainer ul.cookie-crumb li:first-child {
+  margin-left: 0px;
+}
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="email"],
+select {
+  height: 23px;
+  font-size: 12px;
+}
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="email"],
+select,
+#captchaImageWrapper {
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #666666;
+}
+input[type="radio"] {
+  font-weight: normal;
+  margin-right: 0.5em;
+  float: left;
+}
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="email"] {
+  padding: 1px 0px 1px 2px;
+}
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline-width: 0;
+}
+input::-ms-clear {
+  width: 0;
+  height: 0;
+}
+input[disabled] {
+  background-color: #cccccc;
+}
+div.error input[type="text"],
+div.error input[type="tel"],
+div.error input[type="password"],
+div.error input[type="email"],
+div.error input[type="radio"],
+div.error input[type="checkbox"],
+div.error select,
+div.error textarea {
+  border-color: #cc3333;
+}
+.validationIcon {
+  float: right;
+}
+div.info .validationIcon,
+div.error .validationIcon,
+div.info #phoneNumberWithPrefix .validationIcon {
+  width: 1.5em;
+  height: 23px;
+  border-width: 1px 1px 1px 0px;
+  border-style: solid;
+  border-radius: 3px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin: 0px 0px 0px -5px;
+  position: absolute;
+  right: 240px;
+}
+div.error span.validationIcon,
+div#phoneNumberWithPrefix.error .validationIcon,
+#verifyMobilenumberContainer div.error span.validationIcon {
+  visibility: hidden;
+  display: none;
+}
+#phoneNumberWithPrefix input[type="tel"] {
+  width: 14em;
+}
+div#mailboxContainer .info input[type="text"],
+div#mailboxContainer .info.error input[type="text"] {
+  width: 159px;
+}
+div#mailboxContainer .info .validationIcon,
+div#mailboxContainer .info.error .validationIcon {
+  right: 301px;
+}
+div.info input[type="email"]::-ms-clear,
+div.error input[type="email"]::-ms-clear,
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-reveal {
+  display: block;
+  width: 0;
+  height: 0;
+}
+div.info input[type="password"],
+div.error input[type="password"] {
+  padding-right: 1.5em;
+}
+#captchaContainer {
+  display: inline-block;
+  clear: both;
+}
+#captchaContainer {
+  width: 220px;
+}
+#audioVisualCaptchaFormRow p {
+  margin: 0;
+  display: none;
+}
+select {
+  width: auto;
+}
+select#securityQuestion {
+  width: 18.333em;
+}
+.formFieldsWrapper > div {
+  margin-bottom: 0.625em;
+}
+.formFieldsWrapper > div.buttonRow {
+  margin-top: 0.3125em;
+  margin-bottom: 0;
+}
+#skyStatusFormRow span {
+  font-weight: normal;
+}
+#skyStatusFormRow label {
+  margin-bottom: 0;
+}
+#skyStatusFormRow label div {
+  margin-top: 7px;
+}
+a.cancelButton,
+.buttonRow a {
+  float: left;
+}
+.buttonRow > button.skyBtn,
+.buttonRow > a.skyBtn {
+  float: left;
+}
+.buttonRow > a + button.skyBtn,
+.buttonRow > a.skyBtn + button.skyBtn,
+.buttonRow > a.skyBtn + a.skyBtn {
+  float: right;
+}
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.buttonRow a {
+  vertical-align: baseline;
+  margin-top: 4px;
+}
+.buttonRow a.btn,
+.buttonRow a.cancelButton {
+  margin-top: 0;
+}
+a.skyBtn {
+  margin-top: 0;
+  display: inline-block;
+}
+a.skyBtn:hover,
+button.skyBtn:hover,
+button.skyBtn.cta:hover,
+a.skyBtn.cta:hover {
+  text-decoration: none;
+  background-image: none;
+}
+a.cancelLink,
+a.skipLink {
+  padding-top: 0.1em;
+  font-size: 12px;
+}
+#captchaReload {
+  color: #0061a6;
+  cursor: pointer;
+}
+#audioVisualCaptchaFormRow {
+  position: relative;
+}
+#generateAnotherCaptcha {
+  margin-top: 0.625em;
+}
+#termsAndConditionsFormRow .checkedInputLabel {
+  font-weight: normal;
+}
+.buttonRow {
+  text-align: right;
+  display: inline-block;
+}
+.panel .formFieldsWrapper > div,
+.instructionRow {
+  position: relative;
+}
+#termsAndConditionsInstructionFormRow label {
+  font-weight: normal;
+}
+.panel fieldset {
+  margin: 0;
+  padding: 0;
+}
+label.std {
+  font-weight: normal;
+  width: 225px;
+}
+label.std span {
+  display: block;
+  line-height: normal;
+  margin-left: 2em;
+}
+#phoneNumberWithPrefix {
+  margin: 0;
+  width: 18.333333333em;
+}
+#phoneNumberWithPrefix span {
+  font-size: 12px;
+  display: inline-block;
+  width: 4em;
+}
+label.custom {
+  cursor: pointer;
+}
+input[type="checkbox"].custom {
+  position: absolute;
+  opacity: 0;
+}
+#longLivedSession + label {
+  width: 128px;
+}
+.error input[type="checkbox"].custom + label::before {
+  background-position: 0 -80px;
+}
+.error input#longLivedSession:disabled + label::before,
+.error input[type="checkbox"].custom:disabled + label::before {
+  background-position: 0 -67px;
+}
+#longLivedSession:checked:disabled,
+input[type="checkbox"].custom:disabled {
+  opacity: 1;
+  cursor: default;
+}
+#longLivedSession:checked + label::before,
+input[type="checkbox"].custom:checked + label::before {
+  background-position: 0 -93px;
+}
+#longLivedSession:focus + label,
+input[type="checkbox"].custom:focus + label {
+  outline: dotted 1px;
+}
+.withPlaceholder {
+  color: #999999;
+}
+button[type="submit"]:disabled,
+input[type="submit"]:disabled {
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+}
+#choices label p {
+  font-weight: bold;
+}
+.formFieldsWrapper > div.captchaInput {
+  margin-bottom: 20px;
+}
+.updateSecurityQuestion button.skyBtn {
+  float: right;
+}
+.standardTipMessage {
+  font-size: 11px;
+  margin-bottom: 4px;
+  width: 20.5em;
+  color: #666666;
+}
+.standardTipMessage a {
+  font-size: 11px;
+}
+.standardTip label {
+  margin-bottom: 3px;
+}
+.standardTip .defaultBubble {
+  position: relative;
+  float: right;
+  left: 10px;
+  top: -6px;
+}
+.compactTipMessage,
+.panel .compactTipMessage a,
+.panel .compactTipMessage a:link,
+.panel .compactTipMessage a:visited,
+.panel .compactTipMessage a:hover {
+  font-size: 13px;
+}
+.formFieldsWrapper div.compactTipMessage {
+  margin-top: -8px;
+}
+.defaultBubble.visible {
+  visibility: visible;
+}
+.defaultBubble p {
+  margin: 1em 0 0 0;
+}
+.defaultBubble p:first-child {
+  margin-top: 0;
+}
+.defaultBubble {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  width: 220px;
+  z-index: 1;
+  padding: 0.833333333333333em;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.defaultBubble ul {
+  margin: 0.5em 0;
+  padding-left: 2em;
+}
+div.weakPassword,
+div.fairPassword,
+div.strongPassword {
+  padding-top: 7px;
+  background-color: #eee;
+  color: #666666;
+  margin: 0.5em 0;
+  position: relative;
+  padding-left: 10px;
+  height: 2.5em;
+}
+.strengthBar,
+.strengthValue {
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  height: 10px;
+  position: absolute;
+  top: 8px;
+  left: 50px;
+}
+.strengthBar {
+  width: 140px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background: #cccccc;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#eeeeee, endColorstr=#cccccc);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #eeeeee),
+    color-stop(0.99, #cccccc)
+  );
+  background: -ms-linear-gradient(bottom, #eeeeee, #cccccc);
+  background: -moz-linear-gradient(center top, #eeeeee 0%, #cccccc 100%);
+  background: linear-gradient(center top, #eeeeee 0%, #cccccc 100%);
+}
+.error .passwordError {
+  border-color: #666666;
+}
+.weakPassword .strengthValue {
+  border: 1px solid #be1e2d;
+  background: #be1e2d;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fc5a03, endColorstr=#bc342d);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.09, #fc5a03),
+    color-stop(0.69, #bc342d)
+  );
+  background: -ms-linear-gradient(bottom, #fc5a03, #bc342d);
+  background: -moz-linear-gradient(center top, #fc5a03 0%, #bc342d 100%);
+  background: linear-gradient(center top, #fc5a03 0%, #bc342d 100%);
+  width: 47px;
+}
+.fairPassword .strengthValue {
+  border: 1px solid #f7931e;
+  background: #f7931e;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f8e130, endColorstr=#f7a11f);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.09, #f8e130),
+    color-stop(0.69, #f7a11f)
+  );
+  background: -ms-linear-gradient(bottom, #f8e130, #f7a11f);
+  background: -moz-linear-gradient(center top, #f8e130 0%, #f7a11f 100%);
+  background: linear-gradient(center top, #f8e130 0%, #f7a11f 100%);
+  width: 94px;
+}
+.strongPassword .strengthValue {
+  border: 1px solid #39b54a;
+  background: #39b54a;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#c8da2c, endColorstr=#5aba47);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.09, #c8da2c),
+    color-stop(0.69, #5aba47)
+  );
+  background: -ms-linear-gradient(bottom, #c8da2c, #5aba47);
+  background: -moz-linear-gradient(center top, #c8da2c 0%, #5aba47 100%);
+  background: linear-gradient(center top, #c8da2c 0%, #5aba47 100%);
+  width: 140px;
+}
+div.globalErrors {
+  margin: 0.5em 0;
+}
+div.globalErrors ul {
+  padding: 0;
+  margin: 0;
+}
+div.globalErrors li {
+  width: auto;
+  left: 0;
+  list-style: none;
+}
+input:disabled + .validationIcon,
+input:disabled + p + .validationIcon {
+  visibility: hidden;
+}
+
+.subPanel {
+  position: relative;
+}
+#pageContentWrapper {
+  width: 38.75em;
+  position: relative;
+  max-width: 60em;
+}
+.panel {
+  width: 28.75em;
+  margin: 0 auto;
+}
+.buttonRow {
+  width: 13.75em;
+  display: inline-block;
+}
+.subPanel h2 {
+  margin: 0.83em 0 0 0;
+}
+.subPanel h3 {
+  margin: 0.83em;
+}
+.miniPod {
+  width: 8.75em;
+  float: left;
+}
+.miniPod p {
+  width: 100%;
+}
+#signInContent {
+  min-height: 522px;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+#signInContent .welcome {
+  background: #005185;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0073a5, endColorstr=#005185);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, #0073a5),
+    color-stop(1, #005185)
+  );
+  background: -ms-linear-gradient(bottom, #0073a5, #005185);
+  background: -moz-linear-gradient(center left, #0073a5 0%, #005185 100%);
+  background: linear-gradient(center left, #0073a5 0%, #005185 100%);
+  height: 16.25em;
+  padding-left: 3.125em;
+}
+#signInContent .welcome div {
+  margin-top: 3.75em;
+}
+#signInContent .welcome h1 {
+  padding-top: 1em;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+#signInContent .welcome h2 {
+  margin-bottom: 0.46875em;
+}
+#signInContent .welcome p {
+  width: 32em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#signInContent .colPod {
+  border: 0;
+  display: inline-block;
+  margin-top: 0.625em;
+  float: left;
+}
+#signInContent .colPod .miniPod {
+  width: 11.875em;
+  margin: 0 0.625em 0 0;
+  text-align: center;
+  border-bottom: 0;
+}
+#signInContent .colPod .miniPod div {
+  margin-top: 0.555555555555556em;
+}
+#signInContent .colPod .miniPod div h4 {
+  margin-top: 0;
+  margin-bottom: 0.555555555555556em;
+  font-weight: normal;
+}
+#signInContent .colPod .miniPod div p {
+  margin-top: 0em;
+}
+#signInContent .colPod img {
+  margin: 0 auto;
+}
+#signInContent.wholesaleSignin {
+  min-height: 0px;
+}
+#signInContent.wholesaleSignin .welcome {
+  background: #e6e6e6;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#e6e6e6);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.476, #ffffff),
+    color-stop(1, #e6e6e6)
+  );
+  background: -ms-linear-gradient(bottom, #ffffff, #e6e6e6);
+  background: -moz-linear-gradient(center top, #ffffff 0%, #e6e6e6 69%);
+  background: linear-gradient(center top, #ffffff 0%, #e6e6e6 69%);
+}
+#signInContent.myskySignin .welcome,
+#signInContent.myskyauthorisedSignin .welcome {
+  background: #005185;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0073a5, endColorstr=#005185);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, #0073a5),
+    color-stop(1, #005185)
+  );
+  background: -ms-linear-gradient(bottom, #0073a5, #005185);
+  background: -moz-linear-gradient(center left, #0073a5 0%, #005185 100%);
+  background: linear-gradient(center left, #0073a5 0%, #005185 100%);
+}
+#signInContent.myskySignin .welcome div,
+#signInContent.myskyauthorisedSignin .welcome div {
+  margin-top: 1.75em;
+}
+#signInContent.myskySignin .miniPod h4,
+#signInContent.myskyauthorisedSignin .miniPod h4 {
+  font-size: 1.75em;
+  color: #053477;
+}
+#signInContent.expressSignin .welcome {
+  background: #005185;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0073a5, endColorstr=#005185);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, #0073a5),
+    color-stop(1, #005185)
+  );
+  background: -ms-linear-gradient(bottom, #0073a5, #005185);
+  background: -moz-linear-gradient(center left, #0073a5 0%, #005185 100%);
+  background: linear-gradient(center left, #0073a5 0%, #005185 100%);
+}
+#signInContent.expressSignin .welcome p.first {
+  margin-bottom: 1em;
+}
+#signInContent.expressSignin .welcome div {
+  margin-top: 2.25em;
+}
+#signInContent.sportsSignin .welcome h1,
+#signInContent.nowtvsportsSignin .welcome h1,
+#nowtvsportsService #signInContent.wholesaleSignin .welcome h1,
+#sportsService #signInContent.wholesaleSignin .welcome h1 {
+  margin-left: 1.35em;
+  padding-top: 5.35em;
+}
+#signInContent.sportsSignin .welcome div,
+#signInContent.nowtvsportsSignin .welcome div,
+#nowtvsportsService #signInContent.wholesaleSignin .welcome div,
+#sportsService #signInContent.wholesaleSignin .welcome div {
+  margin-top: 0;
+}
+#signInContent.skygoSignin .welcome h1,
+#signInContent.skyqSignin .welcome h1 {
+  color: #000000;
+  padding-left: -0.22em;
+  padding-top: 0.4em;
+  font-size: 3.4375em;
+}
+#signInContent.shopSignin span {
+  display: block;
+}
+#signInContent.shopSignin .copy {
+  margin: 26.2em 1em 1em;
+}
+#signInContent.shopSignin .copy h2,
+#signInContent.shopSignin .copy h3 {
+  margin: 7px 310px 0 34px;
+  font-family: "SkyTextRegular", Arial, sans-serif;
+}
+#signInContent.shopSignin .copy h2 {
+  font-weight: normal;
+  color: #000000;
+  font-size: 1.3em;
+}
+#signInContent.shopSignin .copy h3 {
+  font-weight: normal;
+  color: #000000;
+  font-size: 0.95em;
+}
+#moviesService #signInContent.wholesaleSignin .welcome p {
+  margin-left: 2em;
+  font: 1.125em "SkyTextRegular", Arial, sans-serif;
+  color: #ffffff;
+}
+#moviesService #signInContent.wholesaleSignin .welcome div {
+  margin-top: 0;
+}
+#signin-welcome-footer {
+  font: 0.72em "SkyTextRegular", Arial, sans-serif;
+  color: #666666;
+  margin: 0 0 -5px 50px;
+}
+.wholesaleSignin #busyHeader {
+  margin: 0.25em 0 0 0;
+  font: 1.75em "SkyTextRegular", Arial, sans-serif;
+  color: #053477;
+}
+#voiceService .welcome .serviceLogo {
+  padding-top: 3em;
+  display: block;
+}
+#voiceService .colPod {
+  margin-top: 1.5em;
+}
+#partnerPod {
+  width: 37.5em;
+  margin-left: 3.125em;
+  margin-top: 0.625em;
+  display: inline-block;
+}
+#partnerPod .miniPod {
+  width: 8.75em;
+  margin-right: 0.625em;
+  min-height: 222px;
+}
+#partnerPod .miniPod img {
+  margin: 10px;
+}
+#partnerPod .miniPod .imgBorder {
+  border: 1px solid #d8d8d8;
+  width: 8.75em;
+  height: 5.125em;
+  border-radius: 7px;
+  text-align: center;
+  -webkit-box-shadow: 0 0 4px 2px #f4f4f5 inset, 0 0 2px 2px #f4f4f5;
+  -moz-box-shadow: 0 0 4px 2px #f4f4f5 inset, 0 0 2px 2px #f4f4f5;
+  box-shadow: 0 0 4px 2px #f4f4f5 inset, 0 0 2px 2px #f4f4f5;
+}
+#partnerPod .miniPod .imgBorder a {
+  margin-top: 8px;
+}
+#partnerPod .miniPod .imgBorder div {
+  background: -webkit-linear-gradient(to top, #ffffff 85%, #eeeeee) repeat
+    scroll 0 0 transparent;
+  background: -moz-linear-gradient(to top, #ffffff 85%, #eeeeee) repeat scroll 0
+    0 transparent;
+  background: -o-linear-gradient(to top, #ffffff 85%, #eeeeee) repeat scroll 0 0
+    transparent;
+  background: linear-gradient(to top, #ffffff 85%, #eeeeee) repeat scroll 0 0
+    transparent;
+  border-radius: 7px;
+  margin: 2px;
+}
+#partnerPod .miniPod h5 {
+  margin: 0.556em 0 0;
+}
+#signInPanel {
+  position: relative;
+  top: 0;
+  margin: 0;
+  width: 15.625em;
+  float: right;
+  z-index: 100;
+  margin-right: 3.125em;
+  margin-bottom: 1em;
+  border: 1px solid #cccccc;
+}
+#signInPanel .panel input[type="text"],
+#signInPanel .panel input[type="password"] {
+  width: 16.666666666666667em;
+}
+#signInPanel .panelHeader {
+  margin: 0.625em 0 0 0;
+}
+#signInPanel div.buttonRow {
+  margin-top: 0;
+  width: 16.666666667em;
+}
+#signInPanel .panel {
+  width: 12.5em;
+  margin: 0 1.5625em;
+}
+#signInPanel #header {
+  width: 12.5em;
+  margin: 0 auto;
+  min-height: 3.125em;
+}
+#signInPanel #header h2 {
+  margin-top: 0;
+}
+#signInPanel #newToSkyiD div.buttonRow {
+  width: 12.5em;
+}
+#emailService.signin #signInPanel {
+  position: absolute;
+  top: 0;
+  right: 1%;
+  float: none;
+}
+div.subPanel > p {
+  width: auto;
+}
+#globalFooter {
+  width: 38.75em;
+  margin: 0.625em auto;
+  border-top: 1px solid #cccccc;
+}
+#globalFooter .globalFooterBottom {
+  padding: 0.313em 0 0 0;
+  margin: 0 auto;
+}
+#globalFooter ul {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+#globalFooter ul li {
+  float: left;
+  list-style-type: none;
+}
+#globalFooter ul li a {
+  border-left: solid 1px #cccccc;
+  padding: 0 0.5em;
+}
+#globalFooter ul li:first-child a {
+  border-left: 0 solid #cccccc;
+}
+.signin #globalFooter {
+  margin: 0.625em auto;
+  display: block;
+  width: 60em;
+}
+.signin #globalFooter .globalFooterBottom {
+  margin: 0 0 0 3.125em;
+  width: auto;
+}
+.signin #globalFooter #copyright {
+  left: 48em;
+}
+#copyright {
+  float: right;
+  padding-top: 5px;
+}
+#captchaImageWrapper {
+  float: left;
+  margin-right: 4px;
+  margin-top: 10px;
+  width: 195px;
+}
+#captchaImage {
+  width: 190px;
+  margin-left: 2px;
+}
+#audioCaptchaLink {
+  margin-top: 10px;
+}
+.formInstructions {
+  width: 18.75em;
+}
+#adIframe {
+  height: 64em;
+  left: 60%;
+  margin: 0 auto 0 -51.5em;
+  position: absolute;
+  width: 90em;
+  z-index: 0;
+}
+#emailService.signin #globalFooter {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  bottom: 0;
+  background-color: #fff;
+  margin-bottom: 0;
+}
+#emailService.signin #globalFooter .globalFooterBottom {
+  padding: 0.313em 0;
+  margin: 0 auto;
+  width: 60em;
+  background-color: #fff;
+}
+.busyPanel {
+  padding-bottom: 284px;
+}
+#authoriseInstruction {
+  width: 18.33em;
+}
+div#verifyMobilenumberContainer strong {
+  display: inline;
+  font-weight: bold;
+}
+div#verifyMobilenumberContainer span#mobilenumber {
+  display: inline-block;
+  font-size: 0.75em;
+}
+div#verifyMobilenumberContainer div > span.validationIcon {
+  right: 23.875em;
+}
+#verifyMobilenumberContainer div.error span.validationIcon.disabledError,
+#idmEmailVerificationContainer div.error span.validationIcon.disabledError {
+  background-position: -165px -574px;
+}
+.buttonRow.rightAlignRightLink {
+  width: 100%;
+}
+div#idmEmailVerificationContainer div > input {
+  width: 4.5em;
+}
+div#idmEmailVerificationContainer div > div.defaultBubble {
+  right: 12.8em;
+}
+div#idmEmailVerificationContainer div > span.validationIcon {
+  right: 24.875em;
+}
+div#additionalInfoSubPanel {
+  margin-top: 1em;
+}
+.serviceSignup #nav li a {
+  margin-right: 0;
+}
+.signin #pageContentWrapper {
+  position: relative;
+  width: 60em;
+  margin: 0 auto;
+}
+.audio-only {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#skyid-lb {
+  display: none;
+  background: white;
+  border-radius: 5px;
+  padding: 0 25px 25px;
+  width: 23.125em;
+  outline: none;
+  -webkit-box-shadow: 0px 0px 30px #222222;
+  -moz-box-shadow: 0px 0px 30px #222222;
+  box-shadow: 0px 0px 30px #222222;
+}
+#skyid-lb div {
+  text-align: center;
+  padding: 43px 20px 6px;
+}
+#skyid-lb div p {
+  font-size: 1.5em;
+}
+
+.defaultBubble {
+  background-color: #ffffff;
+  border: 1px solid #666666;
+  top: 16px;
+}
+div.error .defaultBubble.info {
+  border: 1px solid #666666;
+}
+
+div.error .defaultBubble p {
+  color: #cc3333;
+}
+.defaultBubble.btmalgn {
+  top: auto;
+  bottom: -7px;
+}
+.error .defaultBubble.btmalgn {
+  bottom: 2em;
+}
+div.error .defaultBubble.btmalgn {
+  bottom: -7px;
+}
+
+.validationIcon:hover + .defaultBubble,
+.validationIcon:hover + p + .defaultBubble {
+  visibility: visible;
+  z-index: 2;
+}
+#termsAndConditions ~ .defaultBubble,
+#serviceTermsAndConditions ~ .defaultBubble,
+#verifiedEmail ~ .defaultBubble {
+  top: -1em;
+}
+.chameleon .skyid-widget-unsupported {
+  margin: 26px;
+}
+.chameleon .skyid-widget-unsupported p {
+  line-height: 1.4;
+}
+.chameleon #skyidwidget {
+  border: 0;
+  width: 100%;
+  height: 400px;
+  min-width: 320px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.chameleon #pageContentWrapper,
+.chameleon #globalFooter {
+  border: 0;
+}
+.chameleon #pageContentWrapper .globalFooterBottom,
+.chameleon #globalFooter .globalFooterBottom {
+  border-top: 1px solid #cccccc;
+  margin: 0 auto;
+}
+.chameleon.express #pageContentWrapper,
+.chameleon.serviceSignup #pageContentWrapper {
+  width: auto;
+}
+.chameleon.express .skyid-widget-unsupported,
+.chameleon.serviceSignup .skyid-widget-unsupported {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 270px;
+}
+.chameleon.express .globalFooterBottom,
+.chameleon.serviceSignup .globalFooterBottom,
+.chameleon.express #skyid-widget-container,
+.chameleon.serviceSignup #skyid-widget-container {
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+.chameleon.signup #pageContentWrapper {
+  width: auto;
+}
+.chameleon.signup .skyid-widget-unsupported {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 270px;
+}
+.chameleon.signup .globalFooterBottom,
+.chameleon.signup #skyid-widget-container {
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+.chameleon.signin #globalFooter .globalFooterBottom {
+  padding-left: 3.125em;
+}
+.chameleon#emailService.signin #globalFooter {
+  max-width: 100%;
+  border-top: 1px solid #ccc;
+}
+.chameleon#emailService.signin #globalFooter .globalFooterBottom {
+  border: 0;
+}
+.chameleon #globalFooter {
+  max-width: 60em;
+}
+.chameleon #header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 620px;
+}
+@media (max-width: 767px) {
+  .chameleon .globalFooterBottom {
+    display: none;
+  }
+  .chameleon .express .skyid-widget-unsupported,
+  .chameleon .serviceSignup .skyid-widget-unsupported {
+    max-width: 620px;
+  }
+  .chameleon #header {
+    max-width: 270px;
+    margin-top: 15px;
+    margin-bottom: -8px;
+  }
+  .chameleon #globalNavContainer {
+    display: none;
+  }
+}
+#signInPanel .panel.skyid-widget,
+.chameleon .panel.skyid-widget {
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  min-height: 290px;
+}
+#signInPanel #skyidwidget {
+  width: 200px;
+  margin-left: 25px;
+}
+#nowtvshopService.chameleon #signInPanel,
+#nowtvService.chameleon #signInPanel {
+  width: 100%;
+}
+#nowtvshopService.chameleon.signin #pageContentWrapper,
+#nowtvService.chameleon.signin #pageContentWrapper {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  #nowtvshopService.chameleon #signInPanel,
+  #nowtvService.chameleon #signInPanel {
+    width: 48.75em;
+  }
+  #nowtvshopService.chameleon.signin
+    #pageContentWrappe
+    #nowtvService.chameleon.signin
+    #pageContentWrapper {
+    width: 60em;
+  }
+}
+#edr_survey #edr_lwrap_first {
+  right: 75% !important;
+  left: auto !important;
+  margin-left: 0 !important;
+  margin-right: -230px !important;
+}
+.login-logo {
+  background-image: url(//www.sky.com/assets/masthead/images/sky-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  width: 70px;
+  height: 35px;
+  float: left;
+}
+
+@media screen and (max-width: 1200px) {
+  #signInContent {
+    width: 100% !important;
+  }
+  #signInContent .colPod {
+    margin-left: 15px;
+  }
+  #signInContent .nonMobilePod {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  #signInContent {
+    display: flex;
+    justify-content: center;
+    background-color: #005185;
+  }
+
+  #signInPanel {
+    margin-right: 0 !important;
+    padding-top: 10px;
+  }
+  #signInContent .colPod {
+    display: none;
+  }
+  #signInContent .welcome {
+    display: none;
+  }
+  #signInContent .panelHeader {
+    display: none;
+  }
+}
