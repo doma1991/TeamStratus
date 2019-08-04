@@ -23,7 +23,8 @@ public class UserController {
 
     }
 
-    @GetMapping("/users/restrict")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/users/restrict")
     public List<User> getSecureUsers() {
         return userDAO.getAllUsers();
 
