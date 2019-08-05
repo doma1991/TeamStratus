@@ -1433,18 +1433,13 @@ input:disabled + p + .validationIcon {
   overflow: hidden;
 }
 #signInContent .welcome {
-  background: #005185;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0073a5, endColorstr=#005185);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0, #0073a5),
-    color-stop(1, #005185)
+  background: rgb(0, 115, 165);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 115, 165, 1) 0%,
+    rgba(9, 9, 121, 1) 29%,
+    rgba(0, 81, 133, 1) 100%
   );
-  background: -ms-linear-gradient(bottom, #0073a5, #005185);
-  background: -moz-linear-gradient(center left, #0073a5 0%, #005185 100%);
-  background: linear-gradient(center left, #0073a5 0%, #005185 100%);
   height: 16.25em;
   padding-left: 3.125em;
 }

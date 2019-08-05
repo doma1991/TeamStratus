@@ -12,7 +12,8 @@ class LoginForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  login = () => {
+  login = event => {
+    event.preventDefault();
     const user = {
       login: this.state.login,
       password: this.state.password
@@ -35,10 +36,8 @@ class LoginForm extends React.Component {
       });
   };
 
-  handleChange = valueName => {
-    return event => {
-      this.setState({ [valueName]: event.target.value });
-    };
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -86,14 +85,13 @@ class LoginForm extends React.Component {
               <form>
                 <div className="formFieldsWrapper">
                   <div className="  ">
-                    <label htmlFor="username">Email or Username</label>
+                    <label htmlFor="login">Email or Username</label>
 
                     <input
                       type="text"
-                      id="username"
-                      name="username"
-                      onChange={this.handleChange("login")}
-                      aria-required="true"
+                      id="login"
+                      name="login"
+                      onChange={this.handleChange}
                     />
                     <span className="validationIcon" />
                   </div>
@@ -105,8 +103,7 @@ class LoginForm extends React.Component {
                       type="password"
                       id="password"
                       name="password"
-                      onChange={this.handleChange("login")}
-                      aria-required="true"
+                      onChange={this.handleChange}
                     />
                     <span className="validationIcon" />
                   </div>
