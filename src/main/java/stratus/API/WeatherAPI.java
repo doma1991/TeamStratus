@@ -22,7 +22,6 @@ public class WeatherAPI {
 
     public static String getWeatherByLatLon(String lat, String lon){
         return apiCaller.getRapidApiResponse("https://dark-sky.p.rapidapi.com/"+ lat +","+ lon +"?lang=en&units=auto");
-
     }
 
     public static HttpApiResponse getApiCaller() {
@@ -82,9 +81,10 @@ public class WeatherAPI {
         double lat;
         double lon;
         JSONObject toGet = new JSONObject(apiCaller2.getRapidApiResponse("https://airport-info.p.rapidapi.com/airport?iata="+airportCode));
+        System.out.println(toGet);
         lat = toGet.getDouble("latitude");
         lon = toGet.getDouble("longitude");
-        getWeatherByLatLon(Double.toString(lat),Double.toString(lon));
+        //String myData = getWeatherByLatLon(Double.toString(lat),Double.toString(lon));
         return getWeatherByLatLon(Double.toString(lat),Double.toString(lon));
     }
 

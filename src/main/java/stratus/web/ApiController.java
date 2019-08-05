@@ -107,4 +107,10 @@ public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable
 
  }
 
+ @CrossOrigin(origins = "http://localhost:3000")
+ @GetMapping("/getweatherbydestination/{destinationcode}")
+ @ResponseBody
+ public String getCurrentWeather(@PathVariable("destinationcode") String destinationCode){
+     return WeatherAPI.getWeatherByAirportCode(destinationCode);
+ }
 }
