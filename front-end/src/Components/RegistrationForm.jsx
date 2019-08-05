@@ -1,5 +1,4 @@
 import React from "react";
-import background from "../architecture.jpg";
 
 class RegistrationForm extends React.Component {
   constructor() {
