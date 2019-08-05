@@ -107,6 +107,14 @@ public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable
 
  }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getcurrencybydestination/{destination}")
+    @ResponseBody
+    public String getCurrentCurrency(@PathVariable("destination") String destination){
+
+        return CurrencyAPI.getCurrencyByAirportCode(destination);
+    }
+
  @CrossOrigin(origins = "http://localhost:3000")
  @GetMapping("/getweatherbydestination/{destinationcode}")
  @ResponseBody
