@@ -46,30 +46,6 @@ class LoginForm extends React.Component {
       return <Redirect noThrow to="" />;
     }
     return (
-      // <div className="container p-3">
-      //   <form onSubmit={this.login}>
-      //     <div className="form-group">
-      //       <label htmlFor="login">Username</label>
-      //       <input
-      //         type="text"
-      //         name="login"
-      //         id="login"
-      //         placeholder="Username"
-      //         onChange={this.handleChange("login")}
-      //       />
-      //     </div>
-      //     <div className="form-group">
-      //       <label htmlFor="password">Password</label>
-      //       <input
-      //         type="password"
-      //         name="password"
-      //         id="password"
-      //         onChange={this.handleChange("password")}
-      //       />
-      //     </div>
-      //     <input type="submit" value="Submit" />
-      //   </form>
-      // </div>
       <div id="signInContent" className="skycomSignin w-75 mx-auto">
         <div id="signInPanel">
           <div className="panel" role="main">

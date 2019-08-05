@@ -16,8 +16,8 @@ function App() {
       <Navbar />
       <Router>
         <Main path="/" />
-        <RegistrationForm path="RegistrationForm" />
-        <LoginForm path="LoginForm" />
+        <RegistrationForm path="register" />
+        <LoginForm path="login" />
       </Router>
     </div>
   );

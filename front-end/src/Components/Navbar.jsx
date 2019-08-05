@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "@reach/router";
+
 const Navbar = () => {
   return (
     <nav className="navbar d-flex flex-row justify-content-between navbar-dark">
       <div className="mob-logo">
         <a
-          href="https://www.sky.com"
+          href="/"
           className="mast-c-header__logo mast-js-focus"
           data-tracking-label="masthead_home_logo"
         >
@@ -15,7 +17,7 @@ const Navbar = () => {
       </div>
       <div className="main-logo">
         <a
-          href="https://www.sky.com"
+          href="/"
           className="mast-c-header__logo mast-js-focus"
           data-tracking-label="masthead_home_logo"
         />
@@ -24,12 +26,9 @@ const Navbar = () => {
       </div>
 
       <div>
-        <button
-          className="btn btn-outline-primary my-2 my-sm-0"
-          type="register"
-        >
+        <Link to="/register" className="btn btn-outline-primary my-2 my-sm-0">
           Register
-        </button>
+        </Link>
       </div>
     </nav>
   );
