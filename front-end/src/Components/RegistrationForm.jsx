@@ -46,8 +46,9 @@ class RegistrationForm extends React.Component {
       },
       body: json
     });
-    console.log(json);
+    
     let data = await response.json();
+
     this.handleResponse(data);
   }
 
@@ -57,11 +58,43 @@ class RegistrationForm extends React.Component {
     };
   };
 
-  handleResponse = () => {
-    console.log("it worked!!");
+  handleResponse = (data) => {
+   if (this.state.login === data.login) {
+
+    this.setState({
+      firstName: "",
+      lastName: "",
+      address: "",
+      city: "",
+      postCode: "",
+      telephoneNumber: "",
+      email: "",
+      login: "",
+      password: "",
+      role: "U",
+      route: null,
+      photo: "",
+      registration: true
+    });
+  
+   } else {
+     this.setState({
+       registration: false
+     })
+   }
+  
+    
   };
 
   render() {
+let text;
+if (this.state.registration) {
+  text = "Successfully registered. Click <a href={''}>here</a> to log in."
+} else if(this.state.registration == false) {
+
+  text = "Unable to register. Click <a href={'/RegistrationForm'}>here</a> to try again."
+}
+
     const tags = [
       "First name:",
       "Last name:",
@@ -85,49 +118,49 @@ class RegistrationForm extends React.Component {
       <input
         type="text"
         name="lastName"
-        value={this.lastName}
+        value={this.state.lastName}
         onChange={this.handleChange("lastName")}
         required
       />,
       <input
         type="text"
         name="address"
-        value={this.address}
+        value={this.state.address}
         onChange={this.handleChange("address")}
         required
       />,
       <input
         type="text"
         name="city"
-        value={this.city}
+        value={this.state.city}
         onChange={this.handleChange("city")}
         required
       />,
       <input
         type="text"
         name="postCode"
-        value={this.postCode}
+        value={this.state.postCode}
         onChange={this.handleChange("postCode")}
         required
       />,
       <input
         type="text"
         name="telephoneNumber"
-        value={this.telephoneNumber}
+        value={this.state.telephoneNumber}
         onChange={this.handleChange("telephoneNumber")}
         required
       />,
       <input
         type="email"
         name="email"
-        value={this.email}
+        value={this.state.email}
         onChange={this.handleChange("email")}
         required
       />,
       <input
         type="text"
         name="login"
-        value={this.login}
+        value={this.state.login}
         onChange={this.handleChange("login")}
         required
       />,
@@ -136,7 +169,7 @@ class RegistrationForm extends React.Component {
         name="password"
         pattern="(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-        value={this.password}
+        value={this.state.password}
         onChange={this.handleChange("password")}
         required
       />,
@@ -147,6 +180,9 @@ class RegistrationForm extends React.Component {
         value=""
       />
     ];
+
+
+
     return (
       <form onSubmit={this.handleSubmit} method="post">
         <div className="container">
@@ -168,6 +204,7 @@ class RegistrationForm extends React.Component {
             </div>
           </div>
         </div>
+        <p id="registrationOutcome">Output goes here: {text}</p>
       </form>
     );
   }
