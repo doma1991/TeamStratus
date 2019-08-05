@@ -200,7 +200,7 @@ if (this.state.registration) {
           <input type="hidden" name="route" />
           <div className="row justify-content-center">
             <div className="col-sm-4">
-              <input className="btn btn-primary" type="submit" value="Submit" />
+              <input className="btn btn-primary" name="submit" type="submit" value="Submit" />
             </div>
           </div>
         </div>
