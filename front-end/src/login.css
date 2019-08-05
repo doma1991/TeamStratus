@@ -2051,3 +2051,33 @@ div.error .defaultBubble.btmalgn {
     display: none;
   }
 }
+/***************REGISTRATION****************/
+.regPanel label {
+  font-size: 14px !important;
+}
+.submit-row {
+  padding: 5px;
+}
+
+.previous-member {
+  border-top: 1px solid #cccccc;
+  text-align: right;
+  color: #666666;
+  font-size: 11px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+#preamble {
+  margin-right: 10px;
+}
+@media screen and (min-width: 800px) {
+  .regPanel {
+    width: 50% !important;
+  }
+  .row {
+    justify-content: left !important;
+  }
+  .panelHeader {
+    text-align: left !important;
+  }
+}

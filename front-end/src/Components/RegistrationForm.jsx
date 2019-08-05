@@ -1,4 +1,5 @@
 import React from "react";
+import background from "../architecture.jpg";
 
 class RegistrationForm extends React.Component {
   constructor() {
@@ -139,36 +140,57 @@ class RegistrationForm extends React.Component {
         value={this.password}
         onChange={this.handleChange("password")}
         required
-      />,
-      <input
-        type="text"
-        name="photo"
-        onChange={this.handleChange("photo")}
-        value=""
       />
     ];
     return (
-      <form onSubmit={this.handleSubmit} method="post">
-        <div className="container">
-          {fields.map((field, count) => {
-            let linkContent = tags[count];
-            return (
-              <div key={linkContent} className="row justify-content-center">
-                <div className="col-sm-4">{linkContent}</div>
-                <div className="col-sm-4">{field}</div>
-              </div>
-            );
-          })}
+      <div className="regPanel  mx-auto">
+        <div class="previous-member p-1">
+          <span id="preamble">Already have a Sky iD?</span>
 
-          <input type="hidden" name="role" value="U" />
-          <input type="hidden" name="route" />
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              <input className="btn btn-primary" type="submit" value="Submit" />
+          <a
+            id="signinLink"
+            href="/login"
+            data-description="Sign in"
+            data-tracking-label="sign-in"
+          >
+            Sign in
+          </a>
+        </div>
+        <div className="panelHeader text-center">
+          <h1 className="page-header-two">Register for Sky GYW</h1>
+        </div>
+        <form onSubmit={this.handleSubmit}>
+          <div className="container text-left">
+            {fields.map((field, count) => {
+              let linkContent = tags[count];
+              return (
+                <div
+                  key={linkContent}
+                  className="row justify-content-center p-1"
+                >
+                  <div>
+                    <label htmlFor={field.name}>{linkContent}</label>
+                    {field}
+                  </div>
+                </div>
+              );
+            })}
+
+            <input type="hidden" name="role" value="U" />
+            <input type="hidden" name="route" />
+            <input type="hidden" name="photo" />
+            <div className="row justify-content-center">
+              <div className="submit-row">
+                <input
+                  className="btn btn-outline-primary"
+                  type="submit"
+                  value="Register"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     );
   }
 }
