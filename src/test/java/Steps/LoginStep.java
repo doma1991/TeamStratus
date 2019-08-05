@@ -49,6 +49,4 @@ public class LoginStep {
     @When("I enter the incorrect username")
     public void iEnterTheIncorrectUsername() {
 
-    }
-
-}
+    }}
