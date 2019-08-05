@@ -19,11 +19,35 @@ public class LoginPage {
 
     }
 
-    @FindBy(how = How.ID, using = "id_name")
-    private WebElement username_txtbox ;
+    @FindBy(how = How.ID, using = "login")
+    private WebElement username_loginbox ;
+
+    @FindBy(how = How.ID, using = "password")
+    private WebElement password_loginbox ;
+
+    @FindBy(how = How.ID, using = "signin")
+    private WebElement signin_button;
 
 
-    public void navigateTo_GooglePage() {
-        driver.get(configFileReader.getApplicationUrl());
+    public void navigateTo_LoginPage() {
+        driver.navigate().to("localhost:3000/login");
     }
+
+    public void sendKeysToUsername(String Input){
+        username_loginbox.sendKeys(Input);
+    }
+
+    public void sendKeysToPassword(String Input){
+        password_loginbox.sendKeys(Input);
+    }
+
+    public String getCurrentPageUrl(){
+        return driver.getCurrentUrl();
+    }
+
+    public void clickSignInButton(){
+        signin_button.click();
+    }
+
+
 }
