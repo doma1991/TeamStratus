@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import React, { Component } from 'react';
 import CurrentLocation from './CurrentMapLocation';
@@ -11,7 +11,7 @@ const mapStyles = {
 export class MapContainer extends Component{
 
    state = {
-    showingInfoWindow: false,  //Hides or the shows the infoWindow
+    showingInfoWindow: false,  //Hides or shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
     selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
   };
@@ -33,32 +33,21 @@ export class MapContainer extends Component{
     };
 
 
-render() {
-    return (
-
-
-      <CurrentLocation
-        centerAroundCurrentLocation
-        google={this.props.google}
-      >
-
-           <Marker onClick={this.onMarkerClick} name={'current location'} />
-                <InfoWindow
-                  marker={this.state.activeMarker}
-                  visible={this.state.showingInfoWindow}
-                  onClose={this.onClose}
-                >
-              <div>
-                <h4>{this.state.selectedPlace.name}</h4>
-              </div>
-            </InfoWindow>
-          </CurrentLocation>
-        );
-
+    render() {
+      return (
+          <Map
+            google={this.props.google}
+            zoom={8}
+            style={mapStyles}
+            initialCenter={{ lat: 47.444, lng: -122.176}}
+          />
+      );
+    }
+  
 
   }
 
-}
+
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I'
