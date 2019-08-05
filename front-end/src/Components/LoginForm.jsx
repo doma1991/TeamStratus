@@ -138,6 +138,7 @@ class LoginForm extends React.Component {
               <button
                 className="btn btn-outline-secondary btn-sm"
                 type="register"
+                id="signin"
               >
                 Register
               </button>
