@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 // import Weather from "./weather";
 // import Splash from "../vanSplash.jpg";
 import MapContainer from "./Map";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/Button";
 
 var MapS = <MapContainer />;
 
@@ -14,43 +16,62 @@ class SearchBar extends React.Component {
     this.state = {
       from: "",
       to: "",
-      startDate: "",
+      Date: "",
       endDate: "",
-      searchResultId: ""
+      transportMode: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
   }
+  handleClearForm(e) {
+    this.setState({
+      from: "",
+      to: "",
+      travelDate: "",
+      transportMode: "",
+      address: ""
+    });
+  }
 
-  // componentDidMount() {
-  //   fetch()
-  //     .then(res => res.json())
-  //     .then(json => this.setState({ data: json }));
+  handleChange = valueName => {
+    return event => {
+      this.setState({ [valueName]: event.target.value });
+      console.log(this.state.transportMode);
+    };
+  };
+
+  // transHandleChange(e) {
+  //   let value = e.target.value;
+  //   let name = e.target.name;
+  //   this.setState({ transportMode: value });
   // }
+
+  handleChangeDate = (field, date) => {
+    this.setState({ [field]: date });
+    console.log(this.state.travelDate);
+  };
 
   async handleSubmit(event) {
     try {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
-      let URL = baseURL + this.state.from + "/" + this.state.to + "/now/d/";
+      let URL =
+        baseURL +
+        this.state.from +
+        "/" +
+        this.state.to +
+        "/now/" +
+        this.state.transportMode +
+        "/";
       let response = await fetch(URL);
       let data = await response.json();
       this.handleResponse(data);
     } catch (e) {
       console.log("error", e);
     }
+    this.handleClearForm();
   }
-
-  handleChange = valueName => {
-    return event => {
-      this.setState({ [valueName]: event.target.value });
-    };
-  };
-
-  handleChangeDate = (field, date) => {
-    this.setState({ [field]: date });
-  };
 
   handleResponse = data => {
     localStorage.setItem("mapRequest", JSON.stringify(data));
@@ -61,7 +82,7 @@ class SearchBar extends React.Component {
   };
 
   triggerChildAlert() {
-    this.ref.weather.printId();
+    // this.ref.weather.printId();
   }
 
   render() {
@@ -103,31 +124,17 @@ class SearchBar extends React.Component {
                 <div className="w-100 p-2">
                   <label>Select Start Date: </label>
                   <DatePicker
-                    placeholder="Select start date"
+                    placeholder="Select travel date"
                     todayButton={"Today"}
-                    name="startDate"
-                    selected={this.state.startDate}
-                    onChange={this.handleChangeDate.bind(this, "startDate")}
                     showTimeSelect
                     timeFormat="HH:mm"
                     timeIntervals={15}
-                    dateFormat="MMMM d, yyyy h:mm aa"
+                    dateFormat="yyyy-MM-dd HH:mm"
                     timeCaption="time"
-                  />
-                </div>
+                    selected={this.state.travelDate}
+                    onChange={this.handleChangeDate.bind(this, "travelDate")}
 
-                <div className="w-100 p-2">
-                  <label>Select End Date: </label>
-                  <DatePicker
-                    placeholder="Select end date"
-                    todayButton={"Today"}
-                    selected={this.state.endDate}
-                    onChange={this.handleChangeDate.bind(this, "endDate")}
-                    showTimeSelect
-                    timeFormat="HH:mm"
-                    timeIntervals={15}
-                    dateFormat="MMMM d, yyyy h:mm aa"
-                    timeCaption="time"
+                    // should return "yyyy-MM-dd 'at' HH:mm" to pass to api
                   />
                 </div>
               </div>
@@ -137,25 +144,45 @@ class SearchBar extends React.Component {
               <div className="row">
                 <div className="col-sm-3">
                   <label>
-                    <i class="fas fa-car fa-2x" />
+                    <Button
+                      value="d"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-car fa-2x" />
+                    </Button>
                   </label>
                 </div>
 
                 <div className="col-sm-3">
                   <label>
-                    <i class="fas fa-bus fa-2x" />
+                    <Button
+                      value="t"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-bus fa-2x" />
+                    </Button>
                   </label>
                 </div>
 
                 <div className="col-sm-3">
                   <label>
-                    <i class="fas fa-walking fa-2x" />
+                    <Button
+                      value="w"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-walking fa-2x" />
+                    </Button>
                   </label>
                 </div>
 
                 <div className="col-sm-3">
                   <label>
-                    <i class="fas fa-biking fa-2x" />
+                    <Button
+                      value="b"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-biking fa-2x" />
+                    </Button>
                   </label>
                 </div>
               </div>
@@ -171,7 +198,7 @@ class SearchBar extends React.Component {
             </div>
           </form>
         </div>
-        <div>{MapS}</div>
+        <div className="mapBox">{MapS}</div>
       </div>
     );
   }

@@ -112,6 +112,12 @@
   color: #648f97 !important;
   text-align: center !important;
 }
+.transport-fields button {
+  color: none;
+}
+.mapBox {
+  padding-top: 30vh;
+}
 @media screen and (max-width: 799px) {
   .searchPanel {
     margin: 5vh auto;
