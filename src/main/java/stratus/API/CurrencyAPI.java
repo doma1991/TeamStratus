@@ -38,12 +38,13 @@ public class CurrencyAPI {
         return PrettyJSON.print(jsonString);
     }
 
-    public static void printTheRate(String string, String country){
+    public static String printTheRate(String string, String country){
         JSONObject myObjectData = new JSONObject(string);
         JSONObject rates= myObjectData.getJSONObject("rates");
         Float UK =rates.getFloat("GBP");
         Float countryC =rates.getFloat(country);
         System.out.println("currency rate for GBP to "+country+" is: " + (countryC/UK));
+        return ("Today's rate from GBP to "+country+" is: " + (countryC/UK));
     }
 
     private static Map<String,String> getCountryCode(){
@@ -67,12 +68,19 @@ public class CurrencyAPI {
     public static String currencyByCountry(String country){
        return countryCurrencyMap.get(country);
     }
-    private static void getCurrencyByAirportCode(String airportCode){
+
+    public static String getCurrencyByAirportCode(String airportCode){
         JSONObject toGet = new JSONObject(apiCaller.getRapidApiResponse("https://airport-info.p.rapidapi.com/airport?iata="+airportCode));
         String countryCode = toGet.getString("country_iso");
         String toPass = countryCurrencyMap.get(countryCode);
         String string=getRate();
-        printTheRate(string, toPass);
+        return "{\"rate\":" + "\"" +printTheRate(string, toPass)+"\""+"}";
+    }
+
+    public static String getCurrencyCountryCode(String countryCode){
+        String toPass = countryCurrencyMap.get(countryCode);
+        String string=getRate();
+        return "{\"rate\":" + "\"" +printTheRate(string, toPass)+"\""+"}";
     }
 
     private static void getCurrencyByCity(String city) {

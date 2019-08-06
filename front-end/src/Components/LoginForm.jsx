@@ -85,7 +85,7 @@ class LoginForm extends React.Component {
                   </div>
 
                   <div className="buttonRow">
-                    <button onClick={this.login}>Sign in</button>
+                    <button onClick={this.login} id="signInButton">Sign in</button>
 
                     <p>
                       <a
@@ -108,6 +108,7 @@ class LoginForm extends React.Component {
               <button
                 className="btn btn-outline-secondary btn-sm"
                 type="register"
+                id="signin"
               >
                 Register
               </button>

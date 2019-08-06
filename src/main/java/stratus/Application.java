@@ -4,8 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import stratus.API.Maps;
-import stratus.DAO.Route;
 import stratus.DAO.RouteDAO;
 import stratus.DAO.UserDAO;
 
@@ -44,9 +42,9 @@ public class Application {
 
 
 //
-        Route routeMaps= Maps.makeRoute("London", "Cambridge", "now",'d');
-        routeDao.save( routeMaps );
-        System.out.println(routeDao.findAll());
+//        Route routeMaps= Maps.makeRoute("London", "Cambridge", "now",'d');
+//        routeDao.save( routeMaps );
+//        System.out.println(routeDao.findAll());
 
 
     }
