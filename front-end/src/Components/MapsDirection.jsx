@@ -18,7 +18,32 @@ super(props)
 }
 render(){
 
-const{origina, originn,destinationa,destinationn,travelmode}=this.props;
+
+var routed;
+var origina;
+var originn;
+var destinationa;
+var destinationn;
+var travel_mode;
+
+
+try{
+routed= JSON.parse(localStorage.getItem("mapRequest"));
+origina= routed.startLatitude;
+originn= routed.startLongitude;
+destinationa= routed.endLongitude;
+destinationn= routed.endLatitude;
+travel_mode= "DRIVING";
+
+}
+
+catch(e){
+origina=  51.507309;
+ originn= -0.128012 ;
+destinationa = 51.488999
+destinationn=-0.328587;
+travel_mode="DRIVING";
+}
 
 
 const DirectionsComponent =compose(
@@ -39,8 +64,8 @@ googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBktdACICn5zDhtf
     DirectionsService.route(
 
 {
- origin: new google.maps.LatLng(51.507309, -0.128012),
-    destination: new google.maps.LatLng(51.488999, -0.328587),
+ origin: new google.maps.LatLng(origina, originn),
+    destination: new google.maps.LatLng(destinationa, destinationn),
     travelMode: google.maps.TravelMode.DRIVING
 },
 (result, status) => {
