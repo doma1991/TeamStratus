@@ -97,8 +97,8 @@ public class Maps {
         String startLongitude= coord[1];
         String startLatitude=coord[0];
 
-        String endLongitude= coord[2];
-        String endLatitude= coord[3];
+        String endLongitude= coord[3];
+        String endLatitude= coord[2];
         String currency= CurrencyAPI.currencyByCountry(getCountryCode(endLatitude,endLongitude));
         Date dateAPI= googleDateToDate(date);
         String details=dataFromAPI(jsonString);

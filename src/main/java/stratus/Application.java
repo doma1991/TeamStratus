@@ -42,9 +42,9 @@ public class Application {
 
 
 //
-//        Route routeMaps= Maps.makeRoute("London", "Cambridge", "now",'d');
-//        routeDao.save( routeMaps );
-//        System.out.println(routeDao.findAll());
+        Route routeMaps= Maps.makeRoute("London", "Cambridge", "now",'d');
+        routeDao.save( routeMaps );
+        System.out.println(routeDao.findAll());
 
 
     }
