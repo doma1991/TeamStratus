@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import Weather from "./weather";
-
+import LocationSearchInput from "./AutocompleteSearch";
 import "react-datepicker/dist/react-datepicker.css";
 
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
 // Also need to install moment byt running: npm install moment
 //
 
@@ -15,7 +19,7 @@ class SearchBar extends React.Component {
     this.state = {
       from: "",
       to: "",
-      startDate: "",
+      Date: "",
       endDate: "",
       transportMode: ""
     };
@@ -24,67 +28,71 @@ class SearchBar extends React.Component {
     this.handleResponse = this.handleResponse.bind(this);
   }
   handleClearForm(e) {
-    e.preventDefault();
     this.setState({
       from: "",
       to: "",
-      Date: "",
-      transportMode: ""
+      travelDate: "",
+      transportMode: "",
+      address: ""
     });
   }
+
   handleChange = valueName => {
     return event => {
       this.setState({ [valueName]: event.target.value });
     };
   };
 
-  transHandleChange(e) {
-    let value = e.target.value;
-    let name = e.target.name;
-    this.setState({ transportMode: value });
-  }
+  // transHandleChange(e) {
+  //   let value = e.target.value;
+  //   let name = e.target.name;
+  //   this.setState({ transportMode: value });
+  // }
 
   handleChangeDate = (field, date) => {
     this.setState({ [field]: date });
+    console.log(this.state.travelDate);
   };
 
   async handleSubmit(event) {
-    this.handleClearForm();
     try {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
-      let URL = baseURL + this.state.from + "/" + this.state.to + "/now/d/";
+      let URL =
+        baseURL +
+        this.state.from +
+        "/" +
+        this.state.to +
+        "/now/" +
+        this.state.transportMode +
+        "/";
       let response = await fetch(URL);
-      // let response = await fetch(
-      //   "http://localhost:8080/getmaps/London/Cambridge/2019-09-01%20at%2011:00/d/"
-      // );
       let data = await response.json();
       this.handleResponse(data);
     } catch (e) {
       console.log("error", e);
     }
+    this.handleClearForm();
   }
 
   handleResponse = data => {
     localStorage.setItem("mapRequest", data);
-    // let storage = data.endLatitude;
-    // this.setState({ searchResultId: storage });
     console.log(data);
   };
 
-  triggerChildAlert(){
-    this.ref.weather.printId();
-  }
+  // triggerChildAlert() {
+  //   this.ref.weather.printId();
+  // }
 
   render() {
     return (
-
       <div>
         <h1>{this.state.data}</h1>
-        <Weather ref="weather" getRouteId={this.state.searchResultId}
-        handleChange={this.handleChange}
-
-        />
+        {/* <Weather
+          ref="weather"
+          getRouteId={this.state.searchResultId}
+          handleChange={this.handleChange}
+        /> */}
 
         <form onSubmit={this.handleSubmit}>
           <label>From: </label>
@@ -95,23 +103,7 @@ class SearchBar extends React.Component {
             value={this.state.from}
             onChange={this.handleChange("from")}
           />
-          <div className="container">
-            <div className="form-group">
-              <label>Select Start Date: </label>
-              <DatePicker
-                placeholder="Select start date"
-                todayButton={"Today"}
-                name="startDate"
-                selected={this.state.startDate}
-                onChange={this.handleChangeDate.bind(this, "startDate")}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeCaption="time"
-              />
-            </div>
-          </div>
+
           <label>To: </label>
           <input
             type="text"
@@ -124,15 +116,17 @@ class SearchBar extends React.Component {
             <div className="form-group">
               <label>Select End Date: </label>
               <DatePicker
-                placeholder="Select end date"
+                placeholder="Select travel date"
                 todayButton={"Today"}
-                selected={this.state.endDate}
-                onChange={this.handleChangeDate.bind(this, "endDate")}
                 showTimeSelect
                 timeFormat="HH:mm"
                 timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
+                dateFormat="yyyy-MM-dd HH:mm"
                 timeCaption="time"
+                selected={this.state.travelDate}
+                onChange={this.handleChangeDate.bind(this, "travelDate")}
+
+                // should return "yyyy-MM-dd 'at' HH:mm" to pass to api
               />
             </div>
           </div>
@@ -144,14 +138,20 @@ class SearchBar extends React.Component {
                 name="transportMode"
                 onChange={this.handleChange("transportMode")}
               >
-                <option value="driving"> driving </option>
-                <option value="bicycling"> cycling </option>
-                <option value="transit"> public transports </option>
+                <option value="w">walking</option>
+                <option value="d"> driving </option>
+                <option value="b"> cycling </option>
+                <option value="t"> public transports </option>
               </select>
             </div>
           </div>
           <div className="form-group">
-            <button className="btn btn-success" onClick={this.triggerChildAlert}>Go!</button>
+            <button
+              className="btn btn-success"
+              onClick={this.triggerChildAlert}
+            >
+              Go!
+            </button>
           </div>
         </form>
       </div>
