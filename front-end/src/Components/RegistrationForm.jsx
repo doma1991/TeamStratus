@@ -49,34 +49,18 @@ class RegistrationForm extends React.Component {
       },
       body: jsonData
     })
-      .then(response => {
+      .then(response => { 
+        console.log(response);
         if (!response.ok) {
           throw new Error(response.statusText);
         } else {
-          let info = response.json();
-          this.handleResponse(info);
+          return response.json();
+          // this.handleResponse(info);
         }
       })
       .catch(error => {
         console.log("error:" + error);
-        // this.setState({registration: false});
-        // return <Redirect noThrow to="/error" />;
-      });
-    // .finally(info => {this.handleResponse(info);})
-    //   function(response) {
-    //   if (!response.ok) {
-    //     throw Error(response.statusText);
-    // }
-    // }).then(function(response) {
-    //   console.log("ok"); })
-    // .catch(function(error) {
-    //     console.log(error = "there has been an error");
-    //     return <Redirect noThrow to="/error" />;
-
-    // let data = await response.json()
-    // .catch(function(){
-    //   return <Redirect noThrow to="/error" />;
-    // });
+      }).finally(this.handleResponse(data));
   }
 
   handleChange = valueName => {
@@ -86,7 +70,7 @@ class RegistrationForm extends React.Component {
   };
 
   handleResponse = data => {
-    if (this.state.login == data.login) {
+    if (data.response.ok) {
       this.setState({
         firstName: "",
         lastName: "",
