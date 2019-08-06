@@ -52,11 +52,21 @@ public class LoginStep {
 
     @Then("i should be logged in")
     public void iShouldBeLoggedIn() {
-
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        Assert.assertEquals("http://localhost:3000",driver.getCurrentUrl());
         driver.quit();
     }
 
     @When("I enter the incorrect username")
     public void iEnterTheIncorrectUsername() {
 
-    }}
+        loginPage.sendKeysToUsername("wrongusername");
+
+    }
+
+    @Then("i should see a error message")
+    public void iShouldSeeAErrorMessage() {
+        Assert.assertEquals("http://localhost:3000/login",driver.getCurrentUrl());
+        driver.quit();
+    }
+}
