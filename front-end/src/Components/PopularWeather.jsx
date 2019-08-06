@@ -1,6 +1,8 @@
 import React from "react";
 import './weather.css';
+const Skycons= require("skycons")(window);
 
+var skycons = new Skycons({"color" : "blue"});
 
 class PopularWeather extends React.Component {
 
@@ -65,6 +67,7 @@ class PopularWeather extends React.Component {
 
     async getTopFiveWeather( value ,latitude, longitude , value2){
         let data;
+        // var skycons = new Skycons ({"color" : "blue"});
         try {
             let URL = "http://localhost:8080/getweatherbydestination/" + latitude +"/"+ longitude ;
             let response = await fetch(URL);
@@ -74,7 +77,7 @@ class PopularWeather extends React.Component {
                     [value]: responseJson.currently.icon });
                 this.setState({
                     [value2]: responseJson.currently.temperature});
-                
+                skycons.add("icon1", skycons.PARTYLY_CLOUDY_DAY);
             });
 
 
@@ -104,6 +107,7 @@ class PopularWeather extends React.Component {
                 <div className="row">
                     <div className="column">
                         <div className="card">
+                            <canvas id="icon1" width="128" height="128"></canvas>
                             <h3>{this.state.weather1}</h3>
                             <p>{this.state.country1}</p>
                             <p>{this.state.temp1} celsius</p>
