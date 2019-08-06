@@ -1,4 +1,6 @@
 import React from "react";
+import { Redirect } from "@reach/router";
+import { Link } from "@reach/router";
 
 class RegistrationForm extends React.Component {
   constructor() {
@@ -24,7 +26,7 @@ class RegistrationForm extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    let json = JSON.stringify({
+    let jsonData = JSON.stringify({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       address: this.state.address,
@@ -38,18 +40,45 @@ class RegistrationForm extends React.Component {
       route: null,
       photo: ""
     });
-    let response = await fetch("http://localhost:8080/users/register", {
+
+    let data = await (await (fetch("http://localhost:8080/users/register", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: json
-    });
-    console.log(json);
-    let data = await response.json();
-    this.handleResponse(data);
-  }
+      body: jsonData
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      } else {
+      let info = response.json();
+      this.handleResponse(info);
+      }
+    }).catch(error => {
+      console.log("error:" + error);
+      // this.setState({registration: false});
+    // return <Redirect noThrow to="/error" />;
+  })
+  // .finally(info => {this.handleResponse(info);})
+    ));
+    //   function(response) {
+    //   if (!response.ok) {
+    //     throw Error(response.statusText);
+    // }
+    // }).then(function(response) { 
+    //   console.log("ok"); })
+    // .catch(function(error) {
+    //     console.log(error = "there has been an error");
+    //     return <Redirect noThrow to="/error" />;
+
+// let data = await response.json()
+// .catch(function(){
+//   return <Redirect noThrow to="/error" />;
+// });
+
+    
+  };
 
   handleChange = valueName => {
     return event => {
@@ -57,11 +86,54 @@ class RegistrationForm extends React.Component {
     };
   };
 
-  handleResponse = () => {
-    console.log("it worked!!");
+  handleResponse = (data) => {
+   if (this.state.login == data.login) {
+
+    this.setState({
+      firstName: "",
+      lastName: "",
+      address: "",
+      city: "",
+      postCode: "",
+      telephoneNumber: "",
+      email: "",
+      login: "",
+      password: "",
+      role: "U",
+      route: null,
+      photo: "",
+      registration: true
+    });
+  
+   } else {
+     this.setState({
+       registration: false
+     });
+
+      return <Redirect noThrow to="/error" />;
+   }
+  
+    
   };
 
   render() {
+    
+let text;
+let link;
+let longText;
+if (this.state.registration) {
+  
+  text = "successful";
+  link = '/';
+  longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
+
+  // return <Redirect noThrow to="" />;
+} else if(!this.state.registration == false) {
+  longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
+  text = "unsuccessful";
+  link = '/register';
+}
+
     const tags = [
       "First name:",
       "Last name:",
@@ -85,49 +157,49 @@ class RegistrationForm extends React.Component {
       <input
         type="text"
         name="lastName"
-        value={this.lastName}
+        value={this.state.lastName}
         onChange={this.handleChange("lastName")}
         required
       />,
       <input
         type="text"
         name="address"
-        value={this.address}
+        value={this.state.address}
         onChange={this.handleChange("address")}
         required
       />,
       <input
         type="text"
         name="city"
-        value={this.city}
+        value={this.state.city}
         onChange={this.handleChange("city")}
         required
       />,
       <input
         type="text"
         name="postCode"
-        value={this.postCode}
+        value={this.state.postCode}
         onChange={this.handleChange("postCode")}
         required
       />,
       <input
         type="text"
         name="telephoneNumber"
-        value={this.telephoneNumber}
+        value={this.state.telephoneNumber}
         onChange={this.handleChange("telephoneNumber")}
         required
       />,
       <input
         type="email"
         name="email"
-        value={this.email}
+        value={this.state.email}
         onChange={this.handleChange("email")}
         required
       />,
       <input
         type="text"
         name="login"
-        value={this.login}
+        value={this.state.login}
         onChange={this.handleChange("login")}
         required
       />,
@@ -136,7 +208,7 @@ class RegistrationForm extends React.Component {
         name="password"
         pattern="(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-        value={this.password}
+        value={this.state.password}
         onChange={this.handleChange("password")}
         required
       />,
@@ -147,6 +219,9 @@ class RegistrationForm extends React.Component {
         value=""
       />
     ];
+
+
+
     return (
       <form onSubmit={this.handleSubmit} method="post">
         <div className="container">
@@ -164,10 +239,11 @@ class RegistrationForm extends React.Component {
           <input type="hidden" name="route" />
           <div className="row justify-content-center">
             <div className="col-sm-4">
-              <input className="btn btn-primary" type="submit" value="Submit" />
+              <input className="btn btn-primary" name="submit" type="submit" value="Submit" />
             </div>
           </div>
         </div>
+        {longText}
       </form>
     );
   }

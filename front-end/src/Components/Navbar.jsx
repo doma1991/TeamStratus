@@ -1,18 +1,36 @@
-import React from 'react';
+import React from "react";
 import { Link } from "@reach/router";
 
-
 const Navbar = () => {
-                 return(
-                    <nav className="navbar navbar-dark bg-dark">
-                        <span className="navbar-brand mb-0 h1"><Link to="/">GetYourWay</Link></span>
+  return (
+    <nav className="navbar d-flex flex-row justify-content-between navbar-dark">
+      <div className="mob-logo">
+        <a
+          href="/"
+          className="mast-c-header__logo mast-js-focus"
+          data-tracking-label="masthead_home_logo"
+        >
+          <i className="fas fa-bars" />
+        </a>
 
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="login">
-                                                <Link to="LoginForm"> Login </Link></button>
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="register">
-                        <Link to="RegistrationForm"> Register </Link></button>
-                        
-                    </nav>
-                 )};
+        <span className="navbar-brand mb-0 h1">GetYourWay</span>
+      </div>
+      <div className="main-logo">
+        <a
+          href="/"
+          className="mast-c-header__logo mast-js-focus"
+          data-tracking-label="masthead_home_logo"
+        />
 
+        <span className="navbar-brand mb-0 h1">GetYourWay</span>
+      </div>
+
+      <div>
+        <Link to="/register" className="btn btn-outline-primary my-2 my-sm-0">
+          Register
+        </Link>
+      </div>
+    </nav>
+  );
+};
 export default Navbar;
