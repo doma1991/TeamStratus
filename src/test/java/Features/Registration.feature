@@ -5,7 +5,8 @@ Feature: Registering an account in order to use service
     Given i do not already have an account already
     When i submit my information
     Then i should be see a confirmation message
-    And be able to log in with username and password
+    And details should be saved to the database
+    And i should be able to log in with username and password
 
   Scenario: Fill in registration form again
     Given details entered have already been registered
