@@ -135,6 +135,20 @@
 @media screen and (max-width: 799px) {
   .searchPanel {
     margin: 5vh auto;
+    display: block;
+    float: initial;
+  }
+  .mapBox {
+    display: block;
+    width: 100vw;
+  }
+  .search-splash {
+    height: unset;
+  }
+  .col-sm-3 {
+    padding: 0px !important;
+    margin: 0 auto;
+    width: 25% !important;
   }
 }
 
