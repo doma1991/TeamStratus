@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "./Main";
+// import Main from "./Main";
 import { Redirect } from "@reach/router";
 
 class LoginForm extends React.Component {

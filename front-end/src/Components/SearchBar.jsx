@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
-import moment from "moment";
-import Weather from "./weather";
+// import moment from "moment";
+// import Weather from "./weather";
+// import Splash from "../vanSplash.jpg";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -63,74 +64,124 @@ class SearchBar extends React.Component {
     console.log(data);
   };
 
-  triggerChildAlert(){
+  triggerChildAlert() {
     this.ref.weather.printId();
   }
 
   render() {
     return (
+      <div className="search-splash">
+        <div className="welcome ">
+          <h1 className="page-header-one splash-title">GetYourWay</h1>
+        </div>
+        <div className="searchPanel">
+          {/* <h1>{this.state.data}</h1>
+        <Weather
+          ref="weather"
+          getRouteId={this.state.searchResultId}
+          handleChange={this.handleChange}
+        /> */}
 
-      <div>
-        <h1>{this.state.data}</h1>
-        <Weather ref="weather" getRouteId={this.state.searchResultId}
-        handleChange={this.handleChange}
-
-        />
-
-        <form onSubmit={this.handleSubmit}>
-          <label>From: </label>
-          <input
-            type="text"
-            placeholder="From"
-            name="from"
-            value={this.state.from}
-            onChange={this.handleChange("from")}
-          />
-          <div className="container">
-            <div className="form-group">
-              <label>Select Start Date: </label>
-              <DatePicker
-                placeholder="Select start date"
-                todayButton={"Today"}
-                name="startDate"
-                selected={this.state.startDate}
-                onChange={this.handleChangeDate.bind(this, "startDate")}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeCaption="time"
-              />
+          <div className="panelHeader">
+            <div id="header">
+              <a href="https://www.sky.com" className="login-logo" />
             </div>
           </div>
-          <label>To: </label>
-          <input
-            type="text"
-            placeholder="To"
-            name="to"
-            value={this.state.to}
-            onChange={this.handleChange("to")}
-          />
-          <div className="container">
-            <div className="form-group">
-              <label>Select End Date: </label>
-              <DatePicker
-                placeholder="Select end date"
-                todayButton={"Today"}
-                selected={this.state.endDate}
-                onChange={this.handleChangeDate.bind(this, "endDate")}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeCaption="time"
+
+          <form onSubmit={this.handleSubmit}>
+            <div className="location-search d-flex p-3">
+              <label>From: </label>
+              <input
+                type="text"
+                placeholder="From"
+                name="from"
+                value={this.state.from}
+                onChange={this.handleChange("from")}
               />
             </div>
-          </div>
-          <div className="form-group">
-            <button className="btn btn-success" onClick={this.triggerChildAlert}>Go!</button>
-          </div>
-        </form>
+            <div className="location-search d-flex p-3">
+              <label>To: </label>
+              <input
+                type="text"
+                placeholder="To"
+                name="to"
+                value={this.state.to}
+                onChange={this.handleChange("to")}
+              />
+            </div>
+            <div className="container date-fields p-3">
+              <div className="row">
+                <div className="w-100 p-2">
+                  <label>Select Start Date: </label>
+                  <DatePicker
+                    placeholder="Select start date"
+                    todayButton={"Today"}
+                    name="startDate"
+                    selected={this.state.startDate}
+                    onChange={this.handleChangeDate.bind(this, "startDate")}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={15}
+                    dateFormat="MMMM d, yyyy h:mm aa"
+                    timeCaption="time"
+                  />
+                </div>
+
+                <div className="w-100 p-2">
+                  <label>Select End Date: </label>
+                  <DatePicker
+                    placeholder="Select end date"
+                    todayButton={"Today"}
+                    selected={this.state.endDate}
+                    onChange={this.handleChangeDate.bind(this, "endDate")}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={15}
+                    dateFormat="MMMM d, yyyy h:mm aa"
+                    timeCaption="time"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="container transport-fields p-3">
+              <div className="row">
+                <div className="col-sm-3">
+                  <label>
+                    <i class="fas fa-car fa-2x" />
+                  </label>
+                </div>
+
+                <div className="col-sm-3">
+                  <label>
+                    <i class="fas fa-bus fa-2x" />
+                  </label>
+                </div>
+
+                <div className="col-sm-3">
+                  <label>
+                    <i class="fas fa-walking fa-2x" />
+                  </label>
+                </div>
+
+                <div className="col-sm-3">
+                  <label>
+                    <i class="fas fa-biking fa-2x" />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <button
+                className="btn btn-success"
+                onClick={this.triggerChildAlert}
+              >
+                Go!
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
