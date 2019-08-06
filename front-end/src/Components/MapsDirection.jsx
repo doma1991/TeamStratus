@@ -25,6 +25,7 @@ var originn;
 var destinationa;
 var destinationn;
 var travel_mode;
+var message;
 
 
 try{
@@ -33,11 +34,11 @@ origina= routed.startLatitude;
 originn= routed.startLongitude;
 destinationa= routed.endLongitude;
 destinationn= routed.endLatitude;
+message= routed.routeDetails+" possible route."
 if (routed.transportMethod==='d')travel_mode= "DRIVING";
 if (routed.transportMethod==='w')travel_mode= "WALKING";
 if (routed.transportMethod==='b')travel_mode= "BICYCLING";
 if (routed.transportMethod==='t')travel_mode= "TRANSIT";
-
 }
 
 catch(e){
@@ -46,6 +47,8 @@ origina=  51.507309;
 destinationa = 51.488999
 destinationn=-0.328587;
 travel_mode="DRIVING";
+message="your search failed, please try again being more precise."
+
 }
 
 
@@ -97,6 +100,7 @@ if(status === google.maps.DirectionsStatus.OK){
           directions={props.directions} />}
 
       </GoogleMap>
+      {message}
       </div>
       </div>
     );
