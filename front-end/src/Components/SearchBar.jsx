@@ -2,13 +2,8 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import Weather from "./weather";
-import LocationSearchInput from "./AutocompleteSearch";
 import "react-datepicker/dist/react-datepicker.css";
 
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng
-} from "react-places-autocomplete";
 // Also need to install moment byt running: npm install moment
 //
 
