@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { DatePicker } from "react-datepicker";
 import CurrentLocation from './Components/CurrentMapLocation';
 import MapContainer from './Components/Map';
-import ErrorPage from './Components/ErrorPage.jsx';
+// import ErrorPage from './Components/ErrorPage.jsx';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Main path="/" />
         <RegistrationForm path="register" />
         <LoginForm path="login" />
-        <ErrorPage path="error" />
+        {/* <ErrorPage path="error" /> */}
       </Router>
     </div>
   );

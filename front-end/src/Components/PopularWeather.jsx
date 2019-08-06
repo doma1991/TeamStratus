@@ -9,6 +9,7 @@ class PopularWeather extends React.Component {
 
     constructor(props){
         super(props);
+        this.ref = React.createRef();
         this.state = {
             weather1: "",
             weather2: "",
@@ -99,6 +100,8 @@ class PopularWeather extends React.Component {
     }
 
     render() {
+
+    
         return (
 
             <div>
@@ -107,7 +110,7 @@ class PopularWeather extends React.Component {
                 <div className="row">
                     <div className="column">
                         <div className="card">
-                            <canvas id="icon1" width="128" height="128"></canvas>
+                        <canvas ref={this.ref} width="128" height="128" />
                             <h3>{this.state.weather1}</h3>
                             <p>{this.state.country1}</p>
                             <p>{this.state.temp1} celsius</p>
@@ -158,7 +161,13 @@ class PopularWeather extends React.Component {
 
             </div>
         );
+
     }
+    componentDidMount() {
+        const skycons = new Skycons({ color: "blue" });
+        skycons.add(this.ref.current, Skycons.PARTLY_CLOUDY_DAY);
+        skycons.play();
+      }
 }
 
 export default PopularWeather;
