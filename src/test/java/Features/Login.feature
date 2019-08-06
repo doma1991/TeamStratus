@@ -13,4 +13,4 @@ Feature: LoginFeature
       When I enter the incorrect username
       And I enter the correct Password
       And I click the submit
-      Then i should be logged in
+      Then i should see a error message
