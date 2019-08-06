@@ -33,7 +33,10 @@ origina= routed.startLatitude;
 originn= routed.startLongitude;
 destinationa= routed.endLongitude;
 destinationn= routed.endLatitude;
-travel_mode= "DRIVING";
+if (routed.transportMethod==='d')travel_mode= "DRIVING";
+if (routed.transportMethod==='w')travel_mode= "WALKING";
+if (routed.transportMethod==='b')travel_mode= "BICYCLING";
+if (routed.transportMethod==='t')travel_mode= "TRANSIT";
 
 }
 
@@ -66,7 +69,7 @@ googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBktdACICn5zDhtf
 {
  origin: new google.maps.LatLng(origina, originn),
     destination: new google.maps.LatLng(destinationa, destinationn),
-    travelMode: google.maps.TravelMode.DRIVING
+    travelMode: google.maps.TravelMode[travel_mode],
 },
 (result, status) => {
 if(status === google.maps.DirectionsStatus.OK){
