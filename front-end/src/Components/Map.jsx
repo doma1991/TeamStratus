@@ -37,6 +37,7 @@ export class MapContainer extends Component{
     render() {
       let mapP;
       var route;
+
       try{
          route= JSON.parse(localStorage.getItem("mapRequest"));
         console.log(JSON.stringify(route));
@@ -49,7 +50,7 @@ export class MapContainer extends Component{
       initialCenter={{lat: 51.507309, lng: -0.128012 }}
     >
       <Marker position={{ lat: String(route.startLatitude) , lng: String(route.startLongitude)}} />
-    
+
     </Map>
   }
         catch(e){mapP=<Map

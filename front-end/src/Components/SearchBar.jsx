@@ -3,12 +3,15 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import Weather from "./weather";
 import MapContainer from "./Map";
+//import MapsDirection from "./MapsDirection";
+
 
 import "react-datepicker/dist/react-datepicker.css";
 
 // Also need to install moment byt running: npm install moment
 //
 var MapS =<MapContainer/>
+//var MapD = <MapsDirection/>
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -135,7 +138,9 @@ class SearchBar extends React.Component {
             <button className="btn btn-success" onClick={this.triggerChildAlert}>Go!</button>
           </div>
         </form>
+
         <div>{MapS}</div>
+
       </div>
     );
   }

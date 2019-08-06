@@ -7,8 +7,6 @@ import  LoginForm  from "./Components/LoginForm";
 import { Router } from "@reach/router";
 import "react-datepicker/dist/react-datepicker.css";
 import { DatePicker } from "react-datepicker";
-import CurrentLocation from './CurrentMapLocation';
-import MapContainer from './Map';
 
 
 function App() {
