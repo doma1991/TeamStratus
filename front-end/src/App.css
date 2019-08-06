@@ -83,6 +83,8 @@
   margin-left: 6vw;
   background-color: white;
   max-width: 320px;
+  float: left;
+  display: inline-block;
   -webkit-animation: fadeInSlow 2s ease 0s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeInSlow 2s ease 0s; /* Firefox < 16 */
   -ms-animation: fadeInSlow 2s ease 0s; /* Internet Explorer */
@@ -116,7 +118,19 @@
   color: none;
 }
 .mapBox {
-  padding-top: 100vh;
+  display: inline-block;
+  width: 55vw;
+}
+.btn-primary {
+  color: #282c34 !important;
+  background-color: white !important;
+  border-color: white !important;
+}
+.col-sm-3 {
+  padding-left: 0 !important;
+}
+.welcome {
+  padding-bottom: 10vh;
 }
 @media screen and (max-width: 799px) {
   .searchPanel {

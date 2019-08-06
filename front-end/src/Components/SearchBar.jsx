@@ -11,8 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 // Also need to install moment byt running: npm install moment
 //
-var MapS = <MapContainer />;
-var MapD = <MapsDirection />;
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +21,9 @@ class SearchBar extends React.Component {
       to: "",
       Date: "",
       endDate: "",
-      transportMode: ""
+      transportMode: "",
+      map: <MapsDirection />,
+      result: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -73,15 +74,14 @@ class SearchBar extends React.Component {
 
   handleResponse = data => {
     localStorage.setItem("mapRequest", JSON.stringify(data));
-    MapS = <MapContainer />;
-    // let storage = data.endLatitude;
-    // this.setState({ searchResultId: storage });
+    this.setState({ map: <MapsDirection /> });
+
     console.log(JSON.stringify(data));
   };
 
-  triggerChildAlert() {
-    // this.ref.weather.printId();
-  }
+  triggerChildAlert = () => {
+    this.setState({ result: true });
+  };
 
   render() {
     return (
@@ -189,14 +189,14 @@ class SearchBar extends React.Component {
             <div className="form-group">
               <button
                 className="btn btn-success"
-                onClick={this.triggerChinldAlert}
+                onClick={this.triggerChildAlert}
               >
                 Go!
               </button>
             </div>
           </form>
         </div>
-        <div className="mapBox">{MapD}</div>
+        <div className="mapBox">{this.state.result ? this.state.map : ""}</div>
       </div>
     );
   }
