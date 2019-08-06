@@ -1,95 +1,107 @@
 /* global google */
-import { withGoogleMap, withScriptjs, GoogleMap, DirectionsService, DirectionsRenderer } from 'react-google-maps';
-import React, { Component } from 'react';
-import CurrentLocation from './CurrentMapLocation';
+import {
+  withGoogleMap,
+  withScriptjs,
+  GoogleMap,
+  DirectionsService,
+  DirectionsRenderer,
+  Marker,
+  Polyline,
+  lineSymbol,
+  Point,
+  Projection
+} from "react-google-maps";
+import React, { Component, Fragment } from "react";
 
+import { compose, withProps, lifecycle } from "recompose";
 
+const google = (window.google = window.google ? window.google : {});
 
-
-const mapStyles = {
-  width: '75%',
-  height: '75%',
-};
-
-const google=window.google  = window.google ? window.google: {};
-var routed;
-var origin;
-var destination;
-var travel_mode;
-
-try{
-routed= JSON.parse(localStorage.getItem("mapRequest"));
-origin= { lat: routed.startLatitude, lng: routed.startLongitude};
-destination= { lat: routed.endLatitude, lng: routed.endLongitude};
-travel_mode= google.maps.TravelMode.DRIVING;
-
-}
-
-catch(e){
-origin= {lat: 51.507309, lng: -0.128012 };
-destination = { lat:51.488999, lng:-0.328587};
-travel_mode=google.maps.TravelMode.TRANSIT;
-}
-
-
-class MapsDirection extends Component{
-constructor(props){
-super(props)
-}
-render(){
-state = {
-    directions: null
-  };
-
-  componentDidMount() {
-    var directionsService = new google.maps.DirectionsService();
-
-
-    directionsService.route(
-
-
-
-{
-origin: origin,
-destination: destination,
-travelMode: travel_mode
-},
-(result, status) => {
-if(status === google.maps.DirectionsStatus.OK){
-    this.setState({
-    directions: result
-    });
-} else{
-    console.error('error fetching directions${results}');
-}
-}
-
-    );
-
+class MapsDirection extends React.Component {
+  constructor(props) {
+    super(props);
   }
+  render() {
+    var routed;
+    var origina;
+    var originn;
+    var destinationa;
+    var destinationn;
+    var travel_mode;
 
+    try {
+      routed = JSON.parse(localStorage.getItem("mapRequest"));
+      origina = routed.startLatitude;
+      originn = routed.startLongitude;
+      destinationa = routed.endLatitude;
+      destinationn = routed.endLongitude;
+      travel_mode = "DRIVING";
+    } catch (e) {
+      origina = 51.507309;
+      originn = -0.128012;
+      destinationa = 51.488999;
+      destinationn = -0.328587;
+      travel_mode = "DRIVING";
+    }
 
-    const GoogleMapExample = withGoogleMap(props => (
-      <GoogleMap
-        defaultCenter={{ lat: 51.488999, lng: -0.328587 }}
-        defaultZoom={13}
-      >
-        <DirectionsRenderer
-          directions={this.state.directions}
-        />
-      </GoogleMap>
+    const DirectionsComponent = compose(
+      withProps({
+        googleMapURL:
+          "https://maps.googleapis.com/maps/api/js?key=AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I&callback=initMap",
+        loadingElement: <div style={{ height: `100%` }} />,
+        containerElement: <div style={{ height: `400px` }} />,
+        mapElement: <div style={{ height: `100%` }} />
+      }),
+      withScriptjs,
+      withGoogleMap,
+      lifecycle({
+        componentDidMount() {
+          const DirectionsService = new google.maps.DirectionsService();
+
+          DirectionsService.route(
+            {
+              origin: new google.maps.LatLng(origina, originn),
+              destination: new google.maps.LatLng(destinationa, destinationn),
+              travelMode: google.maps.TravelMode.DRIVING
+            },
+            (result, status) => {
+              if (status === google.maps.DirectionsStatus.OK) {
+                this.setState({
+                  directions: { ...result },
+                  markers: true
+                });
+              } else {
+                console.error("error fetching directions " + status);
+              }
+            }
+          );
+        }
+      })
+    )(props => (
+      <div>
+        {" "}
+        <div id="main-map">
+          <GoogleMap
+            defaultCenter={{ lat: 51.488999, lng: -0.328587 }}
+            defaultZoom={3}
+          >
+            {props.directions && (
+              <DirectionsRenderer directions={props.directions} />
+            )}
+          </GoogleMap>
+        </div>
+      </div>
     ));
 
     return (
       <div>
-        <GoogleMapExample
+        <DirectionsComponent
           containerElement={<div style={{ height: `500px`, width: "500px" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
     );
-
-}
+  }
 }
 
 export default MapsDirection;

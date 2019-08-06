@@ -1,14 +1,18 @@
+import MapsDirection from "./MapsDirection";
+import MapContainer from "./Map";
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 // import moment from "moment";
 // import Weather from "./weather";
-// import Splash from "../vanSplash.jpg";
-import MapContainer from "./Map";
+
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/Button";
+import "react-datepicker/dist/react-datepicker.css";
 
+// Also need to install moment byt running: npm install moment
+//
 var MapS = <MapContainer />;
-
+var MapD = <MapsDirection />;
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -57,13 +61,7 @@ class SearchBar extends React.Component {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
       let URL =
-        baseURL +
-        this.state.from +
-        "/" +
-        this.state.to +
-        "/now/" +
-        this.state.transportMode +
-        "/";
+        baseURL + this.state.from + "/" + this.state.to + "/now/" + "d" + "/";
       let response = await fetch(URL);
       let data = await response.json();
       this.handleResponse(data);
@@ -191,14 +189,14 @@ class SearchBar extends React.Component {
             <div className="form-group">
               <button
                 className="btn btn-success"
-                onClick={this.triggerChildAlert}
+                onClick={this.triggerChinldAlert}
               >
                 Go!
               </button>
             </div>
           </form>
         </div>
-        <div className="mapBox">{MapS}</div>
+        <div className="mapBox">{MapD}</div>
       </div>
     );
   }
