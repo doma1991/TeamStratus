@@ -81,7 +81,7 @@
 .searchPanel {
   border: 1px solid #cccccc;
   margin-left: 6vw;
-  background-color: white;
+  background-color: #f0f8ff;
   max-width: 320px;
   float: left;
   display: inline-block;
@@ -123,8 +123,8 @@
 }
 .btn-primary {
   color: #282c34 !important;
-  background-color: white !important;
-  border-color: white !important;
+  background-color: #f0f8ff !important;
+  border-color: #f0f8ff !important;
 }
 .col-sm-3 {
   padding-left: 0 !important;
