@@ -3,11 +3,9 @@ import DatePicker from "react-datepicker";
 // import moment from "moment";
 // import Weather from "./weather";
 // import Splash from "../vanSplash.jpg";
+import MapContainer from "./Map";
 
-import "react-datepicker/dist/react-datepicker.css";
-
-// Also need to install moment byt running: npm install moment
-//
+var MapS = <MapContainer />;
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -37,9 +35,6 @@ class SearchBar extends React.Component {
       let baseURL = "http://localhost:8080/getmaps/";
       let URL = baseURL + this.state.from + "/" + this.state.to + "/now/d/";
       let response = await fetch(URL);
-      // let response = await fetch(
-      //   "http://localhost:8080/getmaps/London/Cambridge/2019-09-01%20at%2011:00/d/"
-      // );
       let data = await response.json();
       this.handleResponse(data);
     } catch (e) {
@@ -58,10 +53,11 @@ class SearchBar extends React.Component {
   };
 
   handleResponse = data => {
-    localStorage.setItem("mapRequest", data);
+    localStorage.setItem("mapRequest", JSON.stringify(data));
+    MapS = <MapContainer />;
     // let storage = data.endLatitude;
     // this.setState({ searchResultId: storage });
-    console.log(data);
+    console.log(JSON.stringify(data));
   };
 
   triggerChildAlert() {
@@ -75,13 +71,6 @@ class SearchBar extends React.Component {
           <h1 className="page-header-one splash-title">GetYourWay</h1>
         </div>
         <div className="searchPanel">
-          {/* <h1>{this.state.data}</h1>
-        <Weather
-          ref="weather"
-          getRouteId={this.state.searchResultId}
-          handleChange={this.handleChange}
-        /> */}
-
           <div className="panelHeader">
             <div id="header">
               <a href="https://www.sky.com" className="login-logo" />
@@ -182,6 +171,7 @@ class SearchBar extends React.Component {
             </div>
           </form>
         </div>
+        <div>{MapS}</div>
       </div>
     );
   }
