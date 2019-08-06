@@ -4,14 +4,18 @@ import React from "react";
 // import { Switch, Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PopularWeather from "./PopularWeather";
+import LocationSearchInput from "./Autocomplete";
 
 class Main extends React.Component {
   render() {
     return (
       <main>
         <SearchBar />
+
         <h3>Weather testing</h3>
         <PopularWeather />
+
+        <LocationSearchInput />
       </main>
     );
   }

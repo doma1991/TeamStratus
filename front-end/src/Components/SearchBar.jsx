@@ -146,7 +146,7 @@ class SearchBar extends React.Component {
                       value="d"
                       onClick={this.handleChange("transportMode")}
                     >
-                      <i class="fas fa-car fa-2x" />
+                      <i className="fas fa-car fa-2x" />
                     </Button>
                   </label>
                 </div>
@@ -157,7 +157,7 @@ class SearchBar extends React.Component {
                       value="t"
                       onClick={this.handleChange("transportMode")}
                     >
-                      <i class="fas fa-bus fa-2x" />
+                      <i className="fas fa-bus fa-2x" />
                     </Button>
                   </label>
                 </div>
@@ -168,7 +168,7 @@ class SearchBar extends React.Component {
                       value="w"
                       onClick={this.handleChange("transportMode")}
                     >
-                      <i class="fas fa-walking fa-2x" />
+                      <i className="fas fa-walking fa-2x" />
                     </Button>
                   </label>
                 </div>
@@ -179,7 +179,7 @@ class SearchBar extends React.Component {
                       value="b"
                       onClick={this.handleChange("transportMode")}
                     >
-                      <i class="fas fa-biking fa-2x" />
+                      <i className="fas fa-biking fa-2x" />
                     </Button>
                   </label>
                 </div>
