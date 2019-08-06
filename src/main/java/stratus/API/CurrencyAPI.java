@@ -44,7 +44,7 @@ public class CurrencyAPI {
         Float UK =rates.getFloat("GBP");
         Float countryC =rates.getFloat(country);
         System.out.println("currency rate for GBP to "+country+" is: " + (countryC/UK));
-        return ("Currency rate for GBP to "+country+" is: " + (countryC/UK));
+        return ("Today's rate from GBP to "+country+" is: " + (countryC/UK));
     }
 
     private static Map<String,String> getCountryCode(){
@@ -72,6 +72,12 @@ public class CurrencyAPI {
     public static String getCurrencyByAirportCode(String airportCode){
         JSONObject toGet = new JSONObject(apiCaller.getRapidApiResponse("https://airport-info.p.rapidapi.com/airport?iata="+airportCode));
         String countryCode = toGet.getString("country_iso");
+        String toPass = countryCurrencyMap.get(countryCode);
+        String string=getRate();
+        return "{\"rate\":" + "\"" +printTheRate(string, toPass)+"\""+"}";
+    }
+
+    public static String getCurrencyCountryCode(String countryCode){
         String toPass = countryCurrencyMap.get(countryCode);
         String string=getRate();
         return "{\"rate\":" + "\"" +printTheRate(string, toPass)+"\""+"}";

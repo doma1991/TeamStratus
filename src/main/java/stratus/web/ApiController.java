@@ -112,13 +112,13 @@ public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable
     @ResponseBody
     public String getCurrentCurrency(@PathVariable("destination") String destination){
 
-        return CurrencyAPI.getCurrencyByAirportCode(destination);
+        return CurrencyAPI.getCurrencyCountryCode(destination);
     }
 
  @CrossOrigin(origins = "http://localhost:3000")
- @GetMapping("/getweatherbydestination/{destinationcode}")
+ @GetMapping("/getweatherbydestination/{latitude}/{longitude}")
  @ResponseBody
- public String getCurrentWeather(@PathVariable("destinationcode") String destinationCode){
-     return WeatherAPI.getWeatherByAirportCode(destinationCode);
+ public String getCurrentWeather(@PathVariable("latitude") String latitude, @PathVariable("longitude") String longitude){
+     return WeatherAPI.getWeatherByAirportCode(latitude,longitude);
  }
 }

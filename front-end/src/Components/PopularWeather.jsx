@@ -30,16 +30,16 @@ class PopularWeather extends React.Component {
             currency5: "",
         };
 
-        this.getTopFiveWeather("weather1","JFK","temp1");
-         this.getTopFiveWeather("weather2","DXB","temp2");
-        this.getTopFiveWeather("weather3","BER","temp3");
-        this.getTopFiveWeather("weather4","SYD","temp4");
-        this.getTopFiveWeather("weather5","CDG","temp5");
-        this.getTopFiveCurrencyRate("currency1","JFK");
-        this.getTopFiveCurrencyRate("currency2","DXB");
-        this.getTopFiveCurrencyRate("currency3","BER");
-        this.getTopFiveCurrencyRate("currency4","SYD");
-        this.getTopFiveCurrencyRate("currency5","CDG");
+        this.getTopFiveWeather("weather1","40.7128","74.0060","temp1");
+        this.getTopFiveWeather("weather2","25.2048","55.2708","temp2");
+        this.getTopFiveWeather("weather3", "52.5200","13.4050","temp3");
+        this.getTopFiveWeather("weather4","33.8688","151.2093","temp4");
+        this.getTopFiveWeather("weather5","48.8566","2.3522","temp5");
+        this.getTopFiveCurrencyRate("currency1","US");
+        this.getTopFiveCurrencyRate("currency2","AE");
+        this.getTopFiveCurrencyRate("currency3","DE");
+        this.getTopFiveCurrencyRate("currency4","AU");
+        this.getTopFiveCurrencyRate("currency5","FR");
     }
 
 
@@ -48,10 +48,11 @@ class PopularWeather extends React.Component {
         try {
             let URL = "http://localhost:8080/getcurrencybydestination/" + destination ;
             let response = await fetch(URL);
-            data = await response.json();
+            data = await response.json().then(responseJson =>{
+                this.setState({
+                    [value]: responseJson.rate });
+            });
             console.log(URL);
-            this.setState({
-                [value]: data.rate });
         } catch (e) {
             console.log("error", e);
         }
@@ -62,17 +63,23 @@ class PopularWeather extends React.Component {
     }
 
 
-    async getTopFiveWeather( value ,destination, value2){
+    async getTopFiveWeather( value ,latitude, longitude , value2){
         let data;
         try {
-            let URL = "http://localhost:8080/getweatherbydestination/" + destination ;
+            let URL = "http://localhost:8080/getweatherbydestination/" + latitude +"/"+ longitude ;
             let response = await fetch(URL);
-            data = await response.json();
-            console.log(data.currently.icon);
-            this.setState({
-                [value]: data.currently.icon });
-            this.setState({
-                [value2]: data.currently.temperature});
+            data = await response.json().then(responseJson =>{
+
+                this.setState({
+                    [value]: responseJson.currently.icon });
+                this.setState({
+                    [value2]: responseJson.currently.temperature});
+                
+            });
+
+
+
+
         } catch (e) {
             console.log("error", e);
         }
