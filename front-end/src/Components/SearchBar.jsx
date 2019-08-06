@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import Weather from "./weather";
 import MapContainer from "./Map";
-//import MapsDirection from "./MapsDirection";
+import MapsDirection from "./MapsDirection";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,7 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // Also need to install moment byt running: npm install moment
 //
 var MapS =<MapContainer/>
-//var MapD = <MapsDirection/>
+var MapD = <MapsDirection/>
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -139,7 +139,7 @@ class SearchBar extends React.Component {
           </div>
         </form>
 
-        <div>{MapS}</div>
+        <div>{MapD}</div>
 
       </div>
     );
