@@ -39,9 +39,9 @@ googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBktdACICn5zDhtf
     DirectionsService.route(
 
 {
-origin: new google.maps.LatLng(origina , originn),
-destination: new google.maps.LatLng(destinationa , destinationn),
-travelMode: google.maps.DirectionsTravelMode[travelmode],
+ origin: new google.maps.LatLng(51.507309, -0.128012),
+    destination: new google.maps.LatLng(51.488999, -0.328587),
+    travelMode: google.maps.TravelMode.DRIVING
 },
 (result, status) => {
 if(status === google.maps.DirectionsStatus.OK){
@@ -51,7 +51,7 @@ if(status === google.maps.DirectionsStatus.OK){
     });
 
 } else{
-    console.error('error fetching directions ${results}');
+    console.error('error fetching directions '+status);
 }
 }
 
