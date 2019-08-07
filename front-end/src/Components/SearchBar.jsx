@@ -32,7 +32,8 @@ class SearchBar extends React.Component {
       travelDate: "",
       transportMode: "",
       transportMode: "d",
-      map: <MapsDirection />
+      map: <MapsDirection />,
+      result: false
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);

@@ -132,6 +132,7 @@
 .welcome {
   padding-bottom: 10vh;
 }
+
 @media screen and (max-width: 799px) {
   .searchPanel {
     margin: 5vh auto;
