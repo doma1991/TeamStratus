@@ -5,7 +5,7 @@ import { Redirect } from "@reach/router";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { login: "", password: "" };
+    this.state = { login: "", password: "", isAuthenticated: 0 };
   }
 
   handleChange = event => {
@@ -27,12 +27,14 @@ class LoginForm extends React.Component {
 
         if (jwtToken !== null) {
           sessionStorage.setItem("jwt", jwtToken);
-          this.setState({ isAuthenticated: true });
+          this.setState({ isAuthenticated: 2 });
+        } else {
+          this.setState({ isAuthenticated: 1 });
         }
       })
       .catch(err => {
         console.error(err);
-        this.setState({ isAuthenticated: false });
+        this.setState({ isAuthenticated: 1 });
       });
   };
 
@@ -41,14 +43,14 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    let text="";
-    if (this.state.isAuthenticated === true) {
+    let text;
+    if (this.state.isAuthenticated === 2) {
       console.log("success");
       return <Redirect noThrow to="" />;
-    } else if (!this.state.isAuthenticated) {
-      text = "Login unsuccessful. Please try again.";
-    } else {
-      text = "";
+    } 
+    
+    if (this.state.isAuthenticated === 1){
+      text = "Login unsuccessful. Please try again."
     }
     return (
       <div id="signInContent" className="skycomSignin w-75 mx-auto">

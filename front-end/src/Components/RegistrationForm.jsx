@@ -15,9 +15,7 @@ class RegistrationForm extends React.Component {
       email: "",
       login: "",
       password: "",
-      role: "U",
       route: null,
-      photo: "",
       registration: 0
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,7 +36,6 @@ class RegistrationForm extends React.Component {
       email: this.state.email,
       login: this.state.login,
       password: this.state.password,
-      role: "U",
       route: null,
       photo: ""
     });
@@ -65,8 +62,11 @@ class RegistrationForm extends React.Component {
     this.handleResponse(data);
   } catch(error) {
     console.log("Error:" + error);
-    return <Redirect noThrow to="/error" />;
-  }
+    this.setState({
+      registration: 1
+    });
+    
+  } 
   }
 
 
@@ -91,15 +91,12 @@ class RegistrationForm extends React.Component {
         password: "",
         role: "U",
         route: null,
-        photo: "",
         registration: 2
       });
     } else {
       this.setState({
         registration: 1
       });
-
-      // return <Redirect noThrow to="/error" />;
     }
   };
 
@@ -112,12 +109,16 @@ class RegistrationForm extends React.Component {
    link = '/';
    longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
 
-      // return <Redirect noThrow to="" />;
-    } else if (this.state.registration === 1) {
+      // return <Redirect noThrow to="/" />;
+    }; 
+    
+    if (this.state.registration === 1) {
        longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
 
       text = "unsuccessful";
       link = "/register";
+
+      return <Redirect noThrow to="/error" />;
     };
 
     const tags = [
@@ -234,9 +235,7 @@ class RegistrationForm extends React.Component {
               );
             })}
 
-            <input type="hidden" name="role" value="U" />
             <input type="hidden" name="route" />
-            <input type="hidden" name="photo" />
             <div className="row justify-content-center">
               <div className="submit-row">
                 <input
