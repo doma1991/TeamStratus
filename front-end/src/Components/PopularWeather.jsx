@@ -141,11 +141,10 @@ class PopularWeather extends React.Component {
   render() {
     return (
       <div>
-        <div className="row">
+        <div className="row destination-row mx-auto">
           <div className="column">
-            <div className="card">
-              <canvas id="icon1" ref={this.ref1} width="128" height="128" />
-              <h3>{this.state.weather1}</h3>
+            <div className="card" id="card1">
+              <canvas id="icon1" ref={this.ref1} width="42" height="42" />
               <p>{this.state.country1}</p>
               <p>{this.state.temp1} celsius</p>
               {/*<p>{this.state.currency1}</p>*/}
@@ -153,9 +152,8 @@ class PopularWeather extends React.Component {
           </div>
 
           <div className="column">
-            <div className="card">
-              <canvas id="icon2" ref={this.ref2} width="50" height="50" />
-              <h3>{this.state.weather2}</h3>
+            <div className="card" id="card2">
+              <canvas id="icon2" ref={this.ref2} width="42" height="42" />
               <p>{this.state.country2}</p>
               <p>{this.state.temp2} celsius</p>
               {/*<p>{this.state.currency2}</p>*/}
@@ -163,9 +161,8 @@ class PopularWeather extends React.Component {
           </div>
 
           <div className="column">
-            <div className="card">
-              <canvas id="icon3" ref={this.ref3} width="50" height="50" />
-              <h3>{this.state.weather3}</h3>
+            <div className="card" id="card3">
+              <canvas id="icon3" ref={this.ref3} width="42" height="42" />
               <p>{this.state.country3}</p>
               <p>{this.state.temp3} celsius</p>
               {/*<p>{this.state.currency3}</p>*/}
@@ -173,9 +170,8 @@ class PopularWeather extends React.Component {
           </div>
 
           <div className="column">
-            <div className="card">
-              <canvas id="icon4" ref={this.ref4} width="50" height="50" />
-              <h3>{this.state.weather4}</h3>
+            <div className="card" id="card4">
+              <canvas id="icon4" ref={this.ref4} width="42" height="42" />
               <p>{this.state.country4}</p>
               <p>{this.state.temp4} celsius</p>
               {/*<p>{this.state.currency4}</p>*/}
@@ -183,9 +179,8 @@ class PopularWeather extends React.Component {
           </div>
 
           <div className="column">
-            <div className="card">
-              <canvas id="icon5" ref={this.ref5} width="50" height="50" />
-              <h3>{this.state.weather5}</h3>
+            <div className="card" id="card5">
+              <canvas id="icon5" ref={this.ref5} width="42" height="42" />
               <p>{this.state.country5}</p>
               <p>{this.state.temp5} celsius</p>
               {/*<p>{this.state.currency5}</p>*/}
@@ -196,7 +191,7 @@ class PopularWeather extends React.Component {
     );
   }
   componentDidUpdate() {
-    const skycons = new Skycons({ color: "blue" });
+    const skycons = new Skycons({ color: "white" });
     // skycons.add(this.ref1.current, Skycons.PARTLY_CLOUDY_DAY);
     // skycons.add(this.ref2.current, Skycons.CLEAR_NIGHT);
     // skycons.add(this.ref3.current, Skycons.CLOUDY);

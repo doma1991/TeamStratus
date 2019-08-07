@@ -265,3 +265,41 @@
     opacity: 1;
   }
 }
+
+/******************WEATHER***************/
+canvas {
+  width: 42px;
+}
+#card1 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./newYork.jpg);
+  background-size: cover;
+}
+#card2 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./dubai.jpg);
+  background-size: cover;
+}
+#card3 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./berlin.jpg);
+  background-size: cover;
+}
+#card4 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./sydney.jpg);
+  background-size: cover;
+}
+#card5 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./paris.jpg);
+  background-size: cover;
+}
+
+.card p {
+  color: white;
+  font-size: 20px;
+}
+.destination-row {
+  width: 90%;
+}
