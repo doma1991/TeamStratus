@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/Button";
 import ToggleButtonGroup from "react-bootstrap/Button";
 import "react-datepicker/dist/react-datepicker.css";
+import { Map, GoogleApiWrapper } from "google-maps-react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -18,7 +19,8 @@ import PlacesAutocomplete, {
 
 var MapS = <MapContainer />;
 var MapD = <MapsDirection />;
-class SearchBar extends React.Component {
+
+export class SearchBar extends Component {
   constructor(props) {
     super(props);
 
@@ -33,7 +35,7 @@ class SearchBar extends React.Component {
       transportMode: "",
       transportMode: "d",
       map: <MapsDirection />,
-      result: false
+      result: true
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);
@@ -354,4 +356,7 @@ class SearchBar extends React.Component {
     );
   }
 }
-export default SearchBar;
+
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I"
+})(SearchBar);
