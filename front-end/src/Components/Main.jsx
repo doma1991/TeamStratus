@@ -11,7 +11,7 @@ class Main extends React.Component {
       <main>
         <SearchBar loggedIn={this.props.loggedIn} />
 
-        <h3>Weather testing</h3>
+        <h3 className="weather-header">Discover</h3>
         <PopularWeather />
       </main>
     );
