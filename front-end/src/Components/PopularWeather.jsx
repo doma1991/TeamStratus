@@ -47,30 +47,30 @@ class PopularWeather extends React.Component {
     this.getTopFiveWeather("weather3", "52.5200", "13.4050", "temp3");
     this.getTopFiveWeather("weather4", "33.8688", "151.2093", "temp4");
     this.getTopFiveWeather("weather5", "48.8566", "2.3522", "temp5");
-    this.getTopFiveCurrencyRate("currency1", "US");
-    this.getTopFiveCurrencyRate("currency2", "AE");
-    this.getTopFiveCurrencyRate("currency3", "DE");
-    this.getTopFiveCurrencyRate("currency4", "AU");
-    this.getTopFiveCurrencyRate("currency5", "FR");
+    // this.getTopFiveCurrencyRate("currency1", "US");
+    // this.getTopFiveCurrencyRate("currency2", "AE");
+    // this.getTopFiveCurrencyRate("currency3", "DE");
+    // this.getTopFiveCurrencyRate("currency4", "AU");
+    // this.getTopFiveCurrencyRate("currency5", "FR");
   }
 
-  async getTopFiveCurrencyRate(value, destination) {
-    let data;
-    try {
-      let URL = "http://localhost:8080/getcurrencybydestination/" + destination;
-      let response = await fetch(URL);
-      data = await response.json().then(responseJson => {
-        this.setState({
-          [value]: responseJson.rate
-        });
-      });
-      console.log(URL);
-    } catch (e) {
-      console.log("error", e);
-    }
-
-    return data;
-  }
+  // async getTopFiveCurrencyRate(value, destination) {
+  //   let data;
+  //   try {
+  //     let URL = "http://localhost:8080/getcurrencybydestination/" + destination;
+  //     let response = await fetch(URL);
+  //     data = await response.json().then(responseJson => {
+  //       this.setState({
+  //         [value]: responseJson.rate
+  //       });
+  //     });
+  //     console.log(URL);
+  //   } catch (e) {
+  //     console.log("error", e);
+  //   }
+  //
+  //   return data;
+  // }
 
   async getTopFiveWeather(value, latitude, longitude, value2) {
     let data;
@@ -135,15 +135,7 @@ class PopularWeather extends React.Component {
     } catch (e) {
       console.log("error", e);
     }
-    console.log(data);
-
     return data;
-  }
-
-  updateValues(value, data) {
-    this.setState({
-      [value]: data.currently.icon
-    });
   }
 
   render() {
@@ -156,7 +148,7 @@ class PopularWeather extends React.Component {
               <h3>{this.state.weather1}</h3>
               <p>{this.state.country1}</p>
               <p>{this.state.temp1} celsius</p>
-              <p>{this.state.currency1}</p>
+              {/*<p>{this.state.currency1}</p>*/}
             </div>
           </div>
 
@@ -166,7 +158,7 @@ class PopularWeather extends React.Component {
               <h3>{this.state.weather2}</h3>
               <p>{this.state.country2}</p>
               <p>{this.state.temp2} celsius</p>
-              <p>{this.state.currency2}</p>
+              {/*<p>{this.state.currency2}</p>*/}
             </div>
           </div>
 
@@ -176,7 +168,7 @@ class PopularWeather extends React.Component {
               <h3>{this.state.weather3}</h3>
               <p>{this.state.country3}</p>
               <p>{this.state.temp3} celsius</p>
-              <p>{this.state.currency3}</p>
+              {/*<p>{this.state.currency3}</p>*/}
             </div>
           </div>
 
@@ -186,7 +178,7 @@ class PopularWeather extends React.Component {
               <h3>{this.state.weather4}</h3>
               <p>{this.state.country4}</p>
               <p>{this.state.temp4} celsius</p>
-              <p>{this.state.currency4}</p>
+              {/*<p>{this.state.currency4}</p>*/}
             </div>
           </div>
 
@@ -196,7 +188,7 @@ class PopularWeather extends React.Component {
               <h3>{this.state.weather5}</h3>
               <p>{this.state.country5}</p>
               <p>{this.state.temp5} celsius</p>
-              <p>{this.state.currency5}</p>
+              {/*<p>{this.state.currency5}</p>*/}
             </div>
           </div>
         </div>

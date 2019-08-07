@@ -19,9 +19,9 @@ public class AmadeusFlightsApi {
      * @param departureDate A String containing the date of the departure date
      * @return An array list containing the flight information
      */
-    public static ArrayList<String> getFlightInfo(String originAirport,String destinationAirport,String departureDate){
+    public static ArrayList<Object> getFlightInfo(String originAirport,String destinationAirport,String departureDate){
         Amadeus amadeus = Amadeus.builder("4RbapAA123sW9QVA0PDHwnRkA9LVWO4u", "IIBYdRnZoRnVNED7").build();
-        ArrayList<String> items = new ArrayList<>();
+        ArrayList<Object> items = new ArrayList<>();
         try {
             ArrayList<String> toPass = new ArrayList<>();
             FlightOffer[] flightOffers = amadeus.shopping.flightOffers.get(Params.with("origin", originAirport).and("destination", destinationAirport).and("departureDate", departureDate).and("max", "1"));
@@ -55,7 +55,7 @@ public class AmadeusFlightsApi {
             String longLatDestination = AirportInformation.getLongLatofAirport(destinationAirport);
             String[] originInfo = longLatOrigin.split(",");
             String[] destinationInfo = longLatDestination.split(",");
-            items.add(toPass.toString());
+            items.add(toPass);
             items.addAll(Arrays.asList(originInfo));
             items.addAll(Arrays.asList(destinationInfo));
             String countryCode = Maps.getCountryCode(destinationInfo[0],destinationInfo[1]);
