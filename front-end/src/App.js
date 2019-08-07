@@ -29,31 +29,11 @@ class App extends React.Component {
     };
     this.checkLogin = this.checkLogin.bind(this);
   }
+
   checkLogin() {
     if (sessionStorage.getItem("jwt") !== null) {
       this.setState({ loggedIn: true });
-      this.setState({
-        button: (
-          <Link
-            to="/"
-            onClick="logout()"
-            className="btn btn-outline-primary my-2 my-sm-0 mx-1"
-          >
-            LogOut
-          </Link>
-        )
-      });
     } else {
-      this.setState({
-        button: (
-          <Link
-            to="/login"
-            className="btn btn-outline-primary my-2 my-sm-0 mx-1"
-          >
-            Login
-          </Link>
-        )
-      });
       this.setState({ loggedIn: false });
     }
   }
