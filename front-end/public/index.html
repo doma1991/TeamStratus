@@ -10,8 +10,14 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZFOBXdeT1HK5nuAg3f2bgPvepBrHfDss&libraries=places"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I"></script> -->
+    <script>
+      window.myCallbackFunc = function() {
+        window.initOne && window.initOne();
+        window.initTwo && window.initTwo();
+      };
+    </script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZFOBXdeT1HK5nuAg3f2bgPvepBrHfDss&libraries=places&callback=myCallbackFunc"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I&libraries=places"></script>
     <script src="https://kit.fontawesome.com/a930e57594.js"></script>
     <meta name="theme-color" content="#000000" />
     <link
