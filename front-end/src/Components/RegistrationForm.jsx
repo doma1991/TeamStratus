@@ -17,7 +17,8 @@ class RegistrationForm extends React.Component {
       password: "",
       role: "U",
       route: null,
-      photo: ""
+      photo: "",
+      registration: 0
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +26,7 @@ class RegistrationForm extends React.Component {
   }
 
   async handleSubmit(event) {
+    try {
     event.preventDefault();
     let json = JSON.stringify({
       firstName: this.state.firstName,
@@ -48,8 +50,23 @@ class RegistrationForm extends React.Component {
       },
       body: json
     });
+
+//     if (!response.ok) {
+//     try {
+//       return <Redirect noThrow to="/error" />;
+//       throw new Error;
+//     } catch(error) {
+// console.log(error);
+//     } finally {
+//       return <Redirect noThrow to="/error" />;
+//     }}
+
     let data = await response.json();
     this.handleResponse(data);
+  } catch(error) {
+    console.log("Error:" + error);
+    return <Redirect noThrow to="/error" />;
+  }
   }
 
 
@@ -61,7 +78,7 @@ class RegistrationForm extends React.Component {
 
   handleResponse = data => {
     console.log(data.error);
-    if (this.state.login == data.login) {
+    if (this.state.login === data.login) {
       this.setState({
         firstName: "",
         lastName: "",
@@ -75,11 +92,11 @@ class RegistrationForm extends React.Component {
         role: "U",
         route: null,
         photo: "",
-        registration: true
+        registration: 2
       });
     } else {
       this.setState({
-        registration: false
+        registration: 1
       });
 
       // return <Redirect noThrow to="/error" />;
@@ -89,28 +106,19 @@ class RegistrationForm extends React.Component {
   render() {
     let text;
     let link;
-    let longText ="";
-    if (this.state.registration) {
-      text = "successful";
-      link = "/";
-      longText = (
-        <p id="registrationOutcome">
-          Registration {text}. Please click <Link to={link}>here</Link> to
-          continue.
-        </p>
-      );
+    let longText;
+    if (this.state.registration === 2) {
+   text = "successful";
+   link = '/';
+   longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
 
       // return <Redirect noThrow to="" />;
-    } else if (!this.state.registration) {
-      longText = (
-        <p id="registrationOutcome">
-          Registration {text}. Please click <Link to={link}>here</Link> to
-          continue.
-        </p>
-      );
+    } else if (this.state.registration === 1) {
+       longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
+
       text = "unsuccessful";
       link = "/register";
-    }
+    };
 
     const tags = [
       "First name:",
@@ -239,7 +247,7 @@ class RegistrationForm extends React.Component {
               </div>
             </div>
           </div>
-          {longText}
+          <p id="registrationOutcome">{longText}</p>
         </form>
       </div>
     );
