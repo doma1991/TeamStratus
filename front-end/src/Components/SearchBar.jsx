@@ -5,8 +5,9 @@ import DatePicker from "react-datepicker";
 // import moment from "moment";
 // import Weather from "./weather";
 
-import Button from "react-bootstrap/Button";
+import ToggleButton from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/Button";
+import ToggleButtonGroup from "react-bootstrap/Button";
 import "react-datepicker/dist/react-datepicker.css";
 
 // Also need to install moment byt running: npm install moment
@@ -21,13 +22,14 @@ class SearchBar extends React.Component {
       to: "",
       Date: "",
       endDate: "",
-      transportMode: "",
+      transportMode: "d",
       map: <MapsDirection />,
       result: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
+    this.handleChangeMode = this.handleChangeMode.bind(this);
   }
   handleClearForm(e) {
     this.setState({
@@ -42,15 +44,17 @@ class SearchBar extends React.Component {
   handleChange = valueName => {
     return event => {
       this.setState({ [valueName]: event.target.value });
-      console.log(this.state.transportMode);
+      console.log(this.state[valueName]);
     };
   };
 
-  // transHandleChange(e) {
-  //   let value = e.target.value;
-  //   let name = e.target.name;
-  //   this.setState({ transportMode: value });
-  // }
+
+handleChangeMode(event) {
+  this.setState({
+    transportMode: event.target.value
+  });
+}
+
 
   handleChangeDate = (field, date) => {
     this.setState({ [field]: date });
@@ -62,7 +66,7 @@ class SearchBar extends React.Component {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
       let URL =
-        baseURL + this.state.from + "/" + this.state.to + "/now/" + "d" + "/";
+        baseURL + this.state.from + "/" + this.state.to + "/now/" + this.state.transportMode + "/";
       let response = await fetch(URL);
       let data = await response.json();
       this.handleResponse(data);
@@ -139,51 +143,63 @@ class SearchBar extends React.Component {
             </div>
 
             <div className="container transport-fields p-3">
+
               <div className="row">
+
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="d"
-                      onClick={this.handleChange("transportMode")}
-                    >
+
+                   <input
+                                 type="radio"
+                                 value="d"
+                                 checked={this.state.transportMode === "d"}
+                                 onChange={this.handleChangeMode}
+                               />
                       <i class="fas fa-car fa-2x" />
-                    </Button>
-                  </label>
+
+
                 </div>
 
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="t"
-                      onClick={this.handleChange("transportMode")}
-                    >
+
+                   <input
+                                 type="radio"
+                                 value="t"
+                                 checked={this.state.transportMode === "t"}
+                                 onChange={this.handleChangeMode}
+                               />
                       <i class="fas fa-bus fa-2x" />
-                    </Button>
-                  </label>
+
+
                 </div>
 
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="w"
-                      onClick={this.handleChange("transportMode")}
-                    >
+
+                                      <input
+                                                    type="radio"
+                                                    value="w"
+                                                    checked={this.state.transportMode === "w"}
+                                                    onChange={this.handleChangeMode}
+                                                  />
                       <i class="fas fa-walking fa-2x" />
-                    </Button>
-                  </label>
+
+
                 </div>
 
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="b"
-                      onClick={this.handleChange("transportMode")}
-                    >
+
+                               <input
+                                             type="radio"
+                                             value="b"
+                                             checked={this.state.transportMode === "b"}
+                                             onChange={this.handleChangeMode}
+                                           />
                       <i class="fas fa-biking fa-2x" />
-                    </Button>
-                  </label>
+
+
                 </div>
-              </div>
+                </div>
+
+
             </div>
 
             <div className="form-group">
