@@ -18,11 +18,10 @@ const Navbar = () => {
       <div>
         <Link
           to="/register"
-          className="btn btn-outline-primary my-2 my-sm-0 mx-1"
-        >
+          className="btn btn-outline-primary my-2 my-sm-0 mx-1" id = "navregisterbutton">
           Register
         </Link>
-        <Link to="/login" className="btn btn-outline-primary my-2 my-sm-0 mx-1">
+        <Link to="/login" className="btn btn-outline-primary my-2 my-sm-0 mx-1" id = "navloginbutton">
           Login
         </Link>
       </div>
