@@ -67,7 +67,7 @@ class App extends React.Component {
           loggedIn={this.state.loggedIn}
         />
         <Router>
-          <Main path="/" />
+          <Main loggedIn={this.state.loggedIn} path="/" />
           <RegistrationForm path="register" />
           <LoginForm checkLogin={this.checkLogin} path="login" />
           <ErrorPage path="error" />

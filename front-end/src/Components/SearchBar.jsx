@@ -16,8 +16,6 @@ import PlacesAutocomplete, {
 // Also need to install moment byt running: npm install moment
 //
 
-var MapS = <MapContainer />;
-var MapD = <MapsDirection />;
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +29,7 @@ class SearchBar extends React.Component {
       toCountry: "",
       travelDate: "",
       transportMode: "d",
-      map: <MapsDirection />,
+      map: <h1>Please log in</h1>,
       result: false
     };
     this.handleClearForm = this.handleClearForm.bind(this);
@@ -164,7 +162,11 @@ class SearchBar extends React.Component {
 
   handleResponse = data => {
     localStorage.setItem("mapRequest", JSON.stringify(data));
-    this.setState({ map: <MapsDirection /> });
+    if (this.props.loggedIn) {
+      this.setState({ map: <MapsDirection /> });
+    } else {
+      this.setState({ map: <h1>Please log in</h1> });
+    }
 
     console.log(JSON.stringify(data));
   };

@@ -9,7 +9,7 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        <SearchBar />
+        <SearchBar loggedIn={this.props.loggedIn} />
 
         <h3>Weather testing</h3>
         <PopularWeather />
