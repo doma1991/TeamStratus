@@ -30,7 +30,6 @@ class SearchBar extends React.Component {
       toCity: "",
       toCountry: "",
       travelDate: "",
-      transportMode: "",
       transportMode: "d",
       map: <MapsDirection />,
       result: false

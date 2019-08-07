@@ -5,7 +5,7 @@ import { Redirect } from "@reach/router";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { login: "", password: "", isAuthenticated: false };
+    this.state = { login: "", password: "", isAuthenticated: 0 };
   }
 
   handleChange = event => {
@@ -27,13 +27,15 @@ class LoginForm extends React.Component {
 
         if (jwtToken !== null) {
           sessionStorage.setItem("jwt", jwtToken);
-          this.setState({ isAuthenticated: true });
-          this.props.checkLogin();
+          this.setState({ isAuthenticated: 2 });
+        } else {
+          this.setState({ isAuthenticated: 1 });
         }
+        this.props.checkLogin();
       })
       .catch(err => {
         console.error(err);
-        this.setState({ isAuthenticated: false });
+        this.setState({ isAuthenticated: 1 });
       });
   };
 
@@ -42,9 +44,14 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    if (this.state.isAuthenticated === true) {
+    let text;
+    if (this.state.isAuthenticated === 2) {
       console.log("success");
       return <Redirect noThrow to="" />;
+    }
+
+    if (this.state.isAuthenticated === 1) {
+      text = "Login unsuccessful. Please try again.";
     }
     return (
       <div id="signInContent" className="skycomSignin w-75 mx-auto">
@@ -89,7 +96,7 @@ class LoginForm extends React.Component {
                     <button onClick={this.login} id="signInButton">
                       Sign in
                     </button>
-
+                    <p>{text}</p>
                     <p>
                       <a
                         id="privacyPolicyLink"

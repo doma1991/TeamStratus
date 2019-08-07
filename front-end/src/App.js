@@ -12,7 +12,7 @@ import { DatePicker } from "react-datepicker";
 import CurrentLocation from "./Components/CurrentMapLocation";
 import MapContainer from "./Components/Map";
 import { Link } from "@reach/router";
-// import ErrorPage from "./Components/ErrorPage.jsx";
+import ErrorPage from "./Components/ErrorPage.jsx";
 console.log(process.env.REACT_APP_GOOGLE_API);
 
 class App extends React.Component {
@@ -70,7 +70,7 @@ class App extends React.Component {
           <Main path="/" />
           <RegistrationForm path="register" />
           <LoginForm checkLogin={this.checkLogin} path="login" />
-          <Main path="error" />
+          <ErrorPage path="error" />
         </Router>
       </div>
     );
