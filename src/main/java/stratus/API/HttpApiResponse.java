@@ -48,7 +48,7 @@ public class HttpApiResponse {
         JSONObject toReturnJson = new JSONObject();
         try {
             response = httpClient.execute(request);
-            //System.out.println("Response code : "+ response.getStatusLine().getStatusCode());
+            System.out.println("Response code : "+ response.getStatusLine().getStatusCode());
             String json_string = EntityUtils.toString(response.getEntity());
             toReturnJson = new JSONObject(json_string);
         } catch (IOException e) {

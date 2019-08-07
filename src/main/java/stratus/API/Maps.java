@@ -69,22 +69,33 @@ public class Maps {
 
         //API keys from Googlemaps API docs
         String apiKey = "AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I";
-        String depTime=Maps.stringToTime(date);
+        String depTime;
+        //depTime="now";
+        depTime= dateToGoogleTime(date);
+        System.out.println(depTime);
 
 
         //Creates a HTTPClient to start the query from the api
         HttpApiResponse har =new HttpApiResponse();
         String jsonString;
-        if((depTime=="now") && (mode=="driving")){
+        if((depTime.equals("now")) && (mode.equals("driving"))){
+            System.out.println("1");
             jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation+ "&destination=" + endLocation + "&mode=" + mode + "&key=" + apiKey);
         }
         else {
-            if((mode=="transit") && (transit_mode!="")){
-                jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&mode=" + mode + "&departure_time" + depTime +"&transit_mode="+transit_mode+ "&key=" + apiKey);
+            System.out.println("2");
+            if((mode.equals("transit")) && (transit_mode!="")){
+                System.out.println("3");
+                jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&mode=" + mode + "&departure_time=" + depTime +"&transit_mode="+transit_mode+ "&key=" + apiKey);
             }
-            else {jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&mode=" + mode + "&departure_time" + depTime + "&key=" + apiKey);
+
+            else {System.out.println("4");
+                System.out.println("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&mode=" + mode + "&departure_time=" + depTime + "&key=" + apiKey);
+                jsonString = har.getApiResponse("https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&mode=" + mode + "&departure_time=" + depTime + "&key=" + apiKey);
             }
         }
+        System.out.println("startLocation = [" + startLocation + "], endLocation = [" + endLocation + "], date = [" + date + "], transportMethod = [" + transportMethod + "]");
+        System.out.print(jsonString);
 
         String [] coord= getCoordinates(jsonString);
 
@@ -121,6 +132,19 @@ public static Date googleDateToDate(String date){
         }
 
         return dateF;
+}
+
+public static String dateToGoogleTime(String string){
+        if (string.equals("now")){
+            return"now";
+        }
+        else {
+            try{
+               Long date= Long.parseLong(string);
+               return date.toString();
+            }
+            catch( NumberFormatException e){ return "now";}
+        }
 }
 
 public static String transToMode(char method){
@@ -226,8 +250,8 @@ public static String getCountryCode(String lat, String lng) {
         /*scn = new Scanner(System.in);
         String string= getResponse();
         dataFromAPI(string);*/
-
-
+     // makeRoute("London", "Luton", "1565218800000", 'd');
+System.out.print(makeRoute("London", "Luton", "1565218800000", 'd'));
     }
 
 

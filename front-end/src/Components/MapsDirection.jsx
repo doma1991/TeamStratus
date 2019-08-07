@@ -37,10 +37,10 @@ destinationn= routed.endLongitude;
 message= routed.routeDetails+" possible route."
 
 
-if (routed.transportMethod==='d'){travel_mode= "DRIVING";}
-if (routed.transportMethod==='w'){travel_mode= "WALKING";}
-if (routed.transportMethod==='b'){travel_mode= "BICYCLING";}
-if (routed.transportMethod==='t'){travel_mode= "TRANSIT";}
+if (routed.transportMethod==="d"){travel_mode= "DRIVING";}
+if (routed.transportMethod==="w"){travel_mode= "WALKING";}
+if (routed.transportMethod==="b"){travel_mode= "BICYCLING";}
+if (routed.transportMethod==="t"){travel_mode= "TRANSIT";}
 console.log(travel_mode);
 }
 

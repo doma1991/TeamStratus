@@ -54,21 +54,24 @@ handleChangeMode(event) {
   this.setState({
     transportMode: event.target.value
   });
+  console.log(this.state.transportMode);
 }
 
 
   handleChangeDate(date) {
-
-    this.setState({ travelDate: date });
+    let datef= new Date(date).getTime();
+    this.setState({ travelDate: datef });
     console.log(this.state.travelDate);
   };
 
   async handleSubmit(event) {
+        let baseURL = "http://localhost:8080/getmaps/";
+        let URL =
+          baseURL + this.state.from + "/" + this.state.to + "/\""+String(this.state.travelDate)+"\"/" + this.state.transportMode + "/";
+   console.log(URL);
     try {
       event.preventDefault();
-      let baseURL = "http://localhost:8080/getmaps/";
-      let URL =
-        baseURL + this.state.from + "/" + this.state.to + "/now/" + this.state.transportMode + "/";
+
       let response = await fetch(URL);
       let data = await response.json();
       this.handleResponse(data);
