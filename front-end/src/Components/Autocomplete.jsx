@@ -7,7 +7,7 @@ import PlacesAutocomplete, {
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { address: "" };
+    this.state = { address: "", city: "", country: "" };
   }
 
   handleChange = address => {
@@ -15,10 +15,30 @@ class LocationSearchInput extends React.Component {
   };
 
   handleSelect = address => {
+    this.setState({ address });
+    this.separateAddress(address);
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log("Success", latLng))
       .catch(error => console.error("Error", error));
+  };
+
+  separateAddress = address => {
+    let currAddress = address;
+    console.log(typeof currAddress);
+    let result = [];
+    result = currAddress.split(",");
+    console.log(result);
+    let i = result.length;
+    let j = i - 1;
+    let city = result[0].trim();
+    let country = result[j].trim();
+    console.log(city);
+    console.log(country);
+    this.setState({ city: city });
+    this.setState({ country: country });
+
+    //strip white splace then concat. the city and country//
   };
 
   render() {
@@ -64,4 +84,5 @@ class LocationSearchInput extends React.Component {
     );
   }
 }
+
 export default LocationSearchInput;
