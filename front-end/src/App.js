@@ -12,7 +12,6 @@ import { DatePicker } from "react-datepicker";
 import CurrentLocation from "./Components/CurrentMapLocation";
 import MapContainer from "./Components/Map";
 import { Link } from "@reach/router";
-
 // import ErrorPage from "./Components/ErrorPage.jsx";
 console.log(process.env.REACT_APP_GOOGLE_API);
 
