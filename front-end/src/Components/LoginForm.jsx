@@ -31,6 +31,7 @@ class LoginForm extends React.Component {
         } else {
           this.setState({ isAuthenticated: 1 });
         }
+        this.props.checkLogin();
       })
       .catch(err => {
         console.error(err);
@@ -47,10 +48,10 @@ class LoginForm extends React.Component {
     if (this.state.isAuthenticated === 2) {
       console.log("success");
       return <Redirect noThrow to="" />;
-    } 
-    
-    if (this.state.isAuthenticated === 1){
-      text = "Login unsuccessful. Please try again."
+    }
+
+    if (this.state.isAuthenticated === 1) {
+      text = "Login unsuccessful. Please try again.";
     }
     return (
       <div id="signInContent" className="skycomSignin w-75 mx-auto">
@@ -92,7 +93,9 @@ class LoginForm extends React.Component {
                   </div>
 
                   <div className="buttonRow">
-                    <button onClick={this.login} id="signInButton">Sign in</button>
+                    <button onClick={this.login} id="signInButton">
+                      Sign in
+                    </button>
                     <p>{text}</p>
                     <p>
                       <a

@@ -81,8 +81,10 @@
 .searchPanel {
   border: 1px solid #cccccc;
   margin-left: 6vw;
-  background-color: white;
+  background-color: #f0f8ff;
   max-width: 320px;
+  float: left;
+  display: inline-block;
   -webkit-animation: fadeInSlow 2s ease 0s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeInSlow 2s ease 0s; /* Firefox < 16 */
   -ms-animation: fadeInSlow 2s ease 0s; /* Internet Explorer */
@@ -116,11 +118,38 @@
   color: none;
 }
 .mapBox {
-  padding-top: 100vh;
+  display: inline-block;
+  width: 55vw;
 }
+.btn-primary {
+  color: #282c34 !important;
+  background-color: #f0f8ff !important;
+  border-color: #f0f8ff !important;
+}
+.col-sm-3 {
+  padding-left: 0 !important;
+}
+.welcome {
+  padding-bottom: 10vh;
+}
+
 @media screen and (max-width: 799px) {
   .searchPanel {
     margin: 5vh auto;
+    display: block;
+    float: initial;
+  }
+  .mapBox {
+    display: block;
+    width: 100vw;
+  }
+  .search-splash {
+    height: unset;
+  }
+  .col-sm-3 {
+    padding: 0px !important;
+    margin: 0 auto;
+    width: 25% !important;
   }
 }
 
@@ -177,7 +206,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -190,7 +219,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -203,7 +232,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -216,7 +245,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -229,7 +258,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
