@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
     this.state = {
       from: "",
       to: "",
-      Date: "",
+      travelDate: "",
       endDate: "",
       transportMode: "d",
       map: <MapsDirection />,
@@ -28,7 +28,8 @@ class SearchBar extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleResponse = this.handleResponse.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleChangeMode = this.handleChangeMode.bind(this);
   }
   handleClearForm(e) {
@@ -56,8 +57,9 @@ handleChangeMode(event) {
 }
 
 
-  handleChangeDate = (field, date) => {
-    this.setState({ [field]: date });
+  handleChangeDate(date) {
+
+    this.setState({ travelDate: date });
     console.log(this.state.travelDate);
   };
 
@@ -131,10 +133,10 @@ handleChangeMode(event) {
                     showTimeSelect
                     timeFormat="HH:mm"
                     timeIntervals={15}
-                    dateFormat="yyyy-MM-dd HH:mm"
+                    dateFormat="yyyy-MM-dd h:mm"
                     timeCaption="time"
                     selected={this.state.travelDate}
-                    onChange={this.handleChangeDate.bind(this, "travelDate")}
+                    onChange={this.handleChangeDate}
 
                     // should return "yyyy-MM-dd 'at' HH:mm" to pass to api
                   />
