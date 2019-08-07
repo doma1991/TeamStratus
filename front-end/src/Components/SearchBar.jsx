@@ -32,7 +32,6 @@ export class SearchBar extends Component {
       toCity: "",
       toCountry: "",
       travelDate: "",
-      transportMode: "",
       transportMode: "d",
       map: <MapsDirection />,
       result: true
@@ -45,6 +44,7 @@ export class SearchBar extends Component {
     this.toHandleSelect = this.toHandleSelect.bind(this);
     this.toSeparateAddress = this.toSeparateAddress.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeMode = this.handleChangeMode.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -147,7 +147,12 @@ export class SearchBar extends Component {
         this.state.toCity +
         "+" +
         this.state.toCountry +
-        "/now/d/";
+        '/"' +
+        String(this.state.travelDate) +
+        '"/' +
+        this.state.transportMode +
+        "/";
+
       console.log(URL);
       let response = await fetch(URL);
       let data = await response.json();
@@ -161,7 +166,11 @@ export class SearchBar extends Component {
 
   handleResponse = data => {
     localStorage.setItem("mapRequest", JSON.stringify(data));
-    this.setState({ map: <MapsDirection /> });
+    if (this.props.loggedIn) {
+      this.setState({ map: <MapsDirection /> });
+    } else {
+      this.setState({ map: <h1>Please log in</h1> });
+    }
 
     console.log(JSON.stringify(data));
   };
