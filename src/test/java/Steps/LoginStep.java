@@ -1,11 +1,13 @@
 package Steps;
 import PageObjects.LoginPage;
+import PageObjects.RegistrationPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.concurrent.TimeUnit;
 
+import io.cucumber.java.After;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +19,7 @@ public class LoginStep {
     LoginPage loginPage;
     PageObjectManager pageObjectManager;
     ConfigFileReader configFileReader;
+    RegistrationPage registrationPage;
 
     @Given("I navigate to the login page")
     public void iNavigateToTheLoginPage() {
@@ -47,13 +50,14 @@ public class LoginStep {
     @And("I click the submit")
     public void iClickTheSubmit() {
         loginPage.clickSignInButton();
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 
     }
 
     @Then("i should be logged in")
     public void iShouldBeLoggedIn() {
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        Assert.assertEquals("http://localhost:3000",driver.getCurrentUrl());
+
+        Assert.assertEquals("http://localhost:3000",registrationPage.getCurrentPageUrl());
         driver.quit();
     }
 
@@ -69,4 +73,5 @@ public class LoginStep {
         Assert.assertEquals("http://localhost:3000/login",driver.getCurrentUrl());
         driver.quit();
     }
+
 }

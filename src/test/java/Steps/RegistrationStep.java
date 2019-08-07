@@ -257,4 +257,5 @@ public class RegistrationStep {
     @Then("an invalid input error message should be displayed")
     public void anInvalidInputErrorMessageShouldBeDisplayed() {
     }
+
 }

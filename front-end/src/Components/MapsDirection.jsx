@@ -12,10 +12,10 @@ import {
   Projection
 } from "react-google-maps";
 import React, { Component, Fragment } from "react";
-
 import { compose, withProps, lifecycle } from "recompose";
-
 const google = (window.google = window.google ? window.google : {});
+
+
 
 class MapsDirection extends React.Component {
   constructor(props) {
@@ -28,6 +28,7 @@ class MapsDirection extends React.Component {
     var destinationa;
     var destinationn;
     var travel_mode;
+    var message;
 
     try {
       routed = JSON.parse(localStorage.getItem("mapRequest"));
@@ -35,19 +36,35 @@ class MapsDirection extends React.Component {
       originn = routed.startLongitude;
       destinationa = routed.endLatitude;
       destinationn = routed.endLongitude;
-      travel_mode = "DRIVING";
+      message = routed.routeDetails + " possible route.";
+
+      if (routed.transportMethod === "d") {
+        travel_mode = "DRIVING";
+      }
+      if (routed.transportMethod === "w") {
+        travel_mode = "WALKING";
+      }
+      if (routed.transportMethod === "b") {
+        travel_mode = "BICYCLING";
+      }
+      if (routed.transportMethod === "t") {
+        travel_mode = "TRANSIT";
+      }
+      console.log(travel_mode);
     } catch (e) {
       origina = 51.507309;
       originn = -0.128012;
       destinationa = 51.488999;
       destinationn = -0.328587;
       travel_mode = "DRIVING";
+      message = "your search failed, please try again being more precise.";
     }
 
     const DirectionsComponent = compose(
       withProps({
         googleMapURL:
-          "https://maps.googleapis.com/maps/api/js?key=AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I&callback=initMap",
+        `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API}`,
+
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `400px` }} />,
         mapElement: <div style={{ height: `100%` }} />
@@ -56,13 +73,15 @@ class MapsDirection extends React.Component {
       withGoogleMap,
       lifecycle({
         componentDidMount() {
+         
+      
           const DirectionsService = new google.maps.DirectionsService();
-
+          console.log(DirectionsComponent.googleMapURL);
           DirectionsService.route(
             {
               origin: new google.maps.LatLng(origina, originn),
               destination: new google.maps.LatLng(destinationa, destinationn),
-              travelMode: google.maps.TravelMode.DRIVING
+              travelMode: google.maps.TravelMode[travel_mode]
             },
             (result, status) => {
               if (status === google.maps.DirectionsStatus.OK) {
@@ -89,6 +108,7 @@ class MapsDirection extends React.Component {
               <DirectionsRenderer directions={props.directions} />
             )}
           </GoogleMap>
+          {message}
         </div>
       </div>
     ));

@@ -1,7 +1,6 @@
 package stratus.DAO;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import stratus.DAO.Route;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,8 +23,8 @@ public class User {
     private String password;
     private String email;
     private String telephoneNumber;
-    private String role;
-    private String photo;
+    private String role = "U";
+    private String photo = "";
 
 //    cascade = {CascadeType.PERSIST, CascadeType.MERGE},
 
@@ -40,7 +39,7 @@ public class User {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public User(String firstName, String lastName, String address, String city, String postCode, String login, String password, String email, String telephoneNumber, String role, String photo, List<Route> route) {
+    public User(String firstName, String lastName, String address, String city, String postCode, String login, String password, String email, String telephoneNumber, List<Route> route) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -50,8 +49,6 @@ public class User {
         this.password = password;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
-        this.role = role;
-        this.photo = photo;
         this.route = route;
     }
 

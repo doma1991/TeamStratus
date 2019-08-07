@@ -1,17 +1,11 @@
 package stratus.API;
 import org.json.JSONArray;
-
 import org.json.JSONObject;
 import stratus.DAO.Route;
-import stratus.DAO.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringJoiner;
 
 public class Maps {
 
@@ -178,7 +172,7 @@ public static String dataFromAPI(String string){ //returns number of routes, dis
         JSONObject trip=legs.getJSONObject(0);
         String duration= trip.getJSONObject("duration").getString("text");
         String distance= trip.getJSONObject("distance").getString("text");
-        String a=duration+","+distance+","+Integer.toString(routes.length());
+        String a=duration+", "+distance+", "+Integer.toString(routes.length());
         return a;
     }
     return("");

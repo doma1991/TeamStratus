@@ -15,9 +15,8 @@ class RegistrationForm extends React.Component {
       email: "",
       login: "",
       password: "",
-      role: "U",
       route: null,
-      photo: ""
+      registration: 0
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -25,42 +24,48 @@ class RegistrationForm extends React.Component {
   }
 
   async handleSubmit(event) {
-    event.preventDefault();
-    let jsonData = JSON.stringify({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      address: this.state.address,
-      city: this.state.city,
-      postCode: this.state.postCode,
-      telephoneNumber: this.state.telephoneNumber,
-      email: this.state.email,
-      login: this.state.login,
-      password: this.state.password,
-      role: "U",
-      route: null,
-      photo: ""
-    });
+    try {
+      event.preventDefault();
+      let json = JSON.stringify({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        address: this.state.address,
+        city: this.state.city,
+        postCode: this.state.postCode,
+        telephoneNumber: this.state.telephoneNumber,
+        email: this.state.email,
+        login: this.state.login,
+        password: this.state.password,
+        route: null,
+        photo: ""
+      });
+      let response = await fetch("http://localhost:8080/users/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: json
+      });
 
-    let data = await await fetch("http://localhost:8080/users/register", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: jsonData
-    })
-      .then(response => { 
-        console.log(response);
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        } else {
-          return response.json();
-          // this.handleResponse(info);
-        }
-      })
-      .catch(error => {
-        console.log("error:" + error);
-      }).finally(this.handleResponse(data));
+      //     if (!response.ok) {
+      //     try {
+      //       return <Redirect noThrow to="/error" />;
+      //       throw new Error;
+      //     } catch(error) {
+      // console.log(error);
+      //     } finally {
+      //       return <Redirect noThrow to="/error" />;
+      //     }}
+
+      let data = await response.json();
+      this.handleResponse(data);
+    } catch (error) {
+      console.log("Error:" + error);
+      this.setState({
+        registration: 1
+      });
+    }
   }
 
   handleChange = valueName => {
@@ -70,7 +75,8 @@ class RegistrationForm extends React.Component {
   };
 
   handleResponse = data => {
-    if (data.response.ok) {
+    console.log(data.error);
+    if (this.state.login === data.login) {
       this.setState({
         firstName: "",
         lastName: "",
@@ -83,15 +89,12 @@ class RegistrationForm extends React.Component {
         password: "",
         role: "U",
         route: null,
-        photo: "",
-        registration: true
+        registration: 2
       });
     } else {
       this.setState({
-        registration: false
+        registration: 1
       });
-
-      return <Redirect noThrow to="/error" />;
     }
   };
 
@@ -99,7 +102,7 @@ class RegistrationForm extends React.Component {
     let text;
     let link;
     let longText;
-    if (this.state.registration) {
+    if (this.state.registration === 2) {
       text = "successful";
       link = "/";
       longText = (
@@ -109,16 +112,21 @@ class RegistrationForm extends React.Component {
         </p>
       );
 
-      // return <Redirect noThrow to="" />;
-    } else if (!this.state.registration == false) {
+      // return <Redirect noThrow to="/" />;
+    }
+
+    if (this.state.registration === 1) {
       longText = (
         <p id="registrationOutcome">
           Registration {text}. Please click <Link to={link}>here</Link> to
           continue.
         </p>
       );
+
       text = "unsuccessful";
       link = "/register";
+
+      return <Redirect noThrow to="/error" />;
     }
 
     const tags = [
@@ -203,7 +211,7 @@ class RegistrationForm extends React.Component {
 
     return (
       <div className="regPanel  mx-auto">
-        <div class="previous-member p-1">
+        <div className="previous-member p-1">
           <span id="preamble">Already have a Sky iD?</span>
 
           <a
@@ -235,9 +243,7 @@ class RegistrationForm extends React.Component {
               );
             })}
 
-            <input type="hidden" name="role" value="U" />
             <input type="hidden" name="route" />
-            <input type="hidden" name="photo" />
             <div className="row justify-content-center">
               <div className="submit-row">
                 <input
@@ -248,7 +254,7 @@ class RegistrationForm extends React.Component {
               </div>
             </div>
           </div>
-          {longText}
+          <p id="registrationOutcome">{longText}</p>
         </form>
       </div>
     );
