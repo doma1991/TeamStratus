@@ -34,7 +34,7 @@ export class SearchBar extends Component {
       travelDate: "",
       transportMode: "d",
       map: <MapsDirection />,
-      result: true
+      result: false
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);
