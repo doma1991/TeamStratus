@@ -26,6 +26,29 @@ public class HomePage {
     @FindBy(how = How.ID, using = "navregisterbutton")
     private WebElement nav_registerbutton ;
 
+    @FindBy(how = How.NAME, using = "From" )
+    private WebElement from_input ;
+
+    @FindBy(how = How.NAME, using = "To" )
+    private WebElement to_input ;
+
+    @FindBy(how = How.CLASS_NAME, using ="react-datepicker__input-container")
+    private WebElement datepicker ;
+
+
+
+    public void sendKeyToFromInput(String fromlocation){
+        from_input.sendKeys(fromlocation);
+    }
+
+    public void sendKeystoDatepicker(String date){
+        datepicker.sendKeys();
+    }
+
+    public void sendKeyToToInput(String tolocation){
+        from_input.sendKeys(tolocation);
+    }
+
 
     public void navigateTo_HomePage() {
         driver.navigate().to("localhost:3000");

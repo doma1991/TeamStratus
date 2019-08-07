@@ -44,26 +44,30 @@ public class HomePageSteps {
 
     @Then("i should be redirected to the registration page")
     public void iShouldBeRedirectedToTheRegistrationPage() {
+
         Assert.assertEquals("http://localhost:3000/register",registrationPage.getCurrentPageUrl());
     }
 
     @When("i click the log in button in the navbar")
     public void iClickTheLogInButtonInTheNavbar() {
+        homePage.clickNavLoginButton();
 
     }
 
     @When("I enter a valid location in the From input box")
     public void iEnterAValidLocationInTheFromInputBox() {
 
+        homePage.sendKeyToFromInput("Luton");
     }
 
     @And("I enter a valid location in the To input box")
     public void iEnterAValidLocationInTheToInputBox() {
+        homePage.sendKeyToToInput("Osterley");
     }
 
     @And("I select a valid date")
     public void iSelectAValidDate() {
-
+     homePage.sendKeystoDatepicker("2020-01-01 01:00");
     }
 
     @And("I select the driving mode")
