@@ -1,13 +1,18 @@
+import MapsDirection from "./MapsDirection";
+import MapContainer from "./Map";
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
-import moment from "moment";
-import Weather from "./weather";
+// import moment from "moment";
+// import Weather from "./weather";
 
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/Button";
 import "react-datepicker/dist/react-datepicker.css";
 
 // Also need to install moment byt running: npm install moment
 //
-
+var MapS = <MapContainer />;
+var MapD = <MapsDirection />;
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -15,122 +20,183 @@ class SearchBar extends React.Component {
     this.state = {
       from: "",
       to: "",
-      startDate: "",
+      Date: "",
       endDate: "",
-      searchResultId: ""
+      transportMode: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
   }
-
-  // componentDidMount() {
-  //   fetch()
-  //     .then(res => res.json())
-  //     .then(json => this.setState({ data: json }));
-  // }
-
-  async handleSubmit(event) {
-    try {
-      event.preventDefault();
-      let baseURL = "http://localhost:8080/getmaps/";
-      let URL = baseURL + this.state.from + "/" + this.state.to + "/now/d/";
-      let response = await fetch(URL);
-      // let response = await fetch(
-      //   "http://localhost:8080/getmaps/London/Cambridge/2019-09-01%20at%2011:00/d/"
-      // );
-      let data = await response.json();
-      this.handleResponse(data);
-    } catch (e) {
-      console.log("error", e);
-    }
+  handleClearForm(e) {
+    this.setState({
+      from: "",
+      to: "",
+      travelDate: "",
+      transportMode: "",
+      address: ""
+    });
   }
 
   handleChange = valueName => {
     return event => {
       this.setState({ [valueName]: event.target.value });
+      console.log(this.state.transportMode);
     };
   };
 
+  // transHandleChange(e) {
+  //   let value = e.target.value;
+  //   let name = e.target.name;
+  //   this.setState({ transportMode: value });
+  // }
+
   handleChangeDate = (field, date) => {
     this.setState({ [field]: date });
+    console.log(this.state.travelDate);
   };
+
+  async handleSubmit(event) {
+    try {
+      event.preventDefault();
+      let baseURL = "http://localhost:8080/getmaps/";
+      let URL =
+        baseURL + this.state.from + "/" + this.state.to + "/now/" + "d" + "/";
+      let response = await fetch(URL);
+      let data = await response.json();
+      this.handleResponse(data);
+    } catch (e) {
+      console.log("error", e);
+    }
+    this.handleClearForm();
+  }
 
   handleResponse = data => {
-    localStorage.setItem("mapRequest", data);
+    localStorage.setItem("mapRequest", JSON.stringify(data));
+    MapS = <MapContainer />;
     // let storage = data.endLatitude;
     // this.setState({ searchResultId: storage });
-    console.log(data);
+    console.log(JSON.stringify(data));
   };
 
-  triggerChildAlert(){
-    this.ref.weather.printId();
+  triggerChildAlert() {
+    // this.ref.weather.printId();
   }
 
   render() {
     return (
-
-      <div>
-        <h1>{this.state.data}</h1>
-        <Weather ref="weather" getRouteId={this.state.searchResultId}
-        handleChange={this.handleChange}
-
-        />
-
-        <form onSubmit={this.handleSubmit}>
-          <label>From: </label>
-          <input
-            type="text"
-            placeholder="From"
-            name="from"
-            value={this.state.from}
-            onChange={this.handleChange("from")}
-          />
-          <div className="container">
-            <div className="form-group">
-              <label>Select Start Date: </label>
-              <DatePicker
-                placeholder="Select start date"
-                todayButton={"Today"}
-                name="startDate"
-                selected={this.state.startDate}
-                onChange={this.handleChangeDate.bind(this, "startDate")}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeCaption="time"
-              />
+      <div className="search-splash">
+        <div className="welcome ">
+          <h1 className="page-header-one splash-title">GetYourWay</h1>
+        </div>
+        <div className="searchPanel">
+          <div className="panelHeader">
+            <div id="header">
+              <a href="https://www.sky.com" className="login-logo" />
             </div>
           </div>
-          <label>To: </label>
-          <input
-            type="text"
-            placeholder="To"
-            name="to"
-            value={this.state.to}
-            onChange={this.handleChange("to")}
-          />
-          <div className="container">
-            <div className="form-group">
-              <label>Select End Date: </label>
-              <DatePicker
-                placeholder="Select end date"
-                todayButton={"Today"}
-                selected={this.state.endDate}
-                onChange={this.handleChangeDate.bind(this, "endDate")}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeCaption="time"
+
+          <form onSubmit={this.handleSubmit}>
+            <div className="location-search d-flex p-3">
+              <label>From: </label>
+              <input
+                type="text"
+                placeholder="From"
+                name="from"
+                value={this.state.from}
+                onChange={this.handleChange("from")}
               />
             </div>
-          </div>
-          <div className="form-group">
-            <button className="btn btn-success" onClick={this.triggerChildAlert}>Go!</button>
-          </div>
-        </form>
+            <div className="location-search d-flex p-3">
+              <label>To: </label>
+              <input
+                type="text"
+                placeholder="To"
+                name="to"
+                value={this.state.to}
+                onChange={this.handleChange("to")}
+              />
+            </div>
+            <div className="container date-fields p-3">
+              <div className="row">
+                <div className="w-100 p-2">
+                  <label>Select Start Date: </label>
+                  <DatePicker
+                    placeholder="Select travel date"
+                    todayButton={"Today"}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={15}
+                    dateFormat="yyyy-MM-dd HH:mm"
+                    timeCaption="time"
+                    selected={this.state.travelDate}
+                    onChange={this.handleChangeDate.bind(this, "travelDate")}
+
+                    // should return "yyyy-MM-dd 'at' HH:mm" to pass to api
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="container transport-fields p-3">
+              <div className="row">
+                <div className="col-sm-3">
+                  <label>
+                    <Button
+                      value="d"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-car fa-2x" />
+                    </Button>
+                  </label>
+                </div>
+
+                <div className="col-sm-3">
+                  <label>
+                    <Button
+                      value="t"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-bus fa-2x" />
+                    </Button>
+                  </label>
+                </div>
+
+                <div className="col-sm-3">
+                  <label>
+                    <Button
+                      value="w"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-walking fa-2x" />
+                    </Button>
+                  </label>
+                </div>
+
+                <div className="col-sm-3">
+                  <label>
+                    <Button
+                      value="b"
+                      onClick={this.handleChange("transportMode")}
+                    >
+                      <i class="fas fa-biking fa-2x" />
+                    </Button>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <button
+                className="btn btn-success"
+                onClick={this.triggerChinldAlert}
+              >
+                Go!
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="mapBox">{MapD}</div>
       </div>
     );
   }

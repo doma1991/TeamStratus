@@ -8,11 +8,16 @@
     "bootstrap": "^4.3.1",
     "moment": "^2.24.0",
     "react": "^16.8.6",
+    "react-bootstrap": "1.0.0-beta.10",
     "react-date-picker": "^7.8.0",
     "react-datepicker": "^2.8.0",
     "react-datetime": "^2.16.3",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-google-maps": "^9.4.5",
+    "react-load-script": "0.0.6",
+    "react-places-autocomplete": "7.2.1",
+    "react-scripts": "3.0.1",
+    "react-skycons": "^0.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,8 +42,11 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.10.1",
-    "skycons": "1.0.0"
-
+    "skycons": "^1.0.0",
+    "@types/googlemaps": "^3.37.0",
+    "@types/markerclustererplus": "^2.1.33",
+    "@types/react": "^15.6.27",
+    "jquery": "^3.4.1",
+    "typescript": "^3.5.3"
   }
-
 }

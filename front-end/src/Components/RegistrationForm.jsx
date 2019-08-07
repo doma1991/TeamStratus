@@ -41,44 +41,43 @@ class RegistrationForm extends React.Component {
       photo: ""
     });
 
-    let data = await (await (fetch("http://localhost:8080/users/register", {
+    let data = await await fetch("http://localhost:8080/users/register", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: jsonData
-    }).then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      } else {
-      let info = response.json();
-      this.handleResponse(info);
-      }
-    }).catch(error => {
-      console.log("error:" + error);
-      // this.setState({registration: false});
-    // return <Redirect noThrow to="/error" />;
-  })
-  // .finally(info => {this.handleResponse(info);})
-    ));
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        } else {
+          let info = response.json();
+          this.handleResponse(info);
+        }
+      })
+      .catch(error => {
+        console.log("error:" + error);
+        // this.setState({registration: false});
+        // return <Redirect noThrow to="/error" />;
+      });
+    // .finally(info => {this.handleResponse(info);})
     //   function(response) {
     //   if (!response.ok) {
     //     throw Error(response.statusText);
     // }
-    // }).then(function(response) { 
+    // }).then(function(response) {
     //   console.log("ok"); })
     // .catch(function(error) {
     //     console.log(error = "there has been an error");
     //     return <Redirect noThrow to="/error" />;
 
-// let data = await response.json()
-// .catch(function(){
-//   return <Redirect noThrow to="/error" />;
-// });
-
-    
-  };
+    // let data = await response.json()
+    // .catch(function(){
+    //   return <Redirect noThrow to="/error" />;
+    // });
+  }
 
   handleChange = valueName => {
     return event => {
@@ -86,53 +85,57 @@ class RegistrationForm extends React.Component {
     };
   };
 
-  handleResponse = (data) => {
-   if (this.state.login == data.login) {
-
-    this.setState({
-      firstName: "",
-      lastName: "",
-      address: "",
-      city: "",
-      postCode: "",
-      telephoneNumber: "",
-      email: "",
-      login: "",
-      password: "",
-      role: "U",
-      route: null,
-      photo: "",
-      registration: true
-    });
-  
-   } else {
-     this.setState({
-       registration: false
-     });
+  handleResponse = data => {
+    if (this.state.login == data.login) {
+      this.setState({
+        firstName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        postCode: "",
+        telephoneNumber: "",
+        email: "",
+        login: "",
+        password: "",
+        role: "U",
+        route: null,
+        photo: "",
+        registration: true
+      });
+    } else {
+      this.setState({
+        registration: false
+      });
 
       return <Redirect noThrow to="/error" />;
-   }
-  
-    
+    }
   };
 
   render() {
-    
-let text;
-let link;
-let longText;
-if (this.state.registration) {
-  
-  text = "successful";
-  link = '/';
-  longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
+    let text;
+    let link;
+    let longText;
+    if (this.state.registration) {
+      text = "successful";
+      link = "/";
+      longText = (
+        <p id="registrationOutcome">
+          Registration {text}. Please click <Link to={link}>here</Link> to
+          continue.
+        </p>
+      );
 
-  // return <Redirect noThrow to="" />;
-} else if(!this.state.registration == false) {
-  longText = <p id="registrationOutcome">Registration {text}. Please click <Link to={link}>here</Link> to continue.</p>;
-  text = "unsuccessful";
-  link = '/register';
-}
+      // return <Redirect noThrow to="" />;
+    } else if (!this.state.registration == false) {
+      longText = (
+        <p id="registrationOutcome">
+          Registration {text}. Please click <Link to={link}>here</Link> to
+          continue.
+        </p>
+      );
+      text = "unsuccessful";
+      link = "/register";
+    }
 
     const tags = [
       "First name:",
@@ -211,40 +214,59 @@ if (this.state.registration) {
         value={this.state.password}
         onChange={this.handleChange("password")}
         required
-      />,
-      <input
-        type="text"
-        name="photo"
-        onChange={this.handleChange("photo")}
-        value=""
       />
     ];
 
-
-
     return (
-      <form onSubmit={this.handleSubmit} method="post">
-        <div className="container">
-          {fields.map((field, count) => {
-            let linkContent = tags[count];
-            return (
-              <div key={linkContent} className="row justify-content-center">
-                <div className="col-sm-4">{linkContent}</div>
-                <div className="col-sm-4">{field}</div>
-              </div>
-            );
-          })}
+      <div className="regPanel  mx-auto">
+        <div class="previous-member p-1">
+          <span id="preamble">Already have a Sky iD?</span>
 
-          <input type="hidden" name="role" value="U" />
-          <input type="hidden" name="route" />
-          <div className="row justify-content-center">
-            <div className="col-sm-4">
-              <input className="btn btn-primary" name="submit" type="submit" value="Submit" />
+          <a
+            id="signinLink"
+            href="/login"
+            data-description="Sign in"
+            data-tracking-label="sign-in"
+          >
+            Sign in
+          </a>
+        </div>
+        <div className="panelHeader text-center">
+          <h1 className="page-header-two">Register for Sky GYW</h1>
+        </div>
+        <form onSubmit={this.handleSubmit}>
+          <div className="container text-left">
+            {fields.map((field, count) => {
+              let linkContent = tags[count];
+              return (
+                <div
+                  key={linkContent}
+                  className="row justify-content-center p-1"
+                >
+                  <div>
+                    <label htmlFor={field.name}>{linkContent}</label>
+                    {field}
+                  </div>
+                </div>
+              );
+            })}
+
+            <input type="hidden" name="role" value="U" />
+            <input type="hidden" name="route" />
+            <input type="hidden" name="photo" />
+            <div className="row justify-content-center">
+              <div className="submit-row">
+                <input
+                  className="btn btn-outline-primary"
+                  type="submit"
+                  value="Register"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        {longText}
-      </form>
+          {longText}
+        </form>
+      </div>
     );
   }
 }

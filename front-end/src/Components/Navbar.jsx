@@ -5,29 +5,25 @@ const Navbar = () => {
   return (
     <nav className="navbar d-flex flex-row justify-content-between navbar-dark">
       <div className="mob-logo">
-        <a
-          href="/"
-          className="mast-c-header__logo mast-js-focus"
-          data-tracking-label="masthead_home_logo"
-        >
-          <i className="fas fa-bars" />
-        </a>
+        <a href="/" className="mast-c-header__logo mast-js-focus" />
 
         <span className="navbar-brand mb-0 h1">GetYourWay</span>
       </div>
       <div className="main-logo">
-        <a
-          href="/"
-          className="mast-c-header__logo mast-js-focus"
-          data-tracking-label="masthead_home_logo"
-        />
+        <Link to="/" className="mast-c-header__logo mast-js-focus" />
 
         <span className="navbar-brand mb-0 h1">GetYourWay</span>
       </div>
 
       <div>
-        <Link to="/register" className="btn btn-outline-primary my-2 my-sm-0">
+        <Link
+          to="/register"
+          className="btn btn-outline-primary my-2 my-sm-0 mx-1"
+        >
           Register
+        </Link>
+        <Link to="/login" className="btn btn-outline-primary my-2 my-sm-0 mx-1">
+          Login
         </Link>
       </div>
     </nav>
