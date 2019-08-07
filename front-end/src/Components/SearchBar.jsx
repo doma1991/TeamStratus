@@ -30,7 +30,7 @@ class SearchBar extends React.Component {
       travelDate: "",
       transportMode: "d",
       map: <h1>Please log in</h1>,
-      result: false
+      result: true
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);

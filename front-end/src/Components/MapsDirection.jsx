@@ -1,7 +1,7 @@
 /* global google */
 import { withGoogleMap, withScriptjs, GoogleMap, DirectionsService, DirectionsRenderer, Marker,Polyline, lineSymbol,Point, Projection} from 'react-google-maps';
 import React, { Component , Fragment} from 'react';
-
+import WeatherMap from './WeatherMap';
 import {compose, withProps,lifecycle} from 'recompose';
 
 
@@ -18,7 +18,7 @@ super(props)
 }
 render(){
 
-
+var weather=<WeatherMap/>;
 var routed;
 var origina;
 var originn;
@@ -104,6 +104,7 @@ if(status === google.maps.DirectionsStatus.OK){
 
       </GoogleMap>
       {message}
+      {weather}
       </div>
       </div>
     );
