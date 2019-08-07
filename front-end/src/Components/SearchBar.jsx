@@ -6,6 +6,7 @@ import moment from "moment";
 import Weather from "./weather";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/Button";
+import ToggleButtonGroup from "react-bootstrap/Button";
 import "react-datepicker/dist/react-datepicker.css";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -29,7 +30,9 @@ class SearchBar extends React.Component {
       toCity: "",
       toCountry: "",
       travelDate: "",
-      transportMode: ""
+      transportMode: "",
+      transportMode: "d",
+      map: <MapsDirection />
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);
@@ -52,7 +55,8 @@ class SearchBar extends React.Component {
       toCity: "",
       toCountry: "",
       travelDate: "",
-      transportMode: ""
+      transportMode: "",
+      address: ""
     });
   }
 
@@ -112,26 +116,25 @@ class SearchBar extends React.Component {
   handleChange = valueName => {
     return event => {
       this.setState({ [valueName]: event.target.value });
-      console.log(this.state.transportMode);
+      console.log(this.state[valueName]);
     };
   };
 
-  // transHandleChange(e) {
-  //   let value = e.target.value;
-  //   let name = e.target.name;
-  //   this.setState({ transportMode: value });
-  // }
+  handleChangeMode(event) {
+    this.setState({
+      transportMode: event.target.value
+    });
+  }
 
-  handleChangeDate = (field, date) => {
-    this.setState({ [field]: date });
+  handleChangeDate(date) {
+    this.setState({ travelDate: date });
     console.log(this.state.travelDate);
-  };
+  }
 
   async handleSubmit(event) {
     try {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
-      // let URL = "http://localhost:8080/getmaps/London/Manchester/now/d/";
       let URL =
         baseURL +
         this.state.fromCity +
@@ -155,15 +158,14 @@ class SearchBar extends React.Component {
 
   handleResponse = data => {
     localStorage.setItem("mapRequest", JSON.stringify(data));
-    MapS = <MapContainer />;
-    // let storage = data.endLatitude;
-    // this.setState({ searchResultId: storage });
+    this.setState({ map: <MapsDirection /> });
+
     console.log(JSON.stringify(data));
   };
 
-  triggerChildAlert() {
-    // this.ref.weather.printId();
-  }
+  triggerChildAlert = () => {
+    this.setState({ result: true });
+  };
 
   render() {
     return (
@@ -177,6 +179,7 @@ class SearchBar extends React.Component {
               <a href="https://www.sky.com" className="login-logo" />
             </div>
           </div>
+
           <form onSubmit={this.handleSubmit}>
             <div className="location-search d-flex p-3">
               <label>From: </label>
@@ -280,10 +283,10 @@ class SearchBar extends React.Component {
                     showTimeSelect
                     timeFormat="HH:mm"
                     timeIntervals={15}
-                    dateFormat="yyyy-MM-dd HH:mm"
+                    dateFormat="yyyy-MM-dd h:mm"
                     timeCaption="time"
                     selected={this.state.travelDate}
-                    onChange={this.handleChangeDate.bind(this, "travelDate")}
+                    onChange={this.handleChangeDate}
 
                     // should return "yyyy-MM-dd 'at' HH:mm" to pass to api
                   />
@@ -294,47 +297,43 @@ class SearchBar extends React.Component {
             <div className="container transport-fields p-3">
               <div className="row">
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="d"
-                      onClick={this.handleChange("transportMode")}
-                    >
-                      <i className="fas fa-car fa-2x" />
-                    </Button>
-                  </label>
+                  <input
+                    type="radio"
+                    value="d"
+                    checked={this.state.transportMode === "d"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-car fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="t"
-                      onClick={this.handleChange("transportMode")}
-                    >
-                      <i className="fas fa-bus fa-2x" />
-                    </Button>
-                  </label>
+                  <input
+                    type="radio"
+                    value="t"
+                    checked={this.state.transportMode === "t"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-bus fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="w"
-                      onClick={this.handleChange("transportMode")}
-                    >
-                      <i className="fas fa-walking fa-2x" />
-                    </Button>
-                  </label>
+                  <input
+                    type="radio"
+                    value="w"
+                    checked={this.state.transportMode === "w"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-walking fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
-                  <label>
-                    <Button
-                      value="b"
-                      onClick={this.handleChange("transportMode")}
-                    >
-                      <i className="fas fa-biking fa-2x" />
-                    </Button>
-                  </label>
+                  <input
+                    type="radio"
+                    value="b"
+                    checked={this.state.transportMode === "b"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-biking fa-2x" />
                 </div>
               </div>
             </div>
@@ -342,14 +341,14 @@ class SearchBar extends React.Component {
             <div className="form-group">
               <button
                 className="btn btn-success"
-                onClick={this.triggerChinldAlert}
+                onClick={this.triggerChildAlert}
               >
                 Go!
               </button>
             </div>
           </form>
         </div>
-        <div className="mapBox">{MapD}</div> */}
+        <div className="mapBox">{this.state.result ? this.state.map : ""}</div>
       </div>
     );
   }

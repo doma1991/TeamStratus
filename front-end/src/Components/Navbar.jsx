@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const Navbar = () => {
+  // if (sessionStorage.getItem('jwt') === null) {
+
   return (
     <nav className="navbar d-flex flex-row justify-content-between navbar-dark">
       <div className="mob-logo">
