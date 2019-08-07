@@ -4,6 +4,7 @@ import React from "react";
 // import { Switch, Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PopularWeather from "./PopularWeather";
+import TopFiveFlights from "./TopFiveFlights";
 
 class Main extends React.Component {
   render() {
@@ -12,6 +13,7 @@ class Main extends React.Component {
         <SearchBar />
         <h3>Weather testing</h3>
         <PopularWeather />
+        <TopFiveFlights />
       </main>
     );
   }

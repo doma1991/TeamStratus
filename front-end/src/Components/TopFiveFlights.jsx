@@ -1,144 +1,258 @@
 import React from "react";
 import "./weather.css";
 import moment from "moment";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { PayPalButton } from "react-paypal-button-v2";
 
-// const Skycons= require("skycons")(window);
-
-// var skycons = new Skycons({"color" : "blue"});
-
-class PopularWeather extends React.Component {
+class TopFiveFlights extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            weather1: "",
-            weather2: "",
-            weather3: "",
-            weather4: "",
-            weather5: "",
-            country1: "New York",
-            country2: "Dubai",
-            country3: "Berlin",
-            country4: "Sydney",
-            country5: "Paris",
-            temp1: "",
-            temp2: "",
-            temp3: "",
-            temp4: "",
-            temp5: "",
-            currency1: "",
-            currency2: "",
-            currency3: "",
-            currency4: "",
-            currency5: ""
+            flight1:"",
+            flight2:"",
+            flight3:"",
+            flight4:"",
+            flight5:"",
+            price1:"",
+            price2:"",
+            price3:"",
+            price4:"",
+            price5:"",
+            extra1:"",
+            extra2:"",
+            extra3:"",
+            extra4:"",
+            extra5:"",
+            showModal1:false,
+            showModal2:false,
+            showModal3:false,
+            showModal4:false,
+            showModal5:false
         };
+        this.open = this.open.bind(this);
+        this.close = this.close.bind(this);
 
-        this.getTopFiveWeather("weather1", "40.7128", "74.0060", "temp1");
-        this.getTopFiveWeather("weather2", "25.2048", "55.2708", "temp2");
-        this.getTopFiveWeather("weather3", "52.5200", "13.4050", "temp3");
-        this.getTopFiveWeather("weather4", "33.8688", "151.2093", "temp4");
-        this.getTopFiveWeather("weather5", "48.8566", "2.3522", "temp5");
-        // this.getTopFiveCurrencyRate("currency1", "US");
-        // this.getTopFiveCurrencyRate("currency2", "AE");
-        // this.getTopFiveCurrencyRate("currency3", "DE");
-        // this.getTopFiveCurrencyRate("currency4", "AU");
-        // this.getTopFiveCurrencyRate("currency5", "FR");
+        this.open1 = this.open1.bind(this);
+        this.close1 = this.close1.bind(this);
+
+        this.open2 = this.open2.bind(this);
+        this.close2 = this.close2.bind(this);
+
+        this.open3 = this.open3.bind(this);
+        this.close3 = this.close3.bind(this);
+
+        this.open4 = this.open4.bind(this);
+        this.close4 = this.close4.bind(this);
+
+
+        this.getTop5Flights("1","DXB");
+
     }
 
-    // async getTopFiveCurrencyRate(value, destination) {
-    //   let data;
-    //   try {
-    //     let URL = "http://localhost:8080/getcurrencybydestination/" + destination;
-    //     let response = await fetch(URL);
-    //     data = await response.json().then(responseJson => {
-    //       this.setState({
-    //         [value]: responseJson.rate
-    //       });
-    //     });
-    //     console.log(URL);
-    //   } catch (e) {
-    //     console.log("error", e);
-    //   }
-    //
-    //   return data;
-    // }
+    getInitialState() {
+        return { ["showModal"]: false };
+    }
 
-    async getTopFiveWeather(value, latitude, longitude, value2) {
+    close() {
+        this.setState({ ["showModal1"]: false });
+    }
+
+    open() {
+        this.setState({ ["showModal1"]: true });
+    }
+
+    close1() {
+        this.setState({ ["showModal2"]: false });
+    }
+
+    open1() {
+        this.setState({ ["showModal2"]: true });
+    }
+
+    close2() {
+        this.setState({ ["showModal3"]: false });
+    }
+
+    open2() {
+        this.setState({ ["showModal3"]: true });
+    }
+
+    close3() {
+        this.setState({ ["showModal4"]: false });
+    }
+
+    open3() {
+        this.setState({ ["showModal4"]: true });
+    }
+
+    close4() {
+        this.setState({ ["showModal5"]: false });
+    }
+
+    open4() {
+        this.setState({ ["showModal5"]: true });
+    }
+
+    async getTop5Flights(value,destination){
         let data;
-        // var skycons = new Skycons ({"color" : "blue"});
+
+        let current = new Date();
+        current.setMonth(current.getMonth()+1);
+
+        let formattedDate = current.getFullYear() + "-" + current.getMonth() + "-" + current.getDay();
+
         try {
-            let URL =
-                "http://localhost:8080/getweatherbydestination/" +
-                latitude +
-                "/" +
-                longitude;
+
+            let URL = "http://localhost:8080/getflight/" + destination +"/lhr/2019-10-10";
             let response = await fetch(URL);
-            data = await response.json().then(responseJson => {
+            data = await response.json().then(stringRes =>{
                 this.setState({
-                    [value]: responseJson.currently.icon
+                    ["flight"+value]: stringRes.airlineName
                 });
                 this.setState({
-                    [value2]: responseJson.currently.temperature
+                    ["price"+value]: stringRes.price
                 });
-                // skycons.add("icon1", skycons.PARTYLY_CLOUDY_DAY);
+                this.setState({
+                    ["extra"+value]: stringRes.extra
+                });
             });
+
+            //console.log(URL);
         } catch (e) {
             console.log("error", e);
         }
+
         return data;
     }
+
+
 
     render() {
         return (
             <div>
+
+                {/*<Button*/}
+                {/*    bsStyle="primary"*/}
+                {/*    bsSize="large"*/}
+                {/*    onClick={this.open}*/}
+                {/*>*/}
+                {/*    Launch demo modal*/}
+                {/*</Button>*/}
+
                 <div className="row">
-                    <div className="column">
-                        <div className="card">
-                            <h3>{this.state.weather1}</h3>
-                            <p>{this.state.country1}</p>
-                            <p>{this.state.temp1} celsius</p>
-                            {/*<p>{this.state.currency1}</p>*/}
+                    <div className="span2 offset1">
+                        <div onClick={this.open}>
+                            flight1
+                        </div>
+
+                        <Modal show={this.state.showModal} onHide={this.close}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>London to Dubai</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <p> {this.state.flight1}</p>
+                                <p> {this.state.price1}</p>
+                                <p> {this.state.extra1}</p>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <div className="paypalButton">
+                                    <PayPalButton
+                                        amount= {this.state.price1}
+                                        onSuccess={(details, data) => {
+                                            alert("Transaction completed by " + details.payer.name.given_name);
+
+                                            // OPTIONAL: Call your server to save the transaction
+                                            return fetch("/paypal-transaction-complete", {
+                                                method: "post",
+                                                body: JSON.stringify({
+                                                    orderID: data.orderID
+                                                })
+                                            });
+                                        }}
+                                        options={{
+                                            clientId: "sb",
+                                            currency: "GBP"
+                                        }}
+                                    />
+                                </div>
+
+                            </Modal.Footer>
+                        </Modal>
+
+
+                    </div>
+                    <div className="span2">
+
+
+                        <div onClick={this.open1}>
+                            flight1
+                        </div>
+
+                        <Modal show={this.state.showModal2} onHide={this.close1}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>London to Dubai</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <p> {this.state.flight1}</p>
+                                <p> {this.state.price1}</p>
+                                <p> {this.state.extra1}</p>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <div className="paypalButton">
+                                    <PayPalButton
+                                        amount= {this.state.price1}
+                                        onSuccess={(details, data) => {
+                                            alert("Transaction completed by " + details.payer.name.given_name);
+
+                                            // OPTIONAL: Call your server to save the transaction
+                                            return fetch("/paypal-transaction-complete", {
+                                                method: "post",
+                                                body: JSON.stringify({
+                                                    orderID: data.orderID
+                                                })
+                                            });
+                                        }}
+                                        options={{
+                                            clientId: "sb",
+                                            currency: "GBP"
+                                        }}
+                                    />
+                                </div>
+
+                            </Modal.Footer>
+                        </Modal>
+
+
+
+                    </div>
+                    <div className="span2">
+                        <div onClick={this.open}>
+                            flight1
                         </div>
                     </div>
-
-                    <div className="column">
-                        <div className="card">
-                            <h3>{this.state.weather2}</h3>
-                            <p>{this.state.country2}</p>
-                            <p>{this.state.temp2} celsius</p>
-                            {/*<p>{this.state.currency2}</p>*/}
+                    <div className="span2">
+                        <div onClick={this.open}>
+                            flight1
                         </div>
+
                     </div>
+                    <div className="span2">
 
-                    <div className="column">
-                        <div className="card">
-                            <h3>{this.state.weather3}</h3>
-                            <p>{this.state.country3}</p>
-                            <p>{this.state.temp3} celsius</p>
-                            {/*<p>{this.state.currency3}</p>*/}
+                        <div onClick={this.open}>
+                            flight1
                         </div>
-                    </div>
 
-                    <div className="column">
-                        <div className="card">
-                            <h3>{this.state.weather4}</h3>
-                            <p>{this.state.country4}</p>
-                            <p>{this.state.temp4} celsius</p>
-                            {/*<p>{this.state.currency4}</p>*/}
-                        </div>
-                    </div>
-
-                    <div className="column">
-                        <div className="card">
-                            <h3>{this.state.weather5}</h3>
-                            <p>{this.state.country5}</p>
-                            <p>{this.state.temp5} celsius</p>
-                            {/*<p>{this.state.currency5}</p>*/}
-                        </div>
                     </div>
                 </div>
+
+
+
+
+
             </div>
         );
     }
 }
 
-export default PopularWeather;
+export default TopFiveFlights;
