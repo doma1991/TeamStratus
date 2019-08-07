@@ -5,7 +5,7 @@ import { Redirect } from "@reach/router";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { login: "", password: "", isAuthenticated: false };
+    this.state = { login: "", password: "" };
   }
 
   handleChange = event => {
@@ -41,9 +41,14 @@ class LoginForm extends React.Component {
   };
 
   render() {
+    let text="";
     if (this.state.isAuthenticated === true) {
       console.log("success");
       return <Redirect noThrow to="" />;
+    } else if (!this.state.isAuthenticated) {
+      text = "Login unsuccessful. Please try again.";
+    } else {
+      text = "";
     }
     return (
       <div id="signInContent" className="skycomSignin w-75 mx-auto">
@@ -86,7 +91,7 @@ class LoginForm extends React.Component {
 
                   <div className="buttonRow">
                     <button onClick={this.login} id="signInButton">Sign in</button>
-
+                    <p>{text}</p>
                     <p>
                       <a
                         id="privacyPolicyLink"
