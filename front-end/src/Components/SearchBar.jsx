@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
       endDate: "",
       transportMode: "d",
       map: <MapsDirection />,
-      result: false,
+      result: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -49,26 +49,29 @@ class SearchBar extends React.Component {
     };
   };
 
-
-handleChangeMode(event) {
-  this.setState({
-    transportMode: event.target.value
-  });
-}
-
+  handleChangeMode(event) {
+    this.setState({
+      transportMode: event.target.value
+    });
+  }
 
   handleChangeDate(date) {
-
     this.setState({ travelDate: date });
     console.log(this.state.travelDate);
-  };
+  }
 
   async handleSubmit(event) {
     try {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
       let URL =
-        baseURL + this.state.from + "/" + this.state.to + "/now/" + this.state.transportMode + "/";
+        baseURL +
+        this.state.from +
+        "/" +
+        this.state.to +
+        "/now/" +
+        this.state.transportMode +
+        "/";
       let response = await fetch(URL);
       let data = await response.json();
       this.handleResponse(data);
@@ -145,63 +148,47 @@ handleChangeMode(event) {
             </div>
 
             <div className="container transport-fields p-3">
-
               <div className="row">
-
                 <div className="col-sm-3">
-
-                   <input
-                                 type="radio"
-                                 value="d"
-                                 checked={this.state.transportMode === "d"}
-                                 onChange={this.handleChangeMode}
-                               />
-                      <i class="fas fa-car fa-2x" />
-
-
+                  <input
+                    type="radio"
+                    value="d"
+                    checked={this.state.transportMode === "d"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-car fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
-
-                   <input
-                                 type="radio"
-                                 value="t"
-                                 checked={this.state.transportMode === "t"}
-                                 onChange={this.handleChangeMode}
-                               />
-                      <i class="fas fa-bus fa-2x" />
-
-
+                  <input
+                    type="radio"
+                    value="t"
+                    checked={this.state.transportMode === "t"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-bus fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
-
-                                      <input
-                                                    type="radio"
-                                                    value="w"
-                                                    checked={this.state.transportMode === "w"}
-                                                    onChange={this.handleChangeMode}
-                                                  />
-                      <i class="fas fa-walking fa-2x" />
-
-
+                  <input
+                    type="radio"
+                    value="w"
+                    checked={this.state.transportMode === "w"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-walking fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
-
-                               <input
-                                             type="radio"
-                                             value="b"
-                                             checked={this.state.transportMode === "b"}
-                                             onChange={this.handleChangeMode}
-                                           />
-                      <i class="fas fa-biking fa-2x" />
-
-
+                  <input
+                    type="radio"
+                    value="b"
+                    checked={this.state.transportMode === "b"}
+                    onChange={this.handleChangeMode}
+                  />
+                  <i class="fas fa-biking fa-2x" />
                 </div>
-                </div>
-
-
+              </div>
             </div>
 
             <div className="form-group">
