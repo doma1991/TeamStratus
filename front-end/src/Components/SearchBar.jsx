@@ -31,7 +31,7 @@ class SearchBar extends React.Component {
       travelDate: "",
       transportMode: ""
     };
-
+    this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);
     this.fromHandleSelect = this.fromHandleSelect.bind(this);
     this.fromSeparateAddress = this.fromSeparateAddress.bind(this);
@@ -41,16 +41,20 @@ class SearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.handleChangeDate = this.handleChangeDate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // handleClearForm(e) {
-  //   this.setState({
-  //     from: "",
-  //     to: "",
-  //     travelDate: "",
-  //     transportMode: "",
-  //     address: ""
-  //   });
-  // }
+  handleClearForm(e) {
+    this.setState({
+      fromAddress: "",
+      fromCity: "",
+      fromCountry: "",
+      toAddress: "",
+      toCity: "",
+      toCountry: "",
+      travelDate: "",
+      transportMode: ""
+    });
+  }
 
   fromHandleChange = fromAddress => {
     this.setState({ fromAddress });
@@ -58,7 +62,7 @@ class SearchBar extends React.Component {
 
   fromHandleSelect = fromAddress => {
     this.setState({ fromAddress });
-    this.toSeparateAddress(fromAddress);
+    this.fromSeparateAddress(fromAddress);
     geocodeByAddress(fromAddress)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log("Success", latLng))
@@ -127,7 +131,7 @@ class SearchBar extends React.Component {
     try {
       event.preventDefault();
       let baseURL = "http://localhost:8080/getmaps/";
-      console.log(this.state.fromCity);
+      // let URL = "http://localhost:8080/getmaps/London/Manchester/now/d/";
       let URL =
         baseURL +
         this.state.fromCity +
@@ -141,11 +145,12 @@ class SearchBar extends React.Component {
       console.log(URL);
       let response = await fetch(URL);
       let data = await response.json();
+      console.log(data);
       this.handleResponse(data);
     } catch (e) {
       console.log("error", e);
     }
-    // this.handleClearForm();
+    this.handleClearForm();
   }
 
   handleResponse = data => {
@@ -172,7 +177,6 @@ class SearchBar extends React.Component {
               <a href="https://www.sky.com" className="login-logo" />
             </div>
           </div>
-
           <form onSubmit={this.handleSubmit}>
             <div className="location-search d-flex p-3">
               <label>From: </label>
@@ -345,7 +349,7 @@ class SearchBar extends React.Component {
             </div>
           </form>
         </div>
-        <div className="mapBox">{MapD}</div>
+        <div className="mapBox">{MapD}</div> */}
       </div>
     );
   }

@@ -9,6 +9,7 @@ import LoginForm from "./Components/LoginForm";
 import { Router } from "@reach/router";
 import "react-datepicker/dist/react-datepicker.css";
 // import ErrorPage from "./Components/ErrorPage.jsx";
+console.log(process.env.REACT_APP_GOOGLE_API);
 
 function App() {
   return (
