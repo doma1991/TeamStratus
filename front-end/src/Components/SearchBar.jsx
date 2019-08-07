@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
       endDate: "",
       transportMode: "d",
       map: <MapsDirection />,
-      result: false
+      result: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
