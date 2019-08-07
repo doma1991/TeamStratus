@@ -14,7 +14,9 @@ var destination="Dubai";
 try{
 routed= JSON.parse(localStorage.getItem("mapRequest"));
 origin=routed.startLocation;
+origin = origin.replace("+", ",");
 destination=routed.endLocation;
+destination = destination.replace("+", ",");
 origina= routed.startLatitude;
 originn= routed.startLongitude;
 destinationa= routed.endLatitude;
@@ -47,8 +49,7 @@ class PopularWeather extends React.Component {
       currency1: "",
       currency2: "",
 
-      // icon1: "CLEAR_NIGHT",
-      // icon2: "",
+
 
     };
 
@@ -80,7 +81,7 @@ class PopularWeather extends React.Component {
 
   async getTopFiveWeather(value, latitude, longitude, value2) {
     let data;
-    // var skycons = new Skycons ({"color" : "blue"});
+
     try {
       let URL =
         "http://localhost:8080/getweatherbydestination/" +

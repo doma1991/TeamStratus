@@ -101,6 +101,10 @@ public class CurrencyAPI {
         }
     }
 
+    public static String getCurrencyByCurrency(String currency){
+        return currency;
+
+    }
 
 
 }

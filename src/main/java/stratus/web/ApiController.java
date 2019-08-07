@@ -115,6 +115,14 @@ public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable
         return CurrencyAPI.getCurrencyCountryCode(destination);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getcurrencybydestination/{currency}")
+    @ResponseBody
+    public String getCurrency(@PathVariable("currency") String currency){
+
+        return CurrencyAPI.getCurrencyByCurrency(currency);
+    }
+
  @CrossOrigin(origins = "http://localhost:3000")
  @GetMapping("/getweatherbydestination/{latitude}/{longitude}")
  @ResponseBody
