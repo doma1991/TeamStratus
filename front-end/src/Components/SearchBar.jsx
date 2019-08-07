@@ -290,6 +290,7 @@ export class SearchBar extends Component {
                 <div className="w-100 p-2">
                   <label>Select Start Date: </label>
                   <DatePicker
+                    id = "datepicker"
                     placeholder="Select travel date"
                     todayButton={"Today"}
                     showTimeSelect
