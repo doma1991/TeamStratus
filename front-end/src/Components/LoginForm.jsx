@@ -28,6 +28,7 @@ class LoginForm extends React.Component {
         if (jwtToken !== null) {
           sessionStorage.setItem("jwt", jwtToken);
           this.setState({ isAuthenticated: true });
+          this.props.checkLogin();
         }
       })
       .catch(err => {
@@ -85,7 +86,9 @@ class LoginForm extends React.Component {
                   </div>
 
                   <div className="buttonRow">
-                    <button onClick={this.login} id="signInButton">Sign in</button>
+                    <button onClick={this.login} id="signInButton">
+                      Sign in
+                    </button>
 
                     <p>
                       <a
