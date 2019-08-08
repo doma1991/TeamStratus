@@ -313,7 +313,7 @@ export class SearchBar extends Component {
 
             <div className="container transport-fields p-3">
               <div className="row">
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="d"
@@ -323,7 +323,7 @@ export class SearchBar extends Component {
                   <i className="fas fa-car fa-2x" />
                 </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="t"
@@ -333,7 +333,7 @@ export class SearchBar extends Component {
                   <i className="fas fa-bus fa-2x" />
                 </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="w"
@@ -343,7 +343,7 @@ export class SearchBar extends Component {
                   <i className="fas fa-walking fa-2x" />
                 </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="b"
