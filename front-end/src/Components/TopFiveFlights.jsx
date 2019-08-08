@@ -6,6 +6,9 @@ import Button from "react-bootstrap/Button";
 import { PayPalButton } from "react-paypal-button-v2";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardGroup";
+import Sms from "./sms";
+
+
 
 class TopFiveFlights extends React.Component {
   constructor(props) {
@@ -121,6 +124,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra1}</p>
             </Modal.Body>
             <Modal.Footer>
+              <Sms/>
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price1}
@@ -168,6 +172,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra2}</p>
             </Modal.Body>
             <Modal.Footer>
+              <Sms/>
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price2}
@@ -216,6 +221,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra3}</p>
             </Modal.Body>
             <Modal.Footer>
+              <Sms/>
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price3}
@@ -245,6 +251,7 @@ class TopFiveFlights extends React.Component {
       </div>
     );
   }
+
 }
 
 export default TopFiveFlights;

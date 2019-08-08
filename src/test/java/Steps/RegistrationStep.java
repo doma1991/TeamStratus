@@ -34,7 +34,7 @@ public class RegistrationStep {
     String PostCode = "b2 2re";
     String number = "07712345678";
     String emqail = "farhan1@live.co.uk";
-    String userName = "mfarhansadiquesx35";
+    String userName = "mfarhanskjmjkjf6";
     String pss = "Theyellowduck1";
 
 
@@ -70,7 +70,12 @@ public class RegistrationStep {
 
     @Then("i should be see a confirmation message")
     public void iShouldBeSeeAConfirmationMessage() {
-        driver.findElement(By.xpath("//*[text()[contains(.,'Successfully registered.')]]"));
+
+
+
+        String result = driver.findElement(By.id("registrationOutcome")).getText();
+
+        Assert.assertEquals("Registration successful",  result);
 
     }
 
@@ -231,6 +236,7 @@ public class RegistrationStep {
             int test = rs.getInt(1);
 
             Assert.assertEquals(1, test);
+
         }catch (SQLException e){System.out.println(e);}
 
 
@@ -257,5 +263,5 @@ public class RegistrationStep {
     @Then("an invalid input error message should be displayed")
     public void anInvalidInputErrorMessageShouldBeDisplayed() {
     }
-
 }
+

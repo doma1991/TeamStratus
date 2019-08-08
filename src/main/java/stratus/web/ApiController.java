@@ -137,4 +137,12 @@ public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable
  public String getCurrentWeather(@PathVariable("latitude") String latitude, @PathVariable("longitude") String longitude){
      return WeatherAPI.getWeatherByAirportCode(latitude,longitude);
  }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/sendsms/{number}")
+    @ResponseBody
+    public String sendSms(@PathVariable("number") String number){
+        AmadeusFlightsApi.smsSend(number,"Don't forget to book your flight at get your way ;).");
+        return "success";
+    }
 }
