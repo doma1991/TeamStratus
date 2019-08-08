@@ -150,7 +150,7 @@ class WeatherMap extends React.Component {
     this.getTopFiveWeather("weather1", origina, originn, "temp1");
     this.getTopFiveWeather("weather2", destinationa, destinationn, "temp2");
 
-    const skycons = new Skycons({ color: "white" });
+    const skycons = new Skycons({ color: "#648f97" });
 
     let weather1 = this.state.weather1;
     skycons.add(document.getElementById("travelIcon1"), weather1);
