@@ -34,7 +34,14 @@ public class HomePageSteps {
         pageObjectManager = new PageObjectManager(driver);
         homePage = pageObjectManager.getHomepage();
         homePage.navigateTo_HomePage();
-        Assert.assertEquals("http://localhost:3000/",homePage.getCurrentPageUrl());
+        try {
+            Thread.sleep(100);
+            Assert.assertEquals("http://localhost:3000/",homePage.getCurrentPageUrl());
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @When("I click the register button in the navbar")
@@ -44,6 +51,9 @@ public class HomePageSteps {
 
     @Then("i should be redirected to the registration page")
     public void iShouldBeRedirectedToTheRegistrationPage() {
+
+        pageObjectManager = new PageObjectManager(driver);
+        registrationPage = pageObjectManager.getRegistrationpage();
 
         Assert.assertEquals("http://localhost:3000/register",registrationPage.getCurrentPageUrl());
     }
@@ -62,7 +72,15 @@ public class HomePageSteps {
 
     @And("I enter a valid location in the To input box")
     public void iEnterAValidLocationInTheToInputBox() {
-        homePage.sendKeyToToInput("Osterley");
+        try {
+            Thread.sleep(100);
+            homePage.sendKeyToToInput("Osterley");
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @And("I select a valid date")
@@ -72,11 +90,50 @@ public class HomePageSteps {
 
     @And("I select the driving mode")
     public void iSelectTheDrivingMode() {
+        homePage.clickdrivingmoderadiobutton();
 
     }
 
 
+
     @Then("I should see my map updated with the route")
     public void iShouldSeeMyMapUpdatedWithTheRoute() {
+
+    }
+
+    @Then("i should be redirected to the login page")
+    public void iShouldBeRedirectedToTheLoginPage() {
+
+    }
+
+    @And("I click the submit button")
+    public void iClickTheSubmitButton() {
+        homePage.clickgobutton();
+    }
+
+    @Given("I am on the homepage and i am  not logged in")
+    public void iAmOnTheHomepageAndIAmNotLoggedIn() {
+
+        configFileReader= new ConfigFileReader();
+        System.setProperty("webdriver.chrome.driver", configFileReader.getDriverPath());
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
+        pageObjectManager = new PageObjectManager(driver);
+        homePage = pageObjectManager.getHomepage();
+        homePage.navigateTo_HomePage();
+        try {
+            Thread.sleep(100);
+            Assert.assertEquals("http://localhost:3000/",homePage.getCurrentPageUrl());
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Then("I should see a user should log in message")
+    public void iShouldSeeAUserShouldLogInMessage() {
+        homePage.Findloginreminder();
+
     }
 }

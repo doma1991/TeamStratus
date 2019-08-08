@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import dataProvider.ConfigFileReader;
+import selenium.Wait;
 
 public class RegistrationPage {
 
@@ -22,6 +23,7 @@ public class RegistrationPage {
 
 
     public String getCurrentPageUrl(){
+        Wait.untilPageLoadComplete(driver);
         return driver.getCurrentUrl();
     }
 }
