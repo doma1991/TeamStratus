@@ -23,6 +23,7 @@ class Navbar extends React.Component {
         <div className="main-logo">
           <Link to="/" className="mast-c-header__logo mast-js-focus" />
 
+
           <span className="navbar-brand mb-0 h1">GetYourWay</span>
         </div>
 
@@ -31,6 +32,7 @@ class Navbar extends React.Component {
             <Link
               to="/register"
               className="btn btn-outline-primary my-2 my-sm-0 mx-1"
+              id = "navloginbutton"
             >
               Register
             </Link>
@@ -62,4 +64,5 @@ class Navbar extends React.Component {
     );
   }
 }
+
 export default Navbar;

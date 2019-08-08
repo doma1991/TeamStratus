@@ -1,6 +1,5 @@
 import MapsDirection from "./MapsDirection";
-// import MapContainer from "./Map";
-import React from "react";
+import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 // import moment from "moment";
 // import Weather from "./weather";
@@ -9,6 +8,7 @@ import DatePicker from "react-datepicker";
 // import ToggleButtonGroup from "react-bootstrap/Button";
 import { Link } from "@reach/router";
 import "react-datepicker/dist/react-datepicker.css";
+import { Map, GoogleApiWrapper } from "google-maps-react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -17,7 +17,9 @@ import PlacesAutocomplete, {
 // Also need to install moment byt running: npm install moment
 //
 
-class SearchBar extends React.Component {
+var MapD = <MapsDirection />;
+
+export class SearchBar extends Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +32,7 @@ class SearchBar extends React.Component {
       toCountry: "",
       travelDate: "",
       transportMode: "d",
-      map: <h1>Please log in</h1>,
+      map: <MapsDirection />,
       result: false
     };
     this.handleClearForm = this.handleClearForm.bind(this);
@@ -287,6 +289,7 @@ class SearchBar extends React.Component {
                 <div className="w-100 p-2">
                   <label>Select Start Date: </label>
                   <DatePicker
+                    id="datepicker"
                     placeholder="Select travel date"
                     todayButton={"Today"}
                     showTimeSelect
@@ -362,4 +365,7 @@ class SearchBar extends React.Component {
     );
   }
 }
-export default SearchBar;
+
+export default GoogleApiWrapper({
+  apiKey: process.env.REACT_APP_GOOGLE_API
+})(SearchBar);
