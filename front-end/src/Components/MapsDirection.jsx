@@ -15,8 +15,6 @@ import React, { Component, Fragment } from "react";
 import { compose, withProps, lifecycle } from "recompose";
 const google = (window.google = window.google ? window.google : {});
 
-
-
 class MapsDirection extends React.Component {
   constructor(props) {
     super(props);
@@ -62,9 +60,9 @@ class MapsDirection extends React.Component {
 
     const DirectionsComponent = compose(
       withProps({
-        googleMapURL:
-        `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API}`,
-
+        googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${
+          process.env.REACT_APP_GOOGLE_API
+        }`,
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `400px` }} />,
         mapElement: <div style={{ height: `100%` }} />
@@ -73,10 +71,9 @@ class MapsDirection extends React.Component {
       withGoogleMap,
       lifecycle({
         componentDidMount() {
-         
-      
           const DirectionsService = new google.maps.DirectionsService();
           console.log(DirectionsComponent.googleMapURL);
+          console.log(process.env.REACT_APP_GOOGLE_API);
           DirectionsService.route(
             {
               origin: new google.maps.LatLng(origina, originn),

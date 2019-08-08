@@ -1,12 +1,12 @@
 import MapsDirection from "./MapsDirection";
-import MapContainer from "./Map";
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
-import moment from "moment";
-import Weather from "./weather";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/Button";
-import ToggleButtonGroup from "react-bootstrap/Button";
+// import moment from "moment";
+// import Weather from "./weather";
+// import Button from "react-bootstrap/Button";
+// import ButtonGroup from "react-bootstrap/Button";
+// import ToggleButtonGroup from "react-bootstrap/Button";
+import { Link } from "@reach/router";
 import "react-datepicker/dist/react-datepicker.css";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import PlacesAutocomplete, {
@@ -17,7 +17,6 @@ import PlacesAutocomplete, {
 // Also need to install moment byt running: npm install moment
 //
 
-var MapS = <MapContainer />;
 var MapD = <MapsDirection />;
 
 export class SearchBar extends Component {
@@ -188,7 +187,7 @@ export class SearchBar extends Component {
         <div className="searchPanel">
           <div className="panelHeader">
             <div id="header">
-              <a href="https://www.sky.com" className="login-logo" />
+              <Link to="https://www.sky.com" className="login-logo" />
             </div>
           </div>
 
@@ -290,7 +289,7 @@ export class SearchBar extends Component {
                 <div className="w-100 p-2">
                   <label>Select Start Date: </label>
                   <DatePicker
-                    id = "datepicker"
+                    id="datepicker"
                     placeholder="Select travel date"
                     todayButton={"Today"}
                     showTimeSelect
@@ -316,7 +315,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "d"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-car fa-2x" />
+                  <i className="fas fa-car fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -326,7 +325,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "t"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-bus fa-2x" />
+                  <i className="fas fa-bus fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -336,7 +335,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "w"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-walking fa-2x" />
+                  <i className="fas fa-walking fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -346,7 +345,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "b"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-biking fa-2x" />
+                  <i className="fas fa-biking fa-2x" />
                 </div>
               </div>
             </div>
@@ -368,5 +367,5 @@ export class SearchBar extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I"
+  apiKey: process.env.REACT_APP_GOOGLE_API
 })(SearchBar);
