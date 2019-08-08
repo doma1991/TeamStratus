@@ -385,6 +385,9 @@ canvas {
 .destination-card-row {
   margin-top: 8% !important;
 }
+.flightCard img {
+  max-height: 55vh;
+}
 
 @media screen and (max-width: 799px) {
   .destination-row .column {
