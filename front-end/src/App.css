@@ -304,6 +304,7 @@ footer div {
 canvas {
   width: 42px;
 }
+
 #card1 {
   background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
     /* bottom, image */ url(./newYork.jpg);
@@ -342,10 +343,28 @@ canvas {
 .destination-row {
   width: 90%;
 }
-.weather-header {
-  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
-  font-size: 3em;
-  margin: 0 0 20px 0 !important;
+
+/******************FLIGHTS***************/
+
+#film1 {
+  background: url(./Components/Film_picture/Mama_Mia_.jpg);
+  background-size: cover;
+  background-position: bottom;
+  min-height: 15vh;
+}
+
+#film2 {
+  background: url(./Components/Film_picture/MI_Fallout.jpg);
+  background-size: cover;
+  background-position: bottom;
+  min-height: 15vh;
+}
+
+#film3 {
+  background: url(./Components/Film_picture/Crazy_Rich_asians_Singapore.jpg);
+  background-size: cover;
+  background-position: bottom;
+  min-height: 15vh;
 }
 
 @media screen and (max-width: 799px) {
