@@ -40,6 +40,7 @@ public class CurrencyAPI {
 
     public static String printTheRate(String string, String country){
         JSONObject myObjectData = new JSONObject(string);
+        System.out.println(myObjectData.toString());
         JSONObject rates= myObjectData.getJSONObject("rates");
         Float UK =rates.getFloat("GBP");
         Float countryC =rates.getFloat(country);
@@ -79,6 +80,7 @@ public class CurrencyAPI {
 
     public static String getCurrencyCountryCode(String countryCode){
         String toPass = countryCurrencyMap.get(countryCode);
+        System.out.println(toPass);
         String string=getRate();
         return "{\"rate\":" + "\"" +printTheRate(string, toPass)+"\""+"}";
     }

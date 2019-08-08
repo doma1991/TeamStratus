@@ -23,47 +23,63 @@ import java.util.List;
 @RestController
 public class ApiController {
 
-@Autowired
-RouteDAO route;
+    @Autowired
+    RouteDAO route;
 
 
- @GetMapping("/getairportcode/{location}")
- @ResponseBody
-    public String getAirportCode(@PathVariable("location") String location){
-     HttpApiResponse apires = new HttpApiResponse("fa7769554emshaab499374a3ea4dp179e68jsne2fbed25ad4d","skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
-     List<String> airportCodes = AirportInformation.printLocationData(apires,location);
-     String json = new Gson().toJson(airportCodes);
-     System.out.println(json);
-     return json;
- }
+    @GetMapping("/getairportcode/{location}")
+    @ResponseBody
+    public String getAirportCode(@PathVariable("location") String location) {
+        HttpApiResponse apires = new HttpApiResponse("fa7769554emshaab499374a3ea4dp179e68jsne2fbed25ad4d", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
+        List<String> airportCodes = AirportInformation.printLocationData(apires, location);
+        String json = new Gson().toJson(airportCodes);
+        System.out.println(json);
+        return json;
+    }
 
 
-
- @GetMapping("/getflight/{destinationcode}/{arrivalcode}/{destinationdate}")
- @ResponseBody
- public String getFlight(@PathVariable("destinationcode") String destinationcode, @PathVariable("arrivalcode") String arrivalcode, @PathVariable("destinationdate") String destinationdate){
-  ArrayList flights = AmadeusFlightsApi.getFlightInfo(arrivalcode,destinationcode,destinationdate);
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/getflight/{destinationcode}/{arrivalcode}/{destinationdate}")
+    @ResponseBody
+    public String getFlight(@PathVariable("destinationcode") String destinationcode, @PathVariable("arrivalcode") String arrivalcode, @PathVariable("destinationdate") String destinationdate) {
+        ArrayList flights = AmadeusFlightsApi.getFlightInfo(arrivalcode, destinationcode, destinationdate);
 //  String destinationWeather = WeatherAPI.getWeatherByAirportCode(destinationcode);
 //  String arrivalWeather = WeatherAPI.getWeatherByAirportCode(arrivalcode);
 //  String createWeatherJson = "{\"destinationWeather\":"+destinationWeather + ",\"arrivalWeather\":"+arrivalWeather+"}";
-  String json = flights.get(0).toString();
-     System.out.println(flights.get(0));
-     Date date1 = null;
-     try {
-         destinationdate = destinationdate.replaceAll("-","/");
-         date1 = new SimpleDateFormat("yyyy/MM/dd").parse(destinationdate);
-     } catch (ParseException e) {
-         e.printStackTrace();
-     }
+        String jsonToPass = "";
+        ArrayList<String>jsonToGet;
+        jsonToGet = (ArrayList<String>) flights.get(0);
+        for (int i = 0; i < jsonToGet.size(); i++) {
+            if (i == 0) {
+                jsonToPass += "{\"airlineName\":" + "\"" +jsonToGet.get(i)+ "\"" + ",";
+            } else if (i == 1) {
+                jsonToPass += "\"price\":\"" + jsonToGet.get(i) + "\",";
+            } else {
+                String arrayToSplit = jsonToGet.get(i).toString().replaceAll("\\[", "").replaceAll("\\]", "");
 
-     Route routeToSave = new Route(flights.get(0).toString(),flights.get(3).toString(),flights.get(6).toString(),date1,false,'f',flights.get(1).toString(),flights.get(2).toString(),flights.get(4).toString(),flights.get(5).toString(),flights.get(7).toString()," ",null);
-     System.out.println(routeToSave.getEndLatitude());
-     boolean toSave = route.save(routeToSave);
-     System.out.println(toSave);
-      //json =  json + "," + createWeatherJson ;
+                jsonToPass += "\"extra\":\"" + arrayToSplit + "\"}";
 
-  return json;
- }
+            }
+        }
+        System.out.println(jsonToPass);
+        String json = flights.get(0).toString();
+        System.out.println(flights.get(0));
+        Date date1 = null;
+        try {
+            destinationdate = destinationdate.replaceAll("-", "/");
+            date1 = new SimpleDateFormat("yyyy/MM/dd").parse(destinationdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Route routeToSave = new Route(flights.get(0).toString(), flights.get(3).toString(), flights.get(6).toString(), date1, false, 'f', flights.get(1).toString(), flights.get(2).toString(), flights.get(4).toString(), flights.get(5).toString(), flights.get(7).toString(), " ", null);
+        System.out.println(routeToSave.getEndLatitude());
+        boolean toSave = route.save(routeToSave);
+        System.out.println(toSave);
+        //json =  json + "," + createWeatherJson ;s
+
+        return jsonToPass;
+    }
 
  @CrossOrigin(origins = "http://localhost:3000")
  @GetMapping("/getmaps/{start}/{destination}/{date}/{transportMethod}")//url
@@ -111,7 +127,7 @@ public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable
     @GetMapping("/getcurrencybydestination/{destination}")
     @ResponseBody
     public String getCurrentCurrency(@PathVariable("destination") String destination){
-
+        System.out.println(CurrencyAPI.getCurrencyCountryCode(destination));
         return CurrencyAPI.getCurrencyCountryCode(destination);
     }
 
