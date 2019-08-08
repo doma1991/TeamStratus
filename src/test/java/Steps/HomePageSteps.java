@@ -99,8 +99,6 @@ public class HomePageSteps {
     @Then("I should see my map updated with the route")
     public void iShouldSeeMyMapUpdatedWithTheRoute() {
 
-        
-
     }
 
     @Then("i should be redirected to the login page")
@@ -136,5 +134,6 @@ public class HomePageSteps {
     @Then("I should see a user should log in message")
     public void iShouldSeeAUserShouldLogInMessage() {
         homePage.Findloginreminder();
+
     }
 }

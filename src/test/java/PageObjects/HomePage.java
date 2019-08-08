@@ -78,10 +78,12 @@ public class HomePage {
 
     public void clickdrivingmoderadiobutton(){ drivingmode.click();}
 
+
     public void clickgobutton (){ gobutton.click();}
 
     public void Findloginreminder(){
 
        loginreminder.isDisplayed();
     }
+
 }
