@@ -32,31 +32,22 @@ class WeatherMap extends React.Component {
     super(props);
     this.ref1 = React.createRef();
     this.ref2 = React.createRef();
-    this.ref3 = React.createRef();
-    this.ref4 = React.createRef();
-    this.ref5 = React.createRef();
+
 
     this.state = {
       weather1: "",
       weather2: "",
-      weather3: "",
-      weather4: "",
-      weather5: "",
+
+
       country1: origin,
       country2: destination,
-      country3: "Berlin",
-      country4: "Sydney",
-      country5: "Paris",
+
       temp1: "",
       temp2: "",
-      temp3: "",
-      temp4: "",
-      temp5: "",
+
       currency1: "",
       currency2: "",
-      currency3: "",
-      currency4: "",
-      currency5: ""
+
       // icon1: "CLEAR_NIGHT",
       // icon2: "",
       // icon3: "",
@@ -67,14 +58,10 @@ class WeatherMap extends React.Component {
 
     this.getTopFiveWeather("weather1", origina, originn, "temp1");
     this.getTopFiveWeather("weather2", destinationa, destinationn, "temp2");
-    this.getTopFiveWeather("weather3", "52.5200", "13.4050", "temp3");
-    this.getTopFiveWeather("weather4", "33.8688", "151.2093", "temp4");
-    this.getTopFiveWeather("weather5", "48.8566", "2.3522", "temp5");
+
     this.getTopFiveCurrencyRate("currency1", "US");
     this.getTopFiveCurrencyRate("currency2", "AE");
-    this.getTopFiveCurrencyRate("currency3", "DE");
-    this.getTopFiveCurrencyRate("currency4", "AU");
-    this.getTopFiveCurrencyRate("currency5", "FR");
+
   }
 
   async getTopFiveCurrencyRate(value, destination) {
@@ -191,32 +178,7 @@ class WeatherMap extends React.Component {
             </div>
           </div>
 
-          <div className="column">
-            <div className="card" id="card3">
-              <canvas id="icon3" ref={this.ref3} width="42" height="42" />
-              <p>{this.state.country3}</p>
-              <p>{this.state.temp3} celsius</p>
-              <p>{this.state.currency3}</p>
-            </div>
-          </div>
 
-          <div className="column">
-            <div className="card" id="card4">
-              <canvas id="icon4" ref={this.ref4} width="42" height="42" />
-              <p>{this.state.country4}</p>
-              <p>{this.state.temp4} celsius</p>
-              <p>{this.state.currency4}</p>
-            </div>
-          </div>
-
-          <div className="column">
-            <div className="card" id="card5">
-              <canvas id="icon5" ref={this.ref5} width="42" height="42" />
-              <p>{this.state.country5}</p>
-              <p>{this.state.temp5} celsius</p>
-              <p>{this.state.currency5}</p>
-            </div>
-          </div>
         </div>
       </div>
     );
