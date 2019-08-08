@@ -22,7 +22,38 @@
 .App-link {
   color: #61dafb;
 }
-
+footer {
+  border-top: 1px solid #cccccc;
+  margin-top: 15px;
+}
+html {
+  background-color: white !important;
+}
+.social-share i {
+  padding: 10px;
+}
+.footer-two {
+  align-items: center !important;
+}
+footer div {
+  display: inline-block;
+  padding: 0;
+}
+.error-div {
+  height: 60vh;
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
+  flex-direction: column;
+  background: url("./minion.png") right no-repeat;
+  background-size: contain;
+}
+@media screen and (max-width: 799px) {
+  .error-div {
+    justify-content: initial !important;
+  }
+  .error-div h3 {
+    margin: 0;
+  }
+}
 /********************  NAVBAR ************************/
 .mast-c-header__logo {
   background-image: url(./sky-logo.png);
@@ -40,6 +71,7 @@
   vertical-align: middle;
   font-size: 1rem;
   color: #343a40 !important;
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
 }
 .main-logo {
   visibility: hidden;
@@ -81,8 +113,10 @@
 .searchPanel {
   border: 1px solid #cccccc;
   margin-left: 6vw;
-  background-color: white;
+  background-color: #f0f8ff;
   max-width: 320px;
+  float: left;
+  display: inline-block;
   -webkit-animation: fadeInSlow 2s ease 0s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadeInSlow 2s ease 0s; /* Firefox < 16 */
   -ms-animation: fadeInSlow 2s ease 0s; /* Internet Explorer */
@@ -111,16 +145,45 @@
   animation: fadein 3s;
   color: #648f97 !important;
   text-align: center !important;
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
 }
 .transport-fields button {
   color: none;
 }
 .mapBox {
-  padding-top: 100vh;
+  display: inline-block;
+  width: 55vw;
 }
+.btn-primary {
+  color: #282c34 !important;
+  background-color: #f0f8ff !important;
+  border-color: #f0f8ff !important;
+}
+.col-sm-3 {
+  padding-left: 0 !important;
+}
+.welcome {
+  padding-bottom: 10vh;
+}
+
 @media screen and (max-width: 799px) {
   .searchPanel {
     margin: 5vh auto;
+    display: block;
+    float: initial;
+  }
+  .mapBox {
+    display: block;
+    width: 100vw;
+  }
+  .search-splash {
+    height: unset;
+    padding-bottom: 5vh;
+  }
+  .col-sm-3 {
+    padding: 0px !important;
+    margin: 0 auto;
+    width: 25% !important;
   }
 }
 
@@ -177,7 +240,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -190,7 +253,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -203,7 +266,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -216,7 +279,7 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
@@ -229,10 +292,70 @@
   0% {
     opacity: 0;
   }
-  66% {
+  30% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+/******************WEATHER***************/
+canvas {
+  width: 42px;
+}
+#card1 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./newYork.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+#card2 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./dubai.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#card3 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./berlin.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#card4 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./sydney.jpg);
+  background-size: cover;
+  background-position: center;
+}
+#card5 {
+  background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
+    /* bottom, image */ url(./paris.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.card p {
+  color: white;
+  font-size: 20px;
+}
+.destination-row {
+  width: 90%;
+}
+.weather-header {
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
+  font-size: 3em;
+  margin: 0 0 20px 0 !important;
+}
+
+@media screen and (max-width: 799px) {
+  .destination-row .column {
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+  }
+  .destination-row {
+    margin: 0 auto !important;
+    justify-content: center;
   }
 }
