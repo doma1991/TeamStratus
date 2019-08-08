@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import dataProvider.ConfigFileReader;
+import selenium.Wait;
 
 public class LoginPage {
     WebDriver driver;
@@ -43,11 +44,18 @@ public class LoginPage {
     }
 
     public String getCurrentPageUrl(){
+        Wait.untilPageLoadComplete(driver);
         return driver.getCurrentUrl();
+
     }
 
     public void clickSignInButton(){
         signin_button.click();
+    }
+
+    public Boolean onRegisterPage(){
+      if  (driver.getCurrentUrl() == "localhost:3000") ;
+      return true ;
     }
 
 
