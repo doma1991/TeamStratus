@@ -11,6 +11,7 @@ import {
   Point,
   Projection
 } from "react-google-maps";
+import { Map, GoogleApiWrapper } from "google-maps-react";
 import React, { Component, Fragment } from "react";
 import { compose, withProps, lifecycle } from "recompose";
 const google = (window.google = window.google ? window.google : {});

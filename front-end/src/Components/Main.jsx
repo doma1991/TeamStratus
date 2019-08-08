@@ -8,7 +8,6 @@ import TopFiveFlights from "./TopFiveFlights";
 
 // import FlightsView from "./FlightView";
 
-
 class Main extends React.Component {
   render() {
     return (
@@ -17,10 +16,10 @@ class Main extends React.Component {
 
         <h3 className="weather-header">Discover</h3>
         <PopularWeather />
+        <h3 className="weather-header">Be inspired</h3>
         <TopFiveFlights />
-        {/* <h4>Flights to your favourite programme locations</h4> */}
-        {/* <FlightsView /> */}
 
+        {/* <FlightsView /> */}
       </main>
     );
   }

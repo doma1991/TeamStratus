@@ -143,8 +143,6 @@ class PopularWeather extends React.Component {
       <div>
         <div className="row destination-row mx-auto">
           <div className="column">
-
-
             <div className="card" id="card1">
               <canvas id="icon1" ref={this.ref1} width="42" height="42" />
               <p>{this.state.country1}</p>
