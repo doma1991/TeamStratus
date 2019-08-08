@@ -20,7 +20,7 @@ public class GYWUserDetailsService implements UserDetailsService {
     //Responsible for logging in and getting the logged in user's role
     @Override
     public UserDetails loadUserByUsername(String login) {
-        User user = userRepository.findByLogin(login);
+        final User user = userRepository.findByLogin(login);
 
         if (user == null) {
             throw new UsernameNotFoundException(login);
