@@ -124,6 +124,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra1}</p>
             </Modal.Body>
             <Modal.Footer>
+              <Sms/>
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price1}
@@ -171,6 +172,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra2}</p>
             </Modal.Body>
             <Modal.Footer>
+              <Sms/>
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price2}
@@ -219,6 +221,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra3}</p>
             </Modal.Body>
             <Modal.Footer>
+              <Sms/>
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price3}
