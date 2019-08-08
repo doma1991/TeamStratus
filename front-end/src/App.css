@@ -33,11 +33,26 @@ html {
   padding: 10px;
 }
 .footer-two {
-  align-items: flex-end !important;
+  align-items: center !important;
 }
 footer div {
   display: inline-block;
   padding: 0;
+}
+.error-div {
+  height: 60vh;
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
+  flex-direction: column;
+  background: url("./minion.png") right no-repeat;
+  background-size: contain;
+}
+@media screen and (max-width: 799px) {
+  .error-div {
+    justify-content: initial !important;
+  }
+  .error-div h3 {
+    margin: 0;
+  }
 }
 /********************  NAVBAR ************************/
 .mast-c-header__logo {
@@ -163,6 +178,7 @@ footer div {
   }
   .search-splash {
     height: unset;
+    padding-bottom: 5vh;
   }
   .col-sm-3 {
     padding: 0px !important;
@@ -292,26 +308,31 @@ canvas {
   background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
     /* bottom, image */ url(./newYork.jpg);
   background-size: cover;
+  background-position: bottom;
 }
 #card2 {
   background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
     /* bottom, image */ url(./dubai.jpg);
   background-size: cover;
+  background-position: center;
 }
 #card3 {
   background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
     /* bottom, image */ url(./berlin.jpg);
   background-size: cover;
+  background-position: center;
 }
 #card4 {
   background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
     /* bottom, image */ url(./sydney.jpg);
   background-size: cover;
+  background-position: center;
 }
 #card5 {
   background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
     /* bottom, image */ url(./paris.jpg);
   background-size: cover;
+  background-position: bottom;
 }
 
 .card p {
@@ -325,4 +346,16 @@ canvas {
   font-family: Sky Text, Helvetica, Arial, sans-serif !important;
   font-size: 3em;
   margin: 0 0 20px 0 !important;
+}
+
+@media screen and (max-width: 799px) {
+  .destination-row .column {
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+  }
+  .destination-row {
+    margin: 0 auto !important;
+    justify-content: center;
+  }
 }

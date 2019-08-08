@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "@reach/router";
 
 class Navbar extends React.Component {
@@ -16,7 +16,7 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar d-flex flex-row justify-content-between navbar-dark">
         <div className="mob-logo">
-          <a href="/" className="mast-c-header__logo mast-js-focus" />
+          <Link to="/" className="mast-c-header__logo mast-js-focus" />
 
           <span className="navbar-brand mb-0 h1">GetYourWay</span>
         </div>

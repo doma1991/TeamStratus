@@ -1,12 +1,13 @@
 import MapsDirection from "./MapsDirection";
-import MapContainer from "./Map";
-import React, { Component } from "react";
+// import MapContainer from "./Map";
+import React from "react";
 import DatePicker from "react-datepicker";
-import moment from "moment";
-import Weather from "./weather";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/Button";
-import ToggleButtonGroup from "react-bootstrap/Button";
+// import moment from "moment";
+// import Weather from "./weather";
+// import Button from "react-bootstrap/Button";
+// import ButtonGroup from "react-bootstrap/Button";
+// import ToggleButtonGroup from "react-bootstrap/Button";
+import { Link } from "@reach/router";
 import "react-datepicker/dist/react-datepicker.css";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -184,7 +185,7 @@ class SearchBar extends React.Component {
         <div className="searchPanel">
           <div className="panelHeader">
             <div id="header">
-              <a href="https://www.sky.com" className="login-logo" />
+              <Link to="https://www.sky.com" className="login-logo" />
             </div>
           </div>
 
@@ -311,7 +312,7 @@ class SearchBar extends React.Component {
                     checked={this.state.transportMode === "d"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-car fa-2x" />
+                  <i className="fas fa-car fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -321,7 +322,7 @@ class SearchBar extends React.Component {
                     checked={this.state.transportMode === "t"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-bus fa-2x" />
+                  <i className="fas fa-bus fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -331,7 +332,7 @@ class SearchBar extends React.Component {
                     checked={this.state.transportMode === "w"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-walking fa-2x" />
+                  <i className="fas fa-walking fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -341,7 +342,7 @@ class SearchBar extends React.Component {
                     checked={this.state.transportMode === "b"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-biking fa-2x" />
+                  <i className="fas fa-biking fa-2x" />
                 </div>
               </div>
             </div>

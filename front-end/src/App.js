@@ -6,11 +6,11 @@ import Navbar from "./Components/Navbar.jsx";
 import Main from "./Components/Main";
 import RegistrationForm from "./Components/RegistrationForm.jsx";
 import LoginForm from "./Components/LoginForm";
-import { Router, Redirect } from "@reach/router";
-import "react-datepicker/dist/react-datepicker.css";
-import { DatePicker } from "react-datepicker";
-import CurrentLocation from "./Components/CurrentMapLocation";
-import MapContainer from "./Components/Map";
+import { Router } from "@reach/router";
+
+// import { DatePicker } from "react-datepicker";
+// import CurrentLocation from "./Components/CurrentMapLocation";
+// import MapContainer from "./Components/Map";
 import { Link } from "@reach/router";
 import ErrorPage from "./Components/ErrorPage.jsx";
 console.log(process.env.REACT_APP_GOOGLE_API);
