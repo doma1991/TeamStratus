@@ -124,6 +124,7 @@ class TopFiveFlights extends React.Component {
                 this.setState({
                     ["extra"+value]: stringRes.extra
                 });
+                console.log(stringRes);
             });
 
             //console.log(URL);
@@ -156,6 +157,10 @@ class TopFiveFlights extends React.Component {
                                 <p> {this.state.flight1}</p>
                                 <p> £ {this.state.price1}</p>
                                 <p> {this.state.extra1}</p>
+                                <form>
+                                    <p>Enter your number : </p>
+                                    <input type="text"/>
+                                </form>
                             </Modal.Body>
                             <Modal.Footer>
                                 <div className="paypalButton">
