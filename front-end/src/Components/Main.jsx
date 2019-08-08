@@ -4,7 +4,8 @@ import React from "react";
 // import { Switch, Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PopularWeather from "./PopularWeather";
-import TopFiveFlights from "./TopFiveFlights";
+// import TopFiveFlights from "./TopFiveFlights";
+import FlightView from "./FlightView";
 
 class Main extends React.Component {
   render() {
@@ -13,7 +14,8 @@ class Main extends React.Component {
         <SearchBar loggedIn={this.props.loggedIn} />
         <h3>Weather testing</h3>
         <PopularWeather />
-        <TopFiveFlights />
+        <h3>Be inspired by our newest additions</h3>
+        <FlightView />
       </main>
     );
   }

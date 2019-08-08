@@ -315,7 +315,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "d"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-car fa-2x" />
+                  <i className="fas fa-car fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -325,7 +325,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "t"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-bus fa-2x" />
+                  <i className="fas fa-bus fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -335,7 +335,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "w"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-walking fa-2x" />
+                  <i className="fas fa-walking fa-2x" />
                 </div>
 
                 <div className="col-sm-3">
@@ -345,7 +345,7 @@ export class SearchBar extends Component {
                     checked={this.state.transportMode === "b"}
                     onChange={this.handleChangeMode}
                   />
-                  <i class="fas fa-biking fa-2x" />
+                  <i className="fas fa-biking fa-2x" />
                 </div>
               </div>
             </div>
@@ -367,5 +367,5 @@ export class SearchBar extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBktdACICn5zDhtfxywVJRRUuB53aE1V-I"
+  apiKey: process.env.REACT_APP_GOOGLE_API
 })(SearchBar);
