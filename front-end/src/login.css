@@ -2017,6 +2017,10 @@ div.error .defaultBubble.btmalgn {
   height: 35px;
   float: left;
 }
+.miniPod img {
+  max-height: 95px;
+  min-height: 95px;
+}
 
 @media screen and (max-width: 1200px) {
   #signInContent {

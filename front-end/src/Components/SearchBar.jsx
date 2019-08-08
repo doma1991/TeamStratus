@@ -15,9 +15,6 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 import WeatherMap from "./WeatherMap.jsx";
 
-// Also need to install moment byt running: npm install moment
-//
-
 var MapD = <MapsDirection />;
 
 export class SearchBar extends Component {
@@ -35,7 +32,9 @@ export class SearchBar extends Component {
       transportMode: "d",
       map: <MapsDirection />,
       result: false,
-      weatherMap: <WeatherMap />
+      weatherMap: (
+        <WeatherMap json={JSON.parse(localStorage.getItem("mapRequest"))} />
+      )
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);
@@ -169,7 +168,9 @@ export class SearchBar extends Component {
     localStorage.setItem("mapRequest", JSON.stringify(data));
     if (this.props.loggedIn) {
       this.setState({ map: <MapsDirection /> });
-      this.setState({ weatherMap: <WeatherMap /> });
+      this.setState({
+        weatherMap: <WeatherMap json={JSON.parse(JSON.stringify(data))} />
+      });
     } else {
       this.setState({ map: <h1>Please log in</h1> });
       this.setState({ weatherMap: null });
@@ -364,8 +365,10 @@ export class SearchBar extends Component {
             </div>
           </form>
         </div>
-        <div className="mapBox">{this.state.result ? this.state.map : ""}</div>
-        {this.state.result ? this.state.weatherMap : ""}
+        <div className="mapBox">
+          {this.state.result ? this.state.map : ""}
+          {this.state.result ? this.state.weatherMap : ""}
+        </div>
       </div>
     );
   }

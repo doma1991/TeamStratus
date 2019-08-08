@@ -1,6 +1,8 @@
 import React from "react";
 // import Main from "./Main";
 import { Redirect, Link } from "@reach/router";
+import findWay from "../findWay.png";
+import discover from "../discover.png";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -131,28 +133,28 @@ class LoginForm extends React.Component {
         </div>
         <div className="colPod">
           <div className="miniPod">
-            <img
-              src="https://skyidassets-a.akamaihd.net/static/1gqI1I1Mcln4qcoaB4mNosYV5ZbRwIsBaJlZZE1GBl2.jpg"
-              alt="Sky Go"
-            />
+            <img src={discover} alt="Sky Go" />
 
             <div>
-              <h4 className="sub-header-three-signin-cfm">Sky Go</h4>
+              <h4 className="sub-header-three-signin-cfm">Find new places</h4>
 
-              <p>Watch TV on the move in line with your TV subscription</p>
+              <p>
+                Find flights and weather for your next favorite holiday
+                destination
+              </p>
             </div>
           </div>
 
           <div className="miniPod">
-            <img
-              src="https://skyidassets-a.akamaihd.net/static/1S3uPAbdHPgIfq9VB5WkmijhIUUeIlMdTkPjrBngRZW.jpg"
-              alt="Sky Apps"
-            />
+            <img src={findWay} alt="Sky Apps" />
 
             <div>
-              <h4 className="sub-header-three-signin-cfm">Sky Apps</h4>
+              <h4 className="sub-header-three-signin-cfm">From A to B</h4>
 
-              <p>Free mobile apps for breaking news, latest scores and more</p>
+              <p>
+                Plan your next journey whether it's on foot, by car or even on
+                the train
+              </p>
             </div>
           </div>
 

@@ -3,13 +3,13 @@ import "./weather.css";
 const Skycons = require("skycons")(window);
 
 var skycons = new Skycons({ color: "blue" });
-var routed;
 var origina;
 var originn;
 var destinationa;
 var destinationn;
 var origin;
 var destination;
+var routed;
 
 class WeatherMap extends React.Component {
   constructor(props) {
@@ -42,7 +42,6 @@ class WeatherMap extends React.Component {
           [value]: responseJson.rate
         });
       });
-      console.log(URL);
     } catch (e) {
       console.log("error", e);
     }
@@ -70,8 +69,6 @@ class WeatherMap extends React.Component {
 
         skycons.add("travelIcon1", skycons.responseJson.currently.icon);
         skycons.add("travelIcon2", skycons.responseJson.currently.icon);
-
-        console.log(skycons.responseJson.currently.icon);
 
         if (!skycons.responseJson.currently.icon) {
           return <h2>Loading...</h2>;
@@ -101,10 +98,7 @@ class WeatherMap extends React.Component {
           [value2]: responseJson.currently.temperature
         });
       });
-    } catch (e) {
-      console.log("error", e);
-    }
-    console.log(data);
+    } catch (e) {}
 
     return data;
   }
@@ -116,8 +110,32 @@ class WeatherMap extends React.Component {
   }
 
   render() {
+    return (
+      <div>
+        <div className="row destination-card-row mx-auto">
+          <div className="col-6">
+            <div className="card" id="travelCard1">
+              <canvas id="travelIcon1" ref={this.ref1} width="42" height="42" />
+              <p>{origin}</p>
+              <p>{this.state.temp1} celsius</p>
+            </div>
+          </div>
+
+          <div className="col-6">
+            <div className="card" id="travelCard2">
+              <canvas id="travelIcon2" ref={this.ref2} width="42" height="42" />
+              <p>{destination}</p>
+              <p>{this.state.temp2} celsius</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  componentWillReceiveProps() {
+    routed = JSON.parse(localStorage.getItem("mapRequest"));
+
     try {
-      routed = JSON.parse(localStorage.getItem("mapRequest"));
       origin = routed.startLocation;
       destination = routed.endLocation;
       origina = routed.startLatitude;
@@ -132,36 +150,12 @@ class WeatherMap extends React.Component {
     this.getTopFiveWeather("weather1", origina, originn, "temp1");
     this.getTopFiveWeather("weather2", destinationa, destinationn, "temp2");
 
-    return (
-      <div>
-        <div className="row destination-row mx-auto">
-          <div className="column">
-            <div className="card" id="card1">
-              <canvas id="travelIcon1" ref={this.ref1} width="42" height="42" />
-              <p>{this.state.country1}</p>
-              <p>{this.state.temp1} celsius</p>
-            </div>
-          </div>
-
-          <div className="column">
-            <div className="card" id="card2">
-              <canvas id="travelIcon2" ref={this.ref2} width="42" height="42" />
-              <p>{this.state.country2}</p>
-              <p>{this.state.temp2} celsius</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-  componentDidUpdate() {
     const skycons = new Skycons({ color: "white" });
 
     let weather1 = this.state.weather1;
     skycons.add(document.getElementById("travelIcon1"), weather1);
     let weather2 = this.state.weather2;
     skycons.add(document.getElementById("travelIcon2"), weather2);
-    let weather3 = this.state.weather3;
 
     skycons.play();
   }
