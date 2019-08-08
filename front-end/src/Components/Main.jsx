@@ -12,7 +12,7 @@ class Main extends React.Component {
     return (
       <main>
         <SearchBar loggedIn={this.props.loggedIn} />
-        <h3>Weather testing</h3>
+        <h3 className="weather-header">Discover</h3>
         <PopularWeather />
         <h3>Be inspired by our newest additions</h3>
         <FlightView />
