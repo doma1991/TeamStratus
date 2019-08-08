@@ -13,6 +13,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+import WeatherMap from "./WeatherMap.jsx";
 
 // Also need to install moment byt running: npm install moment
 //
@@ -33,7 +34,8 @@ export class SearchBar extends Component {
       travelDate: "",
       transportMode: "d",
       map: <MapsDirection />,
-      result: false
+      result: false,
+      weatherMap: <WeatherMap />
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);
@@ -167,8 +169,10 @@ export class SearchBar extends Component {
     localStorage.setItem("mapRequest", JSON.stringify(data));
     if (this.props.loggedIn) {
       this.setState({ map: <MapsDirection /> });
+      this.setState({ weatherMap: <WeatherMap /> });
     } else {
       this.setState({ map: <h1>Please log in</h1> });
+      this.setState({ weatherMap: null });
     }
 
     console.log(JSON.stringify(data));
@@ -361,6 +365,7 @@ export class SearchBar extends Component {
           </form>
         </div>
         <div className="mapBox">{this.state.result ? this.state.map : ""}</div>
+        {this.state.result ? this.state.weatherMap : ""}
       </div>
     );
   }

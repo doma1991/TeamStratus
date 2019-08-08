@@ -172,7 +172,7 @@ public static String dataFromAPI(String string){ //returns number of routes, dis
         JSONObject trip=legs.getJSONObject(0);
         String duration= trip.getJSONObject("duration").getString("text");
         String distance= trip.getJSONObject("distance").getString("text");
-        String a=duration+", "+distance+", "+Integer.toString(routes.length());
+        String a=duration+", "+distance+", ";
         return a;
     }
     return("");

@@ -347,6 +347,15 @@ canvas {
   font-size: 3em;
   margin: 0 0 20px 0 !important;
 }
+.travel-info {
+  justify-content: space-between;
+  background: white;
+  border: initial;
+}
+.travel-info h3 {
+  margin: 0 !important;
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
+}
 
 @media screen and (max-width: 799px) {
   .destination-row .column {
