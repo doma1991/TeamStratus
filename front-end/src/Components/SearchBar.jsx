@@ -168,7 +168,7 @@ export class SearchBar extends Component {
     if (this.props.loggedIn) {
       this.setState({ map: <MapsDirection /> });
     } else {
-      this.setState({ map: <h1>Please log in</h1> });
+      this.setState({ map: <h1 id = "loginreminder">Please log in</h1> });
     }
 
     console.log(JSON.stringify(data));
@@ -356,6 +356,7 @@ export class SearchBar extends Component {
             <div className="form-group">
               <button
                 className="btn btn-success"
+                id = "go_button"
                 onClick={this.triggerChildAlert}
               >
                 Go!

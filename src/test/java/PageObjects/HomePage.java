@@ -38,6 +38,12 @@ public class HomePage {
     @FindBy(how = How.ID, using = "driving_mode")
     private WebElement drivingmode ;
 
+    @FindBy(how = How.ID, using = "go_button")
+    private WebElement gobutton ;
+
+    @FindBy(how = How.ID, using = "loginreminder")
+    private WebElement loginreminder ;
+
 
 
     public void sendKeyToFromInput(String fromlocation){
@@ -71,4 +77,11 @@ public class HomePage {
     }
 
     public void clickdrivingmoderadiobutton(){ drivingmode.click();}
+
+    public void clickgobutton (){ gobutton.click();}
+
+    public void Findloginreminder(){
+
+       loginreminder.isDisplayed();
+    }
 }
