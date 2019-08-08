@@ -131,11 +131,8 @@ class TopFiveFlights extends React.Component {
   render() {
     return (
       <div>
-        {/* <div className="row">
-                    <div className="span2 offset1"> */}
-
         <CardDeck>
-          <Card className="flightCard" id="flightsCard1">
+          <Card bg="light" className="flightCard" id="flightsCard1">
             <Card.Img
               variant="top"
               src={require("./Film_picture/mama_mia_portrait.jpg")}
@@ -181,7 +178,7 @@ class TopFiveFlights extends React.Component {
               </div>
             </Modal.Footer>
           </Modal>
-          <Card className="flightCard" id="flightsCard1">
+          <Card bg="light" className="flightCard" id="flightsCard1">
             <Card.Img
               variant="top"
               src={require("./Film_picture/MI_fallout_paris.jpg")}
@@ -229,7 +226,7 @@ class TopFiveFlights extends React.Component {
             </Modal.Footer>
           </Modal>
 
-          <Card className="flightCard" id="flightsCard1">
+          <Card bg="light" className="flightCard" id="flightsCard1">
             <Card.Img
               variant="top"
               src={require("./Film_picture/Crazy_Rich_asians_Singapore.jpg")}
