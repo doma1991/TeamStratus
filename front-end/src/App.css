@@ -346,6 +346,27 @@ canvas {
 
 /******************FLIGHTS***************/
 
+#film1 {
+  background: url(./Components/Film_picture/Mama_Mia_.jpg);
+  background-size: cover;
+  background-position: bottom;
+  min-height: 15vh;
+}
+
+#film2 {
+  background: url(./Components/Film_picture/MI_Fallout.jpg);
+  background-size: cover;
+  background-position: bottom;
+  min-height: 15vh;
+}
+
+#film3 {
+  background: url(./Components/Film_picture/Crazy_Rich_asians_Singapore.jpg);
+  background-size: cover;
+  background-position: bottom;
+  min-height: 15vh;
+}
+
 @media screen and (max-width: 799px) {
   .destination-row .column {
     width: 100%;

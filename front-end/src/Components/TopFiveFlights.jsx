@@ -14,23 +14,15 @@ class TopFiveFlights extends React.Component {
       flight1: "",
       flight2: "",
       flight3: "",
-      flight4: "",
-      flight5: "",
       price1: "",
       price2: "",
       price3: "",
-      price4: "",
-      price5: "",
       extra1: "",
       extra2: "",
       extra3: "",
-      extra4: "",
-      extra5: "",
       showModal1: false,
       showModal2: false,
-      showModal3: false,
-      showModal4: false,
-      showModal5: false
+      showModal3: false
     };
     this.open1 = this.open1.bind(this);
     this.close1 = this.close1.bind(this);
@@ -38,21 +30,9 @@ class TopFiveFlights extends React.Component {
     this.close2 = this.close2.bind(this);
     this.open3 = this.open3.bind(this);
     this.close3 = this.close3.bind(this);
-    this.open4 = this.open4.bind(this);
-    this.close4 = this.close4.bind(this);
-    this.open5 = this.open5.bind(this);
-    this.close5 = this.close5.bind(this);
     this.getTop5Flights("1", "JSI");
     this.getTop5Flights("2", "CDG");
     this.getTop5Flights("3", "SIN");
-
-    setTimeout(
-      function() {
-        this.getTop5Flights("4", "JFK");
-        this.getTop5Flights("5", "LIS");
-      }.bind(this),
-      3000
-    );
   }
 
   close1() {
@@ -77,22 +57,6 @@ class TopFiveFlights extends React.Component {
 
   open3() {
     this.setState({ ["showModal3"]: true });
-  }
-
-  close4() {
-    this.setState({ ["showModal4"]: false });
-  }
-
-  open4() {
-    this.setState({ ["showModal4"]: true });
-  }
-
-  close5() {
-    this.setState({ ["showModal5"]: false });
-  }
-
-  open5() {
-    this.setState({ ["showModal5"]: true });
   }
 
   async getTop5Flights(value, destination) {
@@ -135,10 +99,14 @@ class TopFiveFlights extends React.Component {
           <Card bg="light" className="flightCard" id="flightsCard1">
             <Card.Img
               variant="top"
-              src={require("./Film_picture/mama_mia_portrait.jpg")}
+              src={require("./Film_picture/Mama_Mia_.jpg")}
             />
             <Card.Body>
-              <Button onClick={this.open1} variant="primary">
+              <Button
+                variant="light"
+                // variant="outline-dark"
+                onClick={this.open1}
+              >
                 Fly to Skiathos
               </Button>
             </Card.Body>
@@ -181,10 +149,10 @@ class TopFiveFlights extends React.Component {
           <Card bg="light" className="flightCard" id="flightsCard1">
             <Card.Img
               variant="top"
-              src={require("./Film_picture/MI_fallout_paris.jpg")}
+              src={require("./Film_picture/MI_Fallout.jpg")}
             />
             <Card.Body>
-              <Button onClick={this.open2} variant="primary">
+              <Button variant="light" onClick={this.open2}>
                 Fly to Paris
               </Button>
             </Card.Body>
@@ -232,7 +200,7 @@ class TopFiveFlights extends React.Component {
               src={require("./Film_picture/Crazy_Rich_asians_Singapore.jpg")}
             />
             <Card.Body>
-              <Button onClick={this.open3} variant="primary">
+              <Button variant="light" onClick={this.open3}>
                 Fly to Singapore
               </Button>
             </Card.Body>
@@ -273,99 +241,6 @@ class TopFiveFlights extends React.Component {
               </div>
             </Modal.Footer>
           </Modal>
-
-          {/* </div>
-
-                    <div className="span2">
-
-                        <div onClick={this.open4}>
-                            flight4
-                        </div>
-
-                        <Modal show={this.state.showModal4} onHide={this.close4}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>London to Dubai</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <p> {this.state.flight4}</p>
-                                <p> £ {this.state.price4}</p>
-                                <p> {this.state.extra4}</p>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <div className="paypalButton">
-                                    <PayPalButton
-                                        amount= {this.state.price4}
-                                        onSuccess={(details, data) => {
-                                            alert("Transaction completed by " + details.payer.name.given_name);
-
-                                            // OPTIONAL: Call your server to save the transaction
-                                            return fetch("/paypal-transaction-complete", {
-                                                method: "post",
-                                                body: JSON.stringify({
-                                                    orderID: data.orderID
-                                                })
-                                            });
-                                        }}
-                                        options={{
-                                            clientId: "sb",
-                                            currency: "GBP"
-                                        }}
-                                    />
-                                </div>
-
-                            </Modal.Footer>
-                        </Modal>
-
-
-                    </div>
-
-                    <div className="span2">
-
-                        <div onClick={this.open5}>
-                            flight5
-                        </div>
-
-                        <Modal show={this.state.showModal5} onHide={this.close5}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>London to Dubai</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <p> {this.state.flight5}</p>
-                                <p> £ {this.state.price5}</p>
-                                <p> {this.state.extra5}</p>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <div className="paypalButton">
-                                    <PayPalButton
-                                        amount= {this.state.price5}
-                                        onSuccess={(details, data) => {
-                                            alert("Transaction completed by " + details.payer.name.given_name);
-
-                                            // OPTIONAL: Call your server to save the transaction
-                                            return fetch("/paypal-transaction-complete", {
-                                                method: "post",
-                                                body: JSON.stringify({
-                                                    orderID: data.orderID
-                                                })
-                                            });
-                                        }}
-                                        options={{
-                                            clientId: "sb",
-                                            currency: "GBP"
-                                        }}
-                                    />
-                                </div>
-
-                            </Modal.Footer>
-                        </Modal>
-
-
-                    </div>
-
-                </div>
-
-
- */}
         </CardDeck>
       </div>
     );
