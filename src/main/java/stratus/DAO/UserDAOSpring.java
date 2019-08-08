@@ -58,11 +58,11 @@ public class UserDAOSpring implements UserDAO {
     }
 
 
-    @Override
-    public User getUserById(int id) {
-
-        return userRepository.findById(id).get();
-    }
+//    @Override
+//    public User getUserById(int id) {
+//
+//        return userRepository.findById(id).get();
+//    }
 
     // update method - NEEDS WORK! currently overwrites all data instead of updating individual fields
     public boolean update(User user) {
