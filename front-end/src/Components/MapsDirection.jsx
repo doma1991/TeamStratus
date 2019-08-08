@@ -4,7 +4,7 @@ import React, { Component , Fragment} from 'react';
 
 import {compose, withProps,lifecycle} from 'recompose';
 
-
+import WeatherMap from "./WeatherMap";
 
 
 
@@ -105,6 +105,7 @@ if(status === google.maps.DirectionsStatus.OK){
       </GoogleMap>
       {message}
       </div>
+      <WeatherMap/>
       </div>
     );
 
