@@ -4,18 +4,21 @@ import React from "react";
 // import { Switch, Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PopularWeather from "./PopularWeather";
-// import TopFiveFlights from "./TopFiveFlights";
-import FlightView from "./FlightView";
+import TopFiveFlights from "./TopFiveFlights";
+
+// import FlightsView from "./FlightView";
 
 class Main extends React.Component {
   render() {
     return (
       <main>
         <SearchBar loggedIn={this.props.loggedIn} />
+
         <h3 className="weather-header">Discover</h3>
         <PopularWeather />
-        <h3>Be inspired by our newest additions</h3>
-        <FlightView />
+        <TopFiveFlights />
+        {/* <h4>Flights to your favourite programme locations</h4> */}
+        {/* <FlightsView /> */}
       </main>
     );
   }

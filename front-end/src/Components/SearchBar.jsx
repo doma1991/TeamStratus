@@ -1,12 +1,12 @@
 import MapsDirection from "./MapsDirection";
-import MapContainer from "./Map";
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
-import moment from "moment";
-import Weather from "./weather";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/Button";
-import ToggleButtonGroup from "react-bootstrap/Button";
+// import moment from "moment";
+// import Weather from "./weather";
+// import Button from "react-bootstrap/Button";
+// import ButtonGroup from "react-bootstrap/Button";
+// import ToggleButtonGroup from "react-bootstrap/Button";
+import { Link } from "@reach/router";
 import "react-datepicker/dist/react-datepicker.css";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import PlacesAutocomplete, {
@@ -17,7 +17,6 @@ import PlacesAutocomplete, {
 // Also need to install moment byt running: npm install moment
 //
 
-var MapS = <MapContainer />;
 var MapD = <MapsDirection />;
 
 export class SearchBar extends Component {
@@ -188,7 +187,7 @@ export class SearchBar extends Component {
         <div className="searchPanel">
           <div className="panelHeader">
             <div id="header">
-              <a href="https://www.sky.com" className="login-logo" />
+              <Link to="https://www.sky.com" className="login-logo" />
             </div>
           </div>
 
@@ -290,6 +289,7 @@ export class SearchBar extends Component {
                 <div className="w-100 p-2">
                   <label>Select Start Date: </label>
                   <DatePicker
+                    id="datepicker"
                     placeholder="Select travel date"
                     todayButton={"Today"}
                     showTimeSelect

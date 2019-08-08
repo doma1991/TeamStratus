@@ -21,7 +21,9 @@ public class WeatherAPI {
     //   TO GET THE WEATHER FOR TODAY OR THIS WEEK
 
     public static String getWeatherByLatLon(String lat, String lon){
-        return apiCaller.getRapidApiResponse("https://dark-sky.p.rapidapi.com/"+ lat +","+ lon +"?lang=en&units=auto");
+        System.out.println("https://api.darksky.net/forecast/bf9f707809e17d5ff1b5d0cfc9d931f9/" + lat +","+ lon);
+        return apiCaller.getApiResponse("https://api.darksky.net/forecast/bf9f707809e17d5ff1b5d0cfc9d931f9/"+ lat +","+ lon);
+
     }
 
     public static HttpApiResponse getApiCaller() {

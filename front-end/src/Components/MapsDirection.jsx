@@ -64,7 +64,6 @@ class MapsDirection extends React.Component {
         googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${
           process.env.REACT_APP_GOOGLE_API
         }`,
-
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `400px` }} />,
         mapElement: <div style={{ height: `100%` }} />
@@ -75,6 +74,7 @@ class MapsDirection extends React.Component {
         componentDidMount() {
           const DirectionsService = new google.maps.DirectionsService();
           console.log(DirectionsComponent.googleMapURL);
+          console.log(process.env.REACT_APP_GOOGLE_API);
           DirectionsService.route(
             {
               origin: new google.maps.LatLng(origina, originn),

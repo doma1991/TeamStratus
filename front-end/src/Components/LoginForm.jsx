@@ -1,6 +1,6 @@
 import React from "react";
 // import Main from "./Main";
-import { Redirect } from "@reach/router";
+import { Redirect, Link } from "@reach/router";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class LoginForm extends React.Component {
           <div className="panel" role="main">
             <div className="panelHeader">
               <div id="header">
-                <a href="https://www.sky.com" className="login-logo" />
+                <Link to="https://www.sky.com" className="login-logo" />
               </div>
             </div>
 
@@ -98,12 +98,12 @@ class LoginForm extends React.Component {
                     </button>
                     <p>{text}</p>
                     <p>
-                      <a
+                      <Link
                         id="privacyPolicyLink"
-                        href="https://www.sky.com/help/articles/sky-privacy-and-cookies-notice"
+                        to="https://www.sky.com/help/articles/sky-privacy-and-cookies-notice"
                       >
                         Privacy &amp; Cookies Notice
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
