@@ -48,12 +48,7 @@ class WeatherMap extends React.Component {
       currency1: "",
       currency2: "",
 
-      // icon1: "CLEAR_NIGHT",
-      // icon2: "",
-      // icon3: "",
-      // icon4: "",
-      // icon5: "",
-      // icon: []
+
     };
 
     this.getTopFiveWeather("weather1", origina, originn, "temp1");
@@ -101,10 +96,7 @@ class WeatherMap extends React.Component {
         });
 
         skycons.add("icon1", skycons.responseJson.currently.icon);
-        // skycons.add("icon2", skycons.responseJson.currently.icon);
-        // skycons.add("icon3", skycons.responseJson.currently.icon);
-        // skycons.add("icon4", skycons.responseJson.currently.icon);
-        // skycons.add("icon5", skycons.responseJson.currently.icon);
+
 
         console.log(skycons.responseJson.currently.icon);
 
@@ -132,11 +124,7 @@ class WeatherMap extends React.Component {
         } else {
           console.log("error!");
 
-          // skycons.add(document.getElementById("icon1"), Skycons.PARTLY_CLOUDY_DAY);
-          // skycons.add(document.getElementById("icon2"), Skycons.CLEAR_NIGHT);
-          // skycons.add(document.getElementById("icon3"), Skycons.CLEAR_DAY);
-          // skycons.add(document.getElementById("icon4"), Skycons.RAIN);
-          // skycons.add(document.getElementById("icon5"), Skycons.CLOUDY);
+
         }
         this.setState({
           [value2]: responseJson.currently.temperature
@@ -185,11 +173,7 @@ class WeatherMap extends React.Component {
   }
   componentDidUpdate() {
     const skycons = new Skycons({ color: "white" });
-    // skycons.add(this.ref1.current, Skycons.PARTLY_CLOUDY_DAY);
-    // skycons.add(this.ref2.current, Skycons.CLEAR_NIGHT);
-    // skycons.add(this.ref3.current, Skycons.CLOUDY);
-    // skycons.add(this.ref4.current, Skycons.CLEAR_DAY);
-    // skycons.add(this.ref5.current, Skycons.RAIN);
+
     let weather1 = this.state.weather1;
     skycons.add(document.getElementById("icon1"), weather1);
     let weather2 = this.state.weather2;
@@ -200,31 +184,10 @@ class WeatherMap extends React.Component {
     skycons.add(document.getElementById("icon4"), weather4);
     let weather5 = this.state.weather5;
     skycons.add(document.getElementById("icon5"), weather5);
-    //    skycons.add(document.getElementById("icon2"), Skycons.CLEAR_NIGHT);
-    //    skycons.add(document.getElementById("icon3"),
-    //    skycons.add(document.getElementById("icon4"), Skycons.RAIN);
-    //    skycons.add(document.getElementById("icon5"), Skycons.CLOUDY);
+
     skycons.play();
 
-    // if (!skycons.responseJson.currently.icon) {
-    //     return (<h2>Loading...</h2>);
-    // }
 
-    // if(skycons.responseJson.currently.icon === 'wind') {
-    //     skycons.set("wind", Skycons.WIND);
-    //     skycons.play();
-    // } else if(skycons.responseJson.currently.icon === 'clear-day') {
-    //     skycons.set("clear-day", Skycons.CLEAR_DAY);
-    //     skycons.play();
-    // } else if(skycons.responseJson.currently.icon === 'partly-cloudy-day') {
-    //     skycons.set("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
-    //     skycons.play();
-    // } else if(skycons.responseJson.currently.icon === 'partly-cloudy-night') {
-    //     skycons.set("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
-    //     skycons.play();
-    // } else {
-    //     console.log('error!');
-    // }
   }
 }
 
