@@ -9,6 +9,11 @@ import com.google.gson.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
+
 
 public class AmadeusFlightsApi {
 
@@ -67,4 +72,20 @@ public class AmadeusFlightsApi {
         }
         return items;
     }
+
+
+    public static final String ACCOUNT_SID = "AC82b51e4e35f2a87b246eb3724f5e25b5";
+    public static final String AUTH_TOKEN = "00515963611adf537e879e4e2f3be511";
+
+    public static void smsSend(String toNumber){
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        System.out.println("Hello");
+        Message message = Message.creator(new PhoneNumber(toNumber),
+                new PhoneNumber("+441244470251"),
+                "This is the ship that made the Kessel Run in fourteen parsecs?").create();
+
+        System.out.println(message.getSid());
+    }
+
+
 }

@@ -6,6 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import stratus.API.AmadeusFlightsApi;
 import stratus.DAO.RouteDAO;
 import stratus.DAO.UserDAO;
 
@@ -25,7 +26,6 @@ public class Application extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
-
         SpringApplication.run(Application.class, args);
 
         ApplicationContext ctx = new AnnotationConfigApplicationContext("stratus");
