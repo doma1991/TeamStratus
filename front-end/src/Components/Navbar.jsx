@@ -29,7 +29,7 @@ class Navbar extends React.Component {
             <Link
               to="/register"
               className="btn btn-outline-primary my-2 my-sm-0 mx-1"
-              id = "navloginbutton"
+              id = "navregisterbutton"
             >
               Register
             </Link>

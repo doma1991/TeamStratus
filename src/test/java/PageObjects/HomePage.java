@@ -26,14 +26,17 @@ public class HomePage {
     @FindBy(how = How.ID, using = "navregisterbutton")
     private WebElement nav_registerbutton ;
 
-    @FindBy(how = How.NAME, using = "From" )
+    @FindBy(how = How.ID, using = "from_input" )
     private WebElement from_input ;
 
-    @FindBy(how = How.NAME, using = "To" )
+    @FindBy(how = How.ID, using = "to_input" )
     private WebElement to_input ;
 
-    @FindBy(how = How.CLASS_NAME, using ="react-datepicker__input-container")
+    @FindBy(how = How.ID, using ="datepicker")
     private WebElement datepicker ;
+
+    @FindBy(how = How.ID, using = "driving_mode")
+    private WebElement drivingmode ;
 
 
 
@@ -42,11 +45,12 @@ public class HomePage {
     }
 
     public void sendKeystoDatepicker(String date){
-        datepicker.sendKeys();
+        datepicker.sendKeys(date);
     }
 
     public void sendKeyToToInput(String tolocation){
-        from_input.sendKeys(tolocation);
+        to_input.click();
+        to_input.sendKeys(tolocation);
     }
 
 
@@ -65,4 +69,6 @@ public class HomePage {
     public void clickNavRegisterButton(){
         nav_registerbutton.click();
     }
+
+    public void clickdrivingmoderadiobutton(){ drivingmode.click();}
 }

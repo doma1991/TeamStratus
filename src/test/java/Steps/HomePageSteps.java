@@ -34,7 +34,14 @@ public class HomePageSteps {
         pageObjectManager = new PageObjectManager(driver);
         homePage = pageObjectManager.getHomepage();
         homePage.navigateTo_HomePage();
-        Assert.assertEquals("http://localhost:3000/",homePage.getCurrentPageUrl());
+        try {
+            Thread.sleep(100);
+            Assert.assertEquals("http://localhost:3000/",homePage.getCurrentPageUrl());
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @When("I click the register button in the navbar")
@@ -62,7 +69,15 @@ public class HomePageSteps {
 
     @And("I enter a valid location in the To input box")
     public void iEnterAValidLocationInTheToInputBox() {
-        homePage.sendKeyToToInput("Osterley");
+        try {
+            Thread.sleep(100);
+            homePage.sendKeyToToInput("Osterley");
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @And("I select a valid date")
@@ -72,11 +87,16 @@ public class HomePageSteps {
 
     @And("I select the driving mode")
     public void iSelectTheDrivingMode() {
+        homePage.clickdrivingmoderadiobutton();
 
     }
 
 
+
     @Then("I should see my map updated with the route")
     public void iShouldSeeMyMapUpdatedWithTheRoute() {
+
+        
+
     }
 }

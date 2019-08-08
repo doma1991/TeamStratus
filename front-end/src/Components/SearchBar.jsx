@@ -210,7 +210,8 @@ export class SearchBar extends Component {
                     <input
                       {...getInputProps({
                         placeholder: "Search Places ...",
-                        className: "location-search-input"
+                        className: "location-search-input",
+                        id: "from_input"
                       })}
                     />
                     <div className="autocomplete-dropdown-container">
@@ -256,7 +257,8 @@ export class SearchBar extends Component {
                     <input
                       {...getInputProps({
                         placeholder: "Search Places ...",
-                        className: "location-search-input"
+                        className: "location-search-input",
+                        id : "to_input"
                       })}
                     />
                     <div className="autocomplete-dropdown-container">
@@ -313,6 +315,7 @@ export class SearchBar extends Component {
                   <input
                     type="radio"
                     value="d"
+                    id = "driving_mode"
                     checked={this.state.transportMode === "d"}
                     onChange={this.handleChangeMode}
                   />
