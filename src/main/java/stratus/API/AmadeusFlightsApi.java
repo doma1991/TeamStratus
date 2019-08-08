@@ -20,7 +20,8 @@ public class AmadeusFlightsApi {
      * @return An array list containing the flight information
      */
     public static ArrayList<Object> getFlightInfo(String originAirport,String destinationAirport,String departureDate){
-        Amadeus amadeus = Amadeus.builder("4RbapAA123sW9QVA0PDHwnRkA9LVWO4u", "IIBYdRnZoRnVNED7").build();
+        Amadeus amadeus = Amadeus.builder("k0yT06AJfCMGbVW4jvXkRyOGM8lU4hxw", "u5UvPADjiazEQEWZ").setHostname("production")
+                .build();
         ArrayList<Object> items = new ArrayList<>();
         try {
             ArrayList<String> toPass = new ArrayList<>();
@@ -28,8 +29,8 @@ public class AmadeusFlightsApi {
             JsonObject gson = flightOffers[0].getResponse().getResult();
             JsonObject flightName = gson.getAsJsonObject("dictionaries");
             JsonObject carrierName = flightName.getAsJsonObject("carriers");
-             String airlineName = carrierName.get("SV").getAsString();
-            toPass.add(airlineName);
+            String carrierNames = carrierName.toString().replaceAll("\\{","").replaceAll("}","").replaceAll("\"","");
+             toPass.add(carrierNames);
             for (FlightOffer flightOffer : flightOffers) {
                 FlightOffer.OfferItem[] itemsToGet = flightOffer.getOfferItems();
                 for (FlightOffer.OfferItem offerItem : itemsToGet) {
@@ -58,8 +59,8 @@ public class AmadeusFlightsApi {
             items.add(toPass);
             items.addAll(Arrays.asList(originInfo));
             items.addAll(Arrays.asList(destinationInfo));
-            String countryCode = Maps.getCountryCode(destinationInfo[0],destinationInfo[1]);
-            String currencyCode = CurrencyAPI.currencyByCountry(countryCode);
+            String countryCode = "";
+            String currencyCode = "";
             items.add(currencyCode);
         } catch (ResponseException e) {
             e.printStackTrace();
