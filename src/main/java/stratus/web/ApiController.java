@@ -142,7 +142,7 @@ public Route getRouteFromMaps(@PathVariable("start") String start, @PathVariable
     @GetMapping("/sendsms/{number}")
     @ResponseBody
     public String sendSms(@PathVariable("number") String number){
-        AmadeusFlightsApi.smsSend(number);
+        AmadeusFlightsApi.smsSend(number,"Don't forget to book your flight at get your way ;).");
         return "success";
     }
 }

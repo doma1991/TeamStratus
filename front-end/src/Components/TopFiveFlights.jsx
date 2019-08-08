@@ -4,6 +4,8 @@ import moment from "moment";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { PayPalButton } from "react-paypal-button-v2";
+import Sms from "./sms";
+import Test from "./test.jsx";
 
 class TopFiveFlights extends React.Component {
     constructor(props) {
@@ -138,6 +140,7 @@ class TopFiveFlights extends React.Component {
 
 
     render() {
+        var sendsms=<Sms/>;
         return (
             <div>
 
