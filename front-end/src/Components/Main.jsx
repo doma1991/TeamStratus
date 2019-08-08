@@ -4,7 +4,10 @@ import React from "react";
 // import { Switch, Route } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PopularWeather from "./PopularWeather";
+import TopFiveFlights from "./TopFiveFlights";
+
 // import FlightsView from "./FlightView";
+
 
 class Main extends React.Component {
   render() {
@@ -14,8 +17,10 @@ class Main extends React.Component {
 
         <h3 className="weather-header">Discover</h3>
         <PopularWeather />
+        <TopFiveFlights />
         {/* <h4>Flights to your favourite programme locations</h4> */}
         {/* <FlightsView /> */}
+
       </main>
     );
   }
