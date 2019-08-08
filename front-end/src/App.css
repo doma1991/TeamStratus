@@ -346,24 +346,6 @@ canvas {
 
 /******************FLIGHTS***************/
 
-CardGroup {
-  width: 90%;
-}
-
-.div.card {
-  padding: 0%;
-}
-
-.btn-primary {
-  color: #282c34 !important;
-  background-color: white;
-  border-color: #f8f9fa !important;
-}
-
-.div.card-body {
-  padding: 0 rem;
-}
-
 @media screen and (max-width: 799px) {
   .destination-row .column {
     width: 100%;
