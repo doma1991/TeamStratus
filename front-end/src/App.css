@@ -366,6 +366,28 @@ canvas {
   background-position: bottom;
   min-height: 15vh;
 }
+.travel-info {
+  justify-content: space-between;
+  background: white;
+  border: initial;
+}
+.travel-info h3 {
+  margin: 0 !important;
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
+}
+.destination-card-row p {
+  margin: 0;
+  color: #648f97 !important;
+}
+.destination-card-row .card {
+  background-color: #f0f8ff;
+}
+.destination-card-row {
+  margin-top: 8% !important;
+}
+.flightCard img {
+  max-height: 55vh;
+}
 
 @media screen and (max-width: 799px) {
   .destination-row .column {

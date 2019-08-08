@@ -98,7 +98,7 @@ class TopFiveFlights extends React.Component {
   render() {
     return (
       <div>
-        <CardDeck>
+        <div className="card-group mx-auto w-75">
           <Card bg="light" className="flightCard" id="flightsCard1">
             <Card.Img
               variant="top"
@@ -247,7 +247,7 @@ class TopFiveFlights extends React.Component {
               </div>
             </Modal.Footer>
           </Modal>
-        </CardDeck>
+        </div>
       </div>
     );
   }

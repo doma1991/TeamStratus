@@ -13,9 +13,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-
-// Also need to install moment byt running: npm install moment
-//
+import WeatherMap from "./WeatherMap.jsx";
 
 var MapD = <MapsDirection />;
 
@@ -33,7 +31,10 @@ export class SearchBar extends Component {
       travelDate: "",
       transportMode: "d",
       map: <MapsDirection />,
-      result: false
+      result: false,
+      weatherMap: (
+        <WeatherMap json={JSON.parse(localStorage.getItem("mapRequest"))} />
+      )
     };
     this.handleClearForm = this.handleClearForm.bind(this);
     this.fromHandleChange = this.fromHandleChange.bind(this);
@@ -167,8 +168,12 @@ export class SearchBar extends Component {
     localStorage.setItem("mapRequest", JSON.stringify(data));
     if (this.props.loggedIn) {
       this.setState({ map: <MapsDirection /> });
+      this.setState({
+        weatherMap: <WeatherMap json={JSON.parse(JSON.stringify(data))} />
+      });
     } else {
-      this.setState({ map: <h1 id = "loginreminder">Please log in</h1> });
+      this.setState({ map: <h1 id="loginreminder">Please log in</h1> });
+      this.setState({ weatherMap: null });
     }
 
     console.log(JSON.stringify(data));
@@ -257,7 +262,7 @@ export class SearchBar extends Component {
                       {...getInputProps({
                         placeholder: "Search Places ...",
                         className: "location-search-input",
-                        id : "to_input"
+                        id: "to_input"
                       })}
                     />
                     <div className="autocomplete-dropdown-container">
@@ -314,7 +319,7 @@ export class SearchBar extends Component {
                   <input
                     type="radio"
                     value="d"
-                    id = "driving_mode"
+                    id="driving_mode"
                     checked={this.state.transportMode === "d"}
                     onChange={this.handleChangeMode}
                   />
@@ -356,7 +361,7 @@ export class SearchBar extends Component {
             <div className="form-group">
               <button
                 className="btn btn-success"
-                id = "go_button"
+                id="go_button"
                 onClick={this.triggerChildAlert}
               >
                 Go!
@@ -364,7 +369,10 @@ export class SearchBar extends Component {
             </div>
           </form>
         </div>
-        <div className="mapBox">{this.state.result ? this.state.map : ""}</div>
+        <div className="mapBox">
+          {this.state.result ? this.state.map : ""}
+          {this.state.result ? this.state.weatherMap : ""}
+        </div>
       </div>
     );
   }

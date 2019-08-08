@@ -14,11 +14,17 @@ import {
 import { Map, GoogleApiWrapper } from "google-maps-react";
 import React, { Component, Fragment } from "react";
 import { compose, withProps, lifecycle } from "recompose";
+
 const google = (window.google = window.google ? window.google : {});
 
 class MapsDirection extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      distance: "",
+      duration: ""
+    };
   }
   render() {
     var routed;
@@ -27,7 +33,6 @@ class MapsDirection extends React.Component {
     var destinationa;
     var destinationn;
     var travel_mode;
-    var message;
 
     try {
       routed = JSON.parse(localStorage.getItem("mapRequest"));
@@ -35,7 +40,8 @@ class MapsDirection extends React.Component {
       originn = routed.startLongitude;
       destinationa = routed.endLatitude;
       destinationn = routed.endLongitude;
-      message = routed.routeDetails + " possible route.";
+      this.state.duration = routed.routeDetails.split(",")[0];
+      this.state.distance = routed.routeDetails.split(",")[1];
 
       if (routed.transportMethod === "d") {
         travel_mode = "DRIVING";
@@ -56,7 +62,8 @@ class MapsDirection extends React.Component {
       destinationa = 51.488999;
       destinationn = -0.328587;
       travel_mode = "DRIVING";
-      message = "your search failed, please try again being more precise.";
+      this.state.duration =
+        "your search failed, please try again being more precise.";
     }
 
     const DirectionsComponent = compose(
@@ -106,7 +113,17 @@ class MapsDirection extends React.Component {
               <DirectionsRenderer directions={props.directions} />
             )}
           </GoogleMap>
-          {message}
+          <div className="rounded-pill p-1 m-1 travel-info d-flex">
+            <h3>
+              {" "}
+              <i className="far fa-clock p-1" />
+              {this.state.duration}
+            </h3>
+            <h3>
+              {this.state.distance}
+              <i className="fas fa-shoe-prints p-1" />
+            </h3>
+          </div>
         </div>
       </div>
     ));

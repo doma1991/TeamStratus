@@ -38,6 +38,10 @@ class App extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.checkLogin();
+  }
+
   render() {
     return (
       <div className="App">
