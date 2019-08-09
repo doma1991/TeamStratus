@@ -8,8 +8,6 @@ import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardGroup";
 import Sms from "./sms";
 
-
-
 class TopFiveFlights extends React.Component {
   constructor(props) {
     super(props);
@@ -106,7 +104,7 @@ class TopFiveFlights extends React.Component {
             />
             <Card.Body>
               <Button
-                variant="light"
+                variant="btn btn-outline-primary"
                 // variant="outline-dark"
                 onClick={this.open1}
               >
@@ -124,7 +122,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra1}</p>
             </Modal.Body>
             <Modal.Footer>
-              <Sms/>
+              <Sms />
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price1}
@@ -156,7 +154,7 @@ class TopFiveFlights extends React.Component {
               src={require("./Film_picture/MI_Fallout.jpg")}
             />
             <Card.Body>
-              <Button variant="light" onClick={this.open2}>
+              <Button variant="btn btn-outline-primary" onClick={this.open2}>
                 Fly to Paris
               </Button>
             </Card.Body>
@@ -172,7 +170,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra2}</p>
             </Modal.Body>
             <Modal.Footer>
-              <Sms/>
+              <Sms />
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price2}
@@ -205,7 +203,7 @@ class TopFiveFlights extends React.Component {
               src={require("./Film_picture/Crazy_Rich_asians_Singapore.jpg")}
             />
             <Card.Body>
-              <Button variant="light" onClick={this.open3}>
+              <Button variant="btn btn-outline-primary" onClick={this.open3}>
                 Fly to Singapore
               </Button>
             </Card.Body>
@@ -221,7 +219,7 @@ class TopFiveFlights extends React.Component {
               <p> {this.state.extra3}</p>
             </Modal.Body>
             <Modal.Footer>
-              <Sms/>
+              <Sms />
               <div className="paypalButton">
                 <PayPalButton
                   amount={this.state.price3}
@@ -251,7 +249,6 @@ class TopFiveFlights extends React.Component {
       </div>
     );
   }
-
 }
 
 export default TopFiveFlights;

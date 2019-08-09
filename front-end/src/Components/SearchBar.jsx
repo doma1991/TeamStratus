@@ -172,7 +172,13 @@ export class SearchBar extends Component {
         weatherMap: <WeatherMap json={JSON.parse(JSON.stringify(data))} />
       });
     } else {
-      this.setState({ map: <h1 id="loginreminder">Please log in</h1> });
+      this.setState({
+        map: (
+          <h1 className="rounded-pill p-1 m-1" id="loginreminder">
+            Please log in
+          </h1>
+        )
+      });
       this.setState({ weatherMap: null });
     }
 
@@ -315,7 +321,7 @@ export class SearchBar extends Component {
 
             <div className="container transport-fields p-3">
               <div className="row">
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="d"
@@ -326,7 +332,7 @@ export class SearchBar extends Component {
                   <i className="fas fa-car fa-2x" />
                 </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="t"
@@ -336,7 +342,7 @@ export class SearchBar extends Component {
                   <i className="fas fa-bus fa-2x" />
                 </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="w"
@@ -346,7 +352,7 @@ export class SearchBar extends Component {
                   <i className="fas fa-walking fa-2x" />
                 </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-3 d-flex">
                   <input
                     type="radio"
                     value="b"

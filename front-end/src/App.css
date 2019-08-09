@@ -106,7 +106,18 @@ footer div {
 .location-search label {
   display: inline-block;
 }
-
+input[type="radio"] {
+  margin-right: 0 !important;
+  margin-bottom: 5px;
+}
+#loginreminder {
+  background-color: white;
+  border: 1px solid #cccccc;
+}
+.transport-fields .col-sm-3 {
+  flex-direction: column;
+  align-items: center;
+}
 .location-search {
   justify-content: space-between;
 }
@@ -304,7 +315,11 @@ footer div {
 canvas {
   width: 42px;
 }
-
+.weather-header {
+  font-family: Sky Text, Helvetica, Arial, sans-serif !important;
+  font-size: 3em;
+  margin: 0.25em 0;
+}
 #card1 {
   background: linear-gradient(rgba(47, 47, 47, 0.45), rgba(47, 47, 47, 0.45)),
     /* bottom, image */ url(./newYork.jpg);
