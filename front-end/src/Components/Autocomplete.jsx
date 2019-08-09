@@ -26,22 +26,21 @@ class LocationSearchInput extends React.Component {
     this.fromSeparateAddress(fromAddress);
     geocodeByAddress(fromAddress)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log("Success", latLng))
+
       .catch(error => console.error("Error", error));
   };
 
   fromSeparateAddress = fromAddress => {
     let currAddress = fromAddress;
-    console.log(typeof currAddress);
+
     let result = [];
     result = currAddress.split(",");
-    console.log(result);
+
     let i = result.length;
     let j = i - 1;
     let fromCity = result[0].trim();
     let fromCountry = result[j].trim();
-    console.log(fromCity);
-    console.log(fromCountry);
+
     this.setState({ fromCity: fromCity });
     this.setState({ fromCountry: fromCountry });
 
@@ -57,22 +56,21 @@ class LocationSearchInput extends React.Component {
     this.toSeparateAddress(toAddress);
     geocodeByAddress(toAddress)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log("Success", latLng))
+
       .catch(error => console.error("Error", error));
   };
 
   toSeparateAddress = toAddress => {
     let currAddress = toAddress;
-    console.log(typeof currAddress);
+
     let result = [];
     result = currAddress.split(",");
-    console.log(result);
+
     let i = result.length;
     let j = i - 1;
     let toCity = result[0].trim();
     let toCountry = result[j].trim();
-    console.log(toCity);
-    console.log(toCountry);
+
     this.setState({ toCity: toCity });
     this.setState({ toCountry: toCountry });
 

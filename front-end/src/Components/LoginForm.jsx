@@ -48,7 +48,6 @@ class LoginForm extends React.Component {
   render() {
     let text;
     if (this.state.isAuthenticated === 2) {
-      console.log("success");
       return <Redirect noThrow to="" />;
     }
 

@@ -14,6 +14,7 @@ var routed;
 class WeatherMap extends React.Component {
   constructor(props) {
     super(props);
+
     this.ref1 = React.createRef();
     this.ref2 = React.createRef();
 
@@ -67,9 +68,6 @@ class WeatherMap extends React.Component {
           [value2]: responseJson.currently.temperature
         });
 
-        skycons.add("travelIcon1", skycons.responseJson.currently.icon);
-        skycons.add("travelIcon2", skycons.responseJson.currently.icon);
-
         if (!skycons.responseJson.currently.icon) {
           return <h2>Loading...</h2>;
         }
@@ -117,7 +115,7 @@ class WeatherMap extends React.Component {
             <div className="card" id="travelCard1">
               <canvas id="travelIcon1" ref={this.ref1} width="42" height="42" />
               <p>{origin}</p>
-              <p>{this.state.temp1} celsius</p>
+              <p>{this.state.temp1} fahrenheit</p>
             </div>
           </div>
 
@@ -125,7 +123,7 @@ class WeatherMap extends React.Component {
             <div className="card" id="travelCard2">
               <canvas id="travelIcon2" ref={this.ref2} width="42" height="42" />
               <p>{destination}</p>
-              <p>{this.state.temp2} celsius</p>
+              <p>{this.state.temp2} fahrenheit</p>
             </div>
           </div>
         </div>
@@ -146,11 +144,10 @@ class WeatherMap extends React.Component {
       destinationa = routed.endLatitude;
       destinationn = routed.endLongitude;
     } catch (e) {}
+    const skycons = new Skycons({ color: "#648f97" });
 
     this.getTopFiveWeather("weather1", origina, originn, "temp1");
     this.getTopFiveWeather("weather2", destinationa, destinationn, "temp2");
-
-    const skycons = new Skycons({ color: "#648f97" });
 
     let weather1 = this.state.weather1;
     skycons.add(document.getElementById("travelIcon1"), weather1);
