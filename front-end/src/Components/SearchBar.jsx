@@ -72,7 +72,7 @@ export class SearchBar extends Component {
     this.fromSeparateAddress(fromAddress);
     geocodeByAddress(fromAddress)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log("Success", latLng))
+
       .catch(error => console.error("Error", error));
   };
 
@@ -98,7 +98,6 @@ export class SearchBar extends Component {
     this.toSeparateAddress(toAddress);
     geocodeByAddress(toAddress)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log("Success", latLng))
       .catch(error => console.error("Error", error));
   };
 
@@ -112,14 +111,12 @@ export class SearchBar extends Component {
     let toCountry = result[j].trim();
     this.setState({ toCity: toCity });
     this.setState({ toCountry: toCountry });
-    console.log(this.state.fromCity);
     //strip white splace then concat. the city and country//
   };
 
   handleChange = valueName => {
     return event => {
       this.setState({ [valueName]: event.target.value });
-      console.log(this.state[valueName]);
     };
   };
 
@@ -131,7 +128,6 @@ export class SearchBar extends Component {
 
   handleChangeDate(date) {
     this.setState({ travelDate: date });
-    console.log(this.state.travelDate);
   }
 
   async handleSubmit(event) {
@@ -153,10 +149,9 @@ export class SearchBar extends Component {
         this.state.transportMode +
         "/";
 
-      console.log(URL);
       let response = await fetch(URL);
       let data = await response.json();
-      console.log(data);
+
       this.handleResponse(data);
     } catch (e) {
       console.log("error", e);
@@ -181,8 +176,6 @@ export class SearchBar extends Component {
       });
       this.setState({ weatherMap: null });
     }
-
-    console.log(JSON.stringify(data));
   };
 
   triggerChildAlert = () => {

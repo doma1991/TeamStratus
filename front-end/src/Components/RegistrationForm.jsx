@@ -75,7 +75,6 @@ class RegistrationForm extends React.Component {
   };
 
   handleResponse = data => {
-    console.log(data.error);
     if (this.state.login === data.login) {
       this.setState({
         firstName: "",

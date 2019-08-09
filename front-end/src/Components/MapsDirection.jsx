@@ -55,7 +55,6 @@ class MapsDirection extends React.Component {
       if (routed.transportMethod === "t") {
         travel_mode = "TRANSIT";
       }
-      console.log(travel_mode);
     } catch (e) {
       origina = 51.507309;
       originn = -0.128012;
@@ -80,8 +79,7 @@ class MapsDirection extends React.Component {
       lifecycle({
         componentDidMount() {
           const DirectionsService = new google.maps.DirectionsService();
-          console.log(DirectionsComponent.googleMapURL);
-          console.log(process.env.REACT_APP_GOOGLE_API);
+
           DirectionsService.route(
             {
               origin: new google.maps.LatLng(origina, originn),

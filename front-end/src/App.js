@@ -13,7 +13,6 @@ import { Router } from "@reach/router";
 // import MapContainer from "./Components/Map";
 import { Link } from "@reach/router";
 import ErrorPage from "./Components/ErrorPage.jsx";
-console.log(process.env.REACT_APP_GOOGLE_API);
 
 class App extends React.Component {
   constructor(props) {

@@ -96,8 +96,6 @@ class PopularWeather extends React.Component {
         // skycons.add("icon4", skycons.responseJson.currently.icon);
         // skycons.add("icon5", skycons.responseJson.currently.icon);
 
-        console.log(skycons.responseJson.currently.icon);
-
         if (!skycons.responseJson.currently.icon) {
           return <h2>Loading...</h2>;
         }
@@ -146,7 +144,7 @@ class PopularWeather extends React.Component {
             <div className="card" id="card1">
               <canvas id="icon1" ref={this.ref1} width="42" height="42" />
               <p>{this.state.country1}</p>
-              <p>{this.state.temp1} celsius</p>
+              <p>{this.state.temp1} fahrenheit</p>
               {/*<p>{this.state.currency1}</p>*/}
             </div>
           </div>
@@ -155,7 +153,7 @@ class PopularWeather extends React.Component {
             <div className="card" id="card2">
               <canvas id="icon2" ref={this.ref2} width="42" height="42" />
               <p>{this.state.country2}</p>
-              <p>{this.state.temp2} celsius</p>
+              <p>{this.state.temp2} fahrenheit</p>
               {/*<p>{this.state.currency2}</p>*/}
             </div>
           </div>
@@ -164,7 +162,7 @@ class PopularWeather extends React.Component {
             <div className="card" id="card3">
               <canvas id="icon3" ref={this.ref3} width="42" height="42" />
               <p>{this.state.country3}</p>
-              <p>{this.state.temp3} celsius</p>
+              <p>{this.state.temp3} fahrenheit</p>
               {/*<p>{this.state.currency3}</p>*/}
             </div>
           </div>
@@ -173,7 +171,7 @@ class PopularWeather extends React.Component {
             <div className="card" id="card4">
               <canvas id="icon4" ref={this.ref4} width="42" height="42" />
               <p>{this.state.country4}</p>
-              <p>{this.state.temp4} celsius</p>
+              <p>{this.state.temp4} fahrenheit</p>
               {/*<p>{this.state.currency4}</p>*/}
             </div>
           </div>
@@ -182,7 +180,7 @@ class PopularWeather extends React.Component {
             <div className="card" id="card5">
               <canvas id="icon5" ref={this.ref5} width="42" height="42" />
               <p>{this.state.country5}</p>
-              <p>{this.state.temp5} celsius</p>
+              <p>{this.state.temp5} fahrenheit</p>
               {/*<p>{this.state.currency5}</p>*/}
             </div>
           </div>
